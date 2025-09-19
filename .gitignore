@@ -1,0 +1,282 @@
+# --------------------------
+# 通用忽略规则
+# --------------------------
+
+# 操作系统生成文件
+.DS_Store                  # macOS
+Thumbs.db                  # Windows
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Icon?
+~$*                        # Office临时文件
+*.swp                      # Vim交换文件
+*.swo                      # Vim交换文件
+
+# 日志和临时文件
+logs/
+log/
+*.log
+tmp/
+temp/
+*.tmp
+*.temp
+
+# 敏感信息文件
+.env                       # 环境变量
+.env.local
+.env.*.local
+*.pem                      # 密钥文件
+*.key
+*.cert
+credentials.json
+*.private
+*.secret
+
+# 编辑器/IDE配置
+.idea/                     # IntelliJ系列
+.vscode/                   # VS Code
+*.sublime-*                # Sublime Text
+*.idea/
+*.project
+*.workspace
+*.settings/
+.apt_generated
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.factorypath
+.gradle/
+*.ipr
+*.iws
+*.iml
+*.idea
+
+# --------------------------
+# 编程语言特定规则
+# --------------------------
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+env/
+ENV/
+*.pyc
+*.pyo
+
+# JavaScript/TypeScript
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.next/
+out/
+build/
+.vercel
+.umi
+.umi-production
+*.tsbuildinfo
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+bin/
+.gradle/
+.gradletasknamecache
+*.launch
+.settings/
+bin/
+tmp/
+
+# C/C++
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+build/
+cmake-build-*/
+Makefile
+.DS_Store
+.vscode/
+
+# C#
+bin/
+obj/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.cache
+*.psess
+*.vsp
+*.vspx
+
+# Go
+vendor/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+.DS_Store
+.idea/
+.vscode/
+*.sublime-*
+coverage.out
+
+# PHP
+vendor/
+composer.lock
+composer.phar
+*.log
+*.cache
+.php_cs.cache
+.phpunit.result.cache
+.env
+.env.local
+.DS_Store
+
+# Ruby
+*.gem
+*.rbc
+.bundle/
+.config/
+coverage/
+InstalledFiles
+pkg/
+spec/reports/
+test/tmp/
+test/version_tmp/
+tmp/
+Gemfile.lock
+
+# --------------------------
+# 构建工具/包管理器
+# --------------------------
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# npm
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+package-lock.json
+yarn.lock
+
+# --------------------------
+# 项目类型特定规则（按需保留）
+# --------------------------
+
+# Web前端
+*.html
+*.css
+*.js
+*.map
+*.min.js
+*.min.css
+.DS_Store
+node_modules/
+dist/
+build/
+out/
+
+# 移动端
+# Android
+*.apk
+*.ap_
+*.aab
+*.dex
+build/
+.gradle/
+local.properties
+*.iml
+.cxx/
+*.so
+
+# iOS
+Pods/
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace/
+
+# Unity（如果是Unity项目）
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+.DS_Store
