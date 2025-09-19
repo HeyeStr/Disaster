@@ -7,13 +7,14 @@ public class SceneControlMono : MonoBehaviour                                   
 {
     [Header("Control Scene")]
     [SerializeField] private SceneField Monitor;
-    [SerializeField] private SceneField Blog;
+    [SerializeField] private SceneField BlogScene;
     [SerializeField] private SceneField DistributePanal;
-    [SerializeField] private SceneField DataSubscene;
+    [SerializeField] private SceneField DeskScene;
 
     public bool test;
     void Start()
     {
+        SceneManager.LoadSceneAsync(DeskScene, LoadSceneMode.Additive);
         test = true;
     }
 
@@ -22,13 +23,26 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         if (!test)
         {
-            SceneManager.LoadSceneAsync(Blog, LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync(Blog);
+            SceneManager.LoadSceneAsync(BlogScene, LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync(BlogScene);
             test = true;
         }
     }
     public void LoadBlogScene()
     {
-        SceneManager.LoadSceneAsync(Blog, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(BlogScene, LoadSceneMode.Additive);
+    }
+    
+    public void UnloadBlogScene()
+    {
+        SceneManager.UnloadSceneAsync(BlogScene);
+    }
+    public void UnloadDeskScene()
+    {
+        SceneManager.UnloadSceneAsync(DeskScene);
+    }
+    public void loadDeskScene()
+    {
+        SceneManager.LoadSceneAsync(DeskScene, LoadSceneMode.Additive);
     }
 }

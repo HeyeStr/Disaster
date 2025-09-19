@@ -32,7 +32,11 @@ public class MonitorMonoBehaviour : MonoBehaviour
                 // 可以在这里添加特定物体的处理逻辑
                 if (hit.collider.CompareTag("BlogApp"))
                 {
+                    
                     sceneControlMono.LoadBlogScene();
+                    sceneControlMono.UnloadDeskScene();
+                     Vector3 vector3 = Vector3.zero;
+                    
                 }
             }
         }
