@@ -1,24 +1,59 @@
-using System.Collections;
-
 using UnityEngine;
+using System.Collections;
 
 public class BlogDeleteButton : MonoBehaviour
 {
     private GameObject MonitorGameObject;
+    private Transform buttonTransform;
+    
+    [Header("悬停效果设置")]
+    public float hoverScale = 1.1f;
+    public float animationSpeed = 5f;
+    
+    private Vector3 originalScale;
+    private Vector3 targetScale;
+    private bool isHovering = false;
 
     void Start()
     {
-         MonitorGameObject = GameObject.FindGameObjectWithTag("Monitor");
+        MonitorGameObject = GameObject.FindGameObjectWithTag("Monitor");
+        buttonTransform = transform;
+        originalScale = buttonTransform.localScale;
+        targetScale = originalScale;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        // 平滑缩放动画
+        buttonTransform.localScale = Vector3.Lerp(buttonTransform.localScale, targetScale, Time.deltaTime * animationSpeed);
     }
+    
+    void OnMouseEnter()
+    {
+        isHovering = true;
+        targetScale = originalScale * hoverScale;
+        Debug.Log("鼠标悬停到按钮上");
+    }
+    
+    void OnMouseExit()
+    {
+        isHovering = false;
+        targetScale = originalScale;
+        Debug.Log("鼠标离开按钮");
+    }
+    
     private void OnMouseDown()
     {
-        MonitorGameObject.GetComponent<SceneControlMono>().UnloadBlogScene();
-        MonitorGameObject.GetComponent<SceneControlMono>().loadDeskScene();
+        Debug.Log("BlogDeleteButton 按钮被点击！");
+        
+        if (MonitorGameObject != null)
+        {
+            SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
+            if (sceneControl != null)
+            {
+                sceneControl.UnloadBlogScene();
+                sceneControl.loadDeskScene();
+            }
+        }
     }
 }
