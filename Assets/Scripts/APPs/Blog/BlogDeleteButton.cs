@@ -50,8 +50,7 @@ public class BlogDeleteButton : MonoBehaviour
             SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
             if (sceneControl != null)
             {
-                sceneControl.UnloadBlogScene();
-                sceneControl.loadDeskScene();
+                sceneControl.BackToInitialScene();
             }
         }
     }
