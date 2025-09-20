@@ -719,9 +719,9 @@ MonoBehaviour:
   BlogScene:
     _sceneAsset: {fileID: 102900000, guid: 363ae49b5f7ad6f4a8cd0a95f54fe3ee, type: 3}
     _sceneName: BlogScene
-  DistributePanal:
-    _sceneAsset: {fileID: 102900000, guid: 368284b2314dd5a4caeda3ce01c9db35, type: 3}
-    _sceneName: DistributeScene
+  DistributePanalScene:
+    _sceneAsset: {fileID: 0}
+    _sceneName: 
   DeskScene:
     _sceneAsset: {fileID: 102900000, guid: d60fbf2a7d9812747a8338c24ecb946a, type: 3}
     _sceneName: DeskScene
