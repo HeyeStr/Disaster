@@ -44,7 +44,7 @@ public class BlogSwichCtl : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Monitor对象未找到！请确保场景中有带有'Monitor'标签的对象");
+            Debug.LogWarning("Monitor对象未找到！");
         }
     }
 }

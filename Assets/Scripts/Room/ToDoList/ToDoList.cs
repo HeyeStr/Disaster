@@ -181,16 +181,15 @@ public class ToDoList : MonoBehaviour
     
     private void InitializeTaskData()
     {
-        // 示例数据，你可以根据需要修改
-        pageContents.Add(new List<string> { "第一页任务1", "第一页任务2", "第一页任务3" });
-        pageContents.Add(new List<string> { "第二页任务1", "第二页任务2" });
-        pageContents.Add(new List<string> { "第三页任务1", "第三页任务2", "第三页任务3" });
+        // 初始化空的任务数据，不自动生成示例任务
+        // 任务将在需要时通过AddTask方法添加
+        pageContents.Add(new List<string>()); // 至少有一页
         
         // 更新总页数
         totalPages = pageContents.Count;
         
-        // 显示初始页面内容
-        UpdatePageContent();
+        // 不自动显示内容，等待用户操作
+        // UpdatePageContent(); // 注释掉自动显示
     }
     
 
