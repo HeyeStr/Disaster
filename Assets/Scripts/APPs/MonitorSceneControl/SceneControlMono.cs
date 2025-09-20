@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneControlMono : MonoBehaviour                                       //控制显示器上不同层级对应场景Scene的打开关闭
+public class SceneControlMono : MonoBehaviour                                       //锟斤拷锟斤拷锟斤拷示锟斤拷锟较诧拷同锟姐级锟斤拷应锟斤拷锟斤拷Scene锟侥打开关憋拷
 {
     [Header("Control Scene")]
     [SerializeField] private SceneField Monitor;
     [SerializeField] private SceneField BlogScene;
     [SerializeField] private SceneField DistributePanalScene;
     [SerializeField] private SceneField DeskScene;
+    [SerializeField] private SceneField BlogDetailScene;
 
     public bool test;
     void Start()
@@ -59,4 +60,42 @@ public class SceneControlMono : MonoBehaviour                                   
         Debug.Log("LoadDistributeScene");
         SceneManager.LoadSceneAsync(DistributePanalScene, LoadSceneMode.Additive);
     }
+
+    public void LoadBlogDetailScene()
+    {
+        Debug.Log("LoadBlogDetailScene");
+        try
+        {
+
+            UnloadBlogScene();
+            SceneManager.LoadSceneAsync("BlogDetailScene", LoadSceneMode.Additive);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"鍔犺浇BlogDetailScene澶辫触: {e.Message}");
+        }
+    }
+
+    public void UnloadBlogDetailScene()
+    {
+        Debug.Log("UnloadBlogDetailScene");
+        try
+        {
+            SceneManager.UnloadSceneAsync("BlogDetailScene");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"鍗歌浇BlogDetailScene澶辫触: {e.Message}");
+        }
+    }
+
+    public void BackToBlogList()
+    {
+        Debug.Log("BackToBlogList");
+
+        UnloadBlogDetailScene();
+
+        LoadBlogScene();
+    }
+
 }
