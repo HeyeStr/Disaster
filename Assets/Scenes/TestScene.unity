@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighLightStringStarttoMove: 0
   TargetPositionText: {fileID: 0}
-  MoveSpeed: 50
+  MoveSpeed: 30
 --- !u!114 &85728474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,6 +1006,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 116565553}
+  previousButton: {fileID: 0}
+  nextButton: {fileID: 0}
+  currentPage: 0
+  taskItemPrefab: {fileID: 0}
+  contentParent: {fileID: 0}
 --- !u!61 &868678849
 BoxCollider2D:
   m_ObjectHideFlags: 0

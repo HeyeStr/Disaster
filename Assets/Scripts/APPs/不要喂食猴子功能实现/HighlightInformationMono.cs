@@ -24,9 +24,10 @@ public class HighlightInformationMono : MonoBehaviour
         {
             // 获取目标位置的世界坐标
             Vector3 Targetposition = TargetPositionText.transform.position;
-            
+
             // 移动到目标位置
-            transform.position += MoveSpeed * Time.deltaTime * (Vector3)math.normalize(new float3(Targetposition.x - transform.position.x, Targetposition.y - transform.position.y, Targetposition.z - transform.position.z));
+            transform.position= math.lerp(transform.position, Targetposition, 0.1f);
+            //transform.position +=  MoveSpeed * Time.deltaTime *  (Vector3)math.normalize(new float3(Targetposition.x - transform.position.x, Targetposition.y - transform.position.y, Targetposition.z - transform.position.z));
 
             if (math.distance(Targetposition, transform.position) < 0.3)
             {
