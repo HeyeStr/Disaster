@@ -1,6 +1,7 @@
 using UnityEngine;
 using Manager;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ToDoList : MonoBehaviour
 {
@@ -18,9 +19,21 @@ public class ToDoList : MonoBehaviour
     private Button previousButton; // 上一页按钮
     [SerializeField]
     private Button nextButton;     // 下一页按钮
-
+      [SerializeField]
     private int currentPage = 0;   // 当前页码
     private int totalPages = 3;    // 总页数
+
+    [SerializeField]
+    private GameObject taskItemPrefab; // 任务项预制体
+    
+    [SerializeField]
+    private Transform contentParent; // 内容的父物体（通常是一个 Panel 或 ScrollView 的 Content ）
+
+    // 用于存储所有页面的任务数据
+    private List<List<string>> pageContents = new List<List<string>>();
+    
+    // 当前页面显示的任务项对象
+    private List<GameObject> currentTaskItems = new List<GameObject>();
 
     void Start()
     {
@@ -58,6 +71,9 @@ public class ToDoList : MonoBehaviour
             nextButton.onClick.AddListener(OnNextButtonClick);
             nextButton.gameObject.SetActive(false);
         }
+
+        // 初始化任务数据
+        InitializeTaskData();
     }
 
     void Update()
@@ -163,10 +179,90 @@ public class ToDoList : MonoBehaviour
         }
     }
 
+    private void InitializeTaskData()
+    {
+        // 示例数据，你可以根据需要修改
+        pageContents.Add(new List<string> { "第一页任务1", "第一页任务2", "第一页任务3" });
+        pageContents.Add(new List<string> { "第二页任务1", "第二页任务2" });
+        pageContents.Add(new List<string> { "第三页任务1", "第三页任务2", "第三页任务3" });
+        
+        // 更新总页数
+        totalPages = pageContents.Count;
+        
+        // 显示初始页面内容
+        UpdatePageContent();
+    }
+
     private void UpdatePageContent()
     {
-        // 这里添加更新页面内容的逻辑
-        // 例如：显示不同的任务列表、更新UI等
+        Debug.Log($"开始更新页面内容，当前页：{currentPage}");
+        Debug.Log($"当前页面任务数量：{currentTaskItems.Count}");
+        
+        // 清除当前显示的任务项
+        foreach (var item in currentTaskItems)
+        {
+            Destroy(item);
+        }
+        currentTaskItems.Clear();
+
+        // 获取当前页的任务列表
+        if (currentPage < pageContents.Count)
+        {
+            List<string> currentPageTasks = pageContents[currentPage];
+            Debug.Log($"当前页任务列表数量：{currentPageTasks.Count}");
+            
+            // 检查必要组件
+            if (taskItemPrefab == null)
+            {
+                Debug.LogError("Task Item Prefab 未赋值！");
+                return;
+            }
+            if (contentParent == null)
+            {
+                Debug.LogError("Content Parent 未赋值！");
+                return;
+            }
+            
+            // 创建新的任务项
+            foreach (string task in currentPageTasks)
+            {
+                GameObject newTask = Instantiate(taskItemPrefab, contentParent);
+                Text taskText = newTask.GetComponentInChildren<Text>();
+                if (taskText != null)
+                {
+                    taskText.text = task;
+                    Debug.Log($"创建任务项：{task}");
+                }
+                else
+                {
+                    Debug.LogError("Task Item Prefab 中没有找到 Text 组件！");
+                }
+                currentTaskItems.Add(newTask);
+            }
+        }
+
         Debug.Log($"切换到第 {currentPage + 1} 页");
+    }
+
+    // 添加一个方法用于添加新任务
+    public void AddTask(string taskContent, int pageIndex)
+    {
+        // 确保页面索引有效
+        while (pageContents.Count <= pageIndex)
+        {
+            pageContents.Add(new List<string>());
+        }
+
+        pageContents[pageIndex].Add(taskContent);
+        
+        // 如果是当前页，立即更新显示
+        if (pageIndex == currentPage)
+        {
+            UpdatePageContent();
+        }
+        
+        // 更新总页数
+        totalPages = pageContents.Count;
+        UpdatePageButtonsState();
     }
 }
