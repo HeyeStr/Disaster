@@ -32,7 +32,14 @@ public class SceneControlMono : MonoBehaviour                                   
     public void LoadBlogScene()
     {
         Debug.Log("LoadBlogScene");
-        SceneManager.LoadSceneAsync(BlogScene, LoadSceneMode.Additive);
+        try
+        {
+            SceneManager.LoadSceneAsync("BlogScene", LoadSceneMode.Additive);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"加载BlogScene失败: {e.Message}");
+        }
     }
     
     public void UnloadBlogScene()
@@ -118,22 +125,23 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         Debug.Log("BackToBlogList - 从详情返回到博客浏览界面");
         
-        LoadBlogScene();
+        // 先卸载博客详情场景
         UnloadBlogDetailScene();
         
-
-
+        // 再加载博客浏览场景
+        LoadBlogScene();
     }
     
     public void BackToInitialScene()
     {
         Debug.Log("BackToInitialScene - 返回到最初界面");
-
-        loadDeskScene();
+        
+        // 先卸载所有博客相关场景
         UnloadBlogDetailScene();
         UnloadBlogScene();
         
-        
+        // 再加载桌面场景
+        loadDeskScene();
     }
 
 }
