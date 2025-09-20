@@ -19,3 +19,4 @@ Thumbs.db          # Windows
 *.suo              # Visual Studio用户选项
 *.user             # Visual Studio用户文件
 *.pidb             # Unity数据库文件
+*.vs
