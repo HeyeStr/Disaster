@@ -97,7 +97,7 @@ public class SceneControlMono : MonoBehaviour                                   
         Debug.Log("UnloadBlogDetailScene");
         try
         {
-            // 检查场景是否存在且已加载
+
             var scene = SceneManager.GetSceneByName("BlogDetailScene");
             if (scene.IsValid() && scene.isLoaded)
             {
@@ -118,10 +118,10 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         Debug.Log("BackToBlogList - 从详情返回到博客浏览界面");
         
-        // 卸载博客详情场景
+
         UnloadBlogDetailScene();
         
-        // 加载博客浏览场景
+
         LoadBlogScene();
     }
     
@@ -129,11 +129,9 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         Debug.Log("BackToInitialScene - 返回到最初界面");
         
-        // 卸载所有博客相关场景
         UnloadBlogDetailScene();
         UnloadBlogScene();
         
-        // 加载桌面场景
         loadDeskScene();
     }
 
