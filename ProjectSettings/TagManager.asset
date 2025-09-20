@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Monitor
   - Test
+  - BlogApp
+  - ToDoList
   layers:
   - Default
   - TransparentFX
