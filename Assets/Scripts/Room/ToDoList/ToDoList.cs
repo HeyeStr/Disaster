@@ -1,6 +1,6 @@
 using UnityEngine;
 using Manager;
-using UnityEngine.UI; // 添加UI命名空间
+using UnityEngine.UI;
 
 public class ToDoList : MonoBehaviour
 {
@@ -14,6 +14,13 @@ public class ToDoList : MonoBehaviour
     
     [SerializeField]
     private Button closeButton; // 关闭按钮引用
+    [SerializeField]
+    private Button previousButton; // 上一页按钮
+    [SerializeField]
+    private Button nextButton;     // 下一页按钮
+
+    private int currentPage = 0;   // 当前页码
+    private int totalPages = 3;    // 总页数
 
     void Start()
     {
@@ -37,6 +44,19 @@ public class ToDoList : MonoBehaviour
             closeButton.onClick.AddListener(OnCloseButtonClick);
             // 初始时隐藏关闭按钮
             closeButton.gameObject.SetActive(false);
+        }
+
+        // 设置翻页按钮的点击事件
+        if (previousButton != null)
+        {
+            previousButton.onClick.AddListener(OnPreviousButtonClick);
+            previousButton.gameObject.SetActive(false);
+        }
+
+        if (nextButton != null)
+        {
+            nextButton.onClick.AddListener(OnNextButtonClick);
+            nextButton.gameObject.SetActive(false);
         }
     }
 
@@ -78,11 +98,20 @@ public class ToDoList : MonoBehaviour
         {
             targetPos = new Vector3(-7.1f, 0f, 0.53f);
             moved = true;
-            // 点击展开时立即显示关闭按钮
+            // 展开时显示所有按钮
             if (closeButton != null)
             {
                 closeButton.gameObject.SetActive(true);
             }
+            if (previousButton != null)
+            {
+                previousButton.gameObject.SetActive(true);
+            }
+            if (nextButton != null)
+            {
+                nextButton.gameObject.SetActive(true);
+            }
+            UpdatePageButtonsState();
         }
         StarttoMove = true;
     }
@@ -94,7 +123,50 @@ public class ToDoList : MonoBehaviour
             targetPos = leftPos;
             moved = false;
             StarttoMove = true;
+            // 关闭时隐藏所有按钮
             closeButton.gameObject.SetActive(false);
+            previousButton.gameObject.SetActive(false);
+            nextButton.gameObject.SetActive(false);
         }
+    }
+
+    private void OnPreviousButtonClick()
+    {
+        if (currentPage > 0)
+        {
+            currentPage--;
+            UpdatePageContent();
+            UpdatePageButtonsState();
+        }
+    }
+
+    private void OnNextButtonClick()
+    {
+        if (currentPage < totalPages - 1)
+        {
+            currentPage++;
+            UpdatePageContent();
+            UpdatePageButtonsState();
+        }
+    }
+
+    private void UpdatePageButtonsState()
+    {
+        // 更新按钮状态
+        if (previousButton != null)
+        {
+            previousButton.interactable = currentPage > 0;
+        }
+        if (nextButton != null)
+        {
+            nextButton.interactable = currentPage < totalPages - 1;
+        }
+    }
+
+    private void UpdatePageContent()
+    {
+        // 这里添加更新页面内容的逻辑
+        // 例如：显示不同的任务列表、更新UI等
+        Debug.Log($"切换到第 {currentPage + 1} 页");
     }
 }
