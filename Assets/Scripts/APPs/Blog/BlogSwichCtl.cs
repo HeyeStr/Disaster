@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BlogSwichCtl : MonoBehaviour
 {
@@ -9,47 +8,23 @@ public class BlogSwichCtl : MonoBehaviour
     {
         MonitorGameObject = GameObject.FindGameObjectWithTag("Monitor");
         
-        // 确保Image组件可以接收射线检测
-        Image image = GetComponent<Image>();
-        if (image != null)
-        {
-            image.raycastTarget = true;
-        }
-        
-        // 确保有Collider2D组件用于点击检测
-        Collider2D collider = GetComponent<Collider2D>();
-        BoxCollider2D boxCollider = null;
-        
-        if (collider == null)
+        // 确保有BoxCollider2D组件用于点击检测
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        if (boxCollider == null)
         {
             boxCollider = gameObject.AddComponent<BoxCollider2D>();
-            boxCollider.isTrigger = true;
-        }
-        else
-        {
-            // 如果是Circle Collider，改为Box Collider
-            if (collider is CircleCollider2D)
-            {
-                DestroyImmediate(collider);
-                boxCollider = gameObject.AddComponent<BoxCollider2D>();
-                boxCollider.isTrigger = true;
-            }
-            else if (collider is BoxCollider2D)
-            {
-                boxCollider = collider as BoxCollider2D;
-            }
         }
         
-
-        if (boxCollider != null)
+        // 设置为trigger
+        boxCollider.isTrigger = true;
+        
+        // 自动调整碰撞体大小以匹配图片大小
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        if (rectTransform != null)
         {
-            RectTransform rectTransform = GetComponent<RectTransform>();
-            if (rectTransform != null)
-            {
-                Vector2 size = rectTransform.sizeDelta;
-                Vector3 scale = rectTransform.localScale;
-                boxCollider.size = new Vector2(size.x * scale.x, size.y * scale.y);
-            }
+            Vector2 size = rectTransform.sizeDelta;
+            Vector3 scale = rectTransform.localScale;
+            boxCollider.size = new Vector2(size.x * scale.x, size.y * scale.y);
         }
     }
     
