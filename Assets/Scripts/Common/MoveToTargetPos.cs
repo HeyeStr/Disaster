@@ -1,4 +1,4 @@
-using PlayerInput;
+using Manager;
 using UnityEngine;
 
 namespace Common
