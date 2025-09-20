@@ -38,7 +38,23 @@ public class SceneControlMono : MonoBehaviour                                   
     public void UnloadBlogScene()
     {
         Debug.Log("UnloadBlogScene");
-        SceneManager.UnloadSceneAsync(BlogScene);
+        try
+        {
+            // 检查场景是否存在且已加载
+            var scene = SceneManager.GetSceneByName("BlogScene");
+            if (scene.IsValid() && scene.isLoaded)
+            {
+                SceneManager.UnloadSceneAsync("BlogScene");
+            }
+            else
+            {
+                Debug.LogWarning("BlogScene未加载或无效，跳过卸载");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"卸载BlogScene失败: {e.Message}");
+        }
     }
     public void UnloadDeskScene()
     {
@@ -81,7 +97,16 @@ public class SceneControlMono : MonoBehaviour                                   
         Debug.Log("UnloadBlogDetailScene");
         try
         {
-            SceneManager.UnloadSceneAsync("BlogDetailScene");
+            // 检查场景是否存在且已加载
+            var scene = SceneManager.GetSceneByName("BlogDetailScene");
+            if (scene.IsValid() && scene.isLoaded)
+            {
+                SceneManager.UnloadSceneAsync("BlogDetailScene");
+            }
+            else
+            {
+                Debug.LogWarning("BlogDetailScene未加载或无效，跳过卸载");
+            }
         }
         catch (System.Exception e)
         {
@@ -91,11 +116,25 @@ public class SceneControlMono : MonoBehaviour                                   
 
     public void BackToBlogList()
     {
-        Debug.Log("BackToBlogList");
-
+        Debug.Log("BackToBlogList - 从详情返回到博客浏览界面");
+        
+        // 卸载博客详情场景
         UnloadBlogDetailScene();
-
+        
+        // 加载博客浏览场景
         LoadBlogScene();
+    }
+    
+    public void BackToInitialScene()
+    {
+        Debug.Log("BackToInitialScene - 返回到最初界面");
+        
+        // 卸载所有博客相关场景
+        UnloadBlogDetailScene();
+        UnloadBlogScene();
+        
+        // 加载桌面场景
+        loadDeskScene();
     }
 
 }
