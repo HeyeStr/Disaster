@@ -1,5 +1,6 @@
 using UnityEngine;
 using Manager;
+using UnityEngine.UI; // 添加UI命名空间
 
 public class ToDoList : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class ToDoList : MonoBehaviour
     private Vector3 targetPos; // 目标位置
 
     private PlayerInputManager inputManager; // 新增输入管理器引用
+    
+    [SerializeField]
+    private Button closeButton; // 关闭按钮引用
 
     void Start()
     {
@@ -26,6 +30,14 @@ public class ToDoList : MonoBehaviour
         // 把屏幕中心转世界坐标
         centerPos = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
         centerPos.z = leftPos.z;
+
+        // 设置关闭按钮的点击事件
+        if (closeButton != null)
+        {
+            closeButton.onClick.AddListener(OnCloseButtonClick);
+            // 初始时隐藏关闭按钮
+            closeButton.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -49,6 +61,12 @@ public class ToDoList : MonoBehaviour
             {
                 transform.position = targetPos;
                 StarttoMove = false;
+                
+                // 根据移动状态显示或隐藏关闭按钮
+                if (closeButton != null)
+                {
+                    closeButton.gameObject.SetActive(moved);
+                }
             }
         }
     }
@@ -57,11 +75,26 @@ public class ToDoList : MonoBehaviour
     private void HandleClick()
     {
         if (!moved)
+        {
             targetPos = new Vector3(-7.1f, 0f, 0.53f);
-        else
-            targetPos = leftPos;
-        
+            moved = true;
+            // 点击展开时立即显示关闭按钮
+            if (closeButton != null)
+            {
+                closeButton.gameObject.SetActive(true);
+            }
+        }
         StarttoMove = true;
-        moved = !moved;
+    }
+
+    private void OnCloseButtonClick()
+    {
+        if (moved)
+        {
+            targetPos = leftPos;
+            moved = false;
+            StarttoMove = true;
+            closeButton.gameObject.SetActive(false);
+        }
     }
 }
