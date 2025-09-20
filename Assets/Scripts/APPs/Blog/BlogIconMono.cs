@@ -24,7 +24,6 @@ public class BlogIconMono : MonoBehaviour
             SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
             if (sceneControl != null)
             {
-
                 sceneControl.LoadBlogScene();
                 sceneControl.UnloadDeskScene();
             }
