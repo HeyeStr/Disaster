@@ -2,6 +2,7 @@ using UnityEngine;
 using Manager;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class ToDoList : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class ToDoList : MonoBehaviour
     private Button nextButton;     // 下一页按钮
       [SerializeField]
     private int currentPage = 0;   // 当前页码
-    private int totalPages = 3;    // 总页数
+    public  int totalPages = 3;    // 总页数
 
     [SerializeField]
     private GameObject taskItemPrefab; // 任务项预制体
@@ -71,9 +72,6 @@ public class ToDoList : MonoBehaviour
             nextButton.onClick.AddListener(OnNextButtonClick);
             nextButton.gameObject.SetActive(false);
         }
-
-        // 初始化任务数据
-        InitializeTaskData();
     }
 
     void Update()
@@ -179,24 +177,22 @@ public class ToDoList : MonoBehaviour
         }
     }
     
-    private void InitializeTaskData()
-    {
-        // 示例数据，你可以根据需要修改
-        pageContents.Add(new List<string> { "第一页任务1", "第一页任务2", "第一页任务3" });
-        pageContents.Add(new List<string> { "第二页任务1", "第二页任务2" });
-        pageContents.Add(new List<string> { "第三页任务1", "第三页任务2", "第三页任务3" });
-        
-        // 更新总页数
-        totalPages = pageContents.Count;
-        
-        // 显示初始页面内容
-        UpdatePageContent();
-    }
-    
 
-    private void UpdatePageContent()
+    public  void UpdatePageContent()
     {
-        // 清除当前显示的任务项
+        List<Mission> missions = gameObject.GetComponent<TaskToDoListTextMono>().Missions;
+
+        Transform TextCanvastransform= transform.Find("TextCanvas");
+
+        Transform TaskHeadTexttransform= TextCanvastransform.Find("TaskHeadText");
+        Debug.Log("TaskHeadTexttransform.gameObject" + TaskHeadTexttransform.gameObject);
+        Debug.Log("TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>()" + TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>());
+        Debug.Log("missions.Count" + missions.Count);
+        Debug.Log("currentPage" + currentPage);
+        if (missions.Count > currentPage)
+        {
+            TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
+        }
         foreach (var item in currentTaskItems)
         {
             Destroy(item);
@@ -204,45 +200,25 @@ public class ToDoList : MonoBehaviour
         currentTaskItems.Clear();
 
         // 获取当前页的任务列表
-        if (currentPage < pageContents.Count)
-        {
-            List<string> currentPageTasks = pageContents[currentPage];
+        //if (currentPage < pageContents.Count)
+        //{
+        //    List<string> currentPageTasks = pageContents[currentPage];
             
-            // 创建新的任务项
-            foreach (string task in currentPageTasks)
-            {
-                GameObject newTask = Instantiate(taskItemPrefab, contentParent);
-                Text taskText = newTask.GetComponentInChildren<Text>();
-                if (taskText != null)
-                {
-                    taskText.text = task;
-                }
-                currentTaskItems.Add(newTask);
-            }
-        }
+        //    // 创建新的任务项
+        //    foreach (string task in currentPageTasks)
+        //    {
+        //        GameObject newTask = Instantiate(taskItemPrefab, contentParent);
+        //        Text taskText = newTask.GetComponentInChildren<Text>();
+        //        if (taskText != null)
+        //        {
+        //            taskText.text = task;
+        //        }
+        //        currentTaskItems.Add(newTask);
+        //    }
+        //}
 
         Debug.Log($"切换到第 {currentPage + 1} 页");
     }
 
-    // 添加一个方法用于添加新任务
-    public void AddTask(string taskContent, int pageIndex)
-    {
-        // 确保页面索引有效
-        while (pageContents.Count <= pageIndex)
-        {
-            pageContents.Add(new List<string>());
-        }
-
-        pageContents[pageIndex].Add(taskContent);
-        
-        // 如果是当前页，立即更新显示
-        if (pageIndex == currentPage)
-        {
-            UpdatePageContent();
-        }
-        
-        // 更新总页数
-        totalPages = pageContents.Count;
-        UpdatePageButtonsState();
-    }
+   
 }
