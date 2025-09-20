@@ -178,7 +178,7 @@ public class ToDoList : MonoBehaviour
             nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
-
+    
     private void InitializeTaskData()
     {
         // 示例数据，你可以根据需要修改
@@ -192,6 +192,7 @@ public class ToDoList : MonoBehaviour
         // 显示初始页面内容
         UpdatePageContent();
     }
+    
 
     private void UpdatePageContent()
     {
