@@ -8,7 +8,7 @@ public class SceneControlMono : MonoBehaviour                                   
     [Header("Control Scene")]
     [SerializeField] private SceneField Monitor;
     [SerializeField] private SceneField BlogScene;
-    [SerializeField] private SceneField DistributePanal;
+    [SerializeField] private SceneField DistributePanalScene;
     [SerializeField] private SceneField DeskScene;
 
     public bool test;
@@ -44,5 +44,13 @@ public class SceneControlMono : MonoBehaviour                                   
     public void loadDeskScene()
     {
         SceneManager.LoadSceneAsync(DeskScene, LoadSceneMode.Additive);
+    }
+    public void UnloadDistributeScene()
+    {
+        SceneManager.UnloadSceneAsync(DistributePanalScene);
+    }
+    public void LoadDistributeScene()
+    {
+        SceneManager.LoadSceneAsync(DistributePanalScene, LoadSceneMode.Additive);
     }
 }

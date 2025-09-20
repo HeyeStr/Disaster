@@ -8,7 +8,7 @@ public class BlogDeleteButton : MonoBehaviour
     
     [Header("悬停效果设置")]
     public float hoverScale = 1.1f;
-    public float animationSpeed = 5f;
+    public float animationSpeed = 10f;
     
     private Vector3 originalScale;
     private Vector3 targetScale;
@@ -24,7 +24,6 @@ public class BlogDeleteButton : MonoBehaviour
     
     void Update()
     {
-        // 平滑缩放动画
         buttonTransform.localScale = Vector3.Lerp(buttonTransform.localScale, targetScale, Time.deltaTime * animationSpeed);
     }
     
