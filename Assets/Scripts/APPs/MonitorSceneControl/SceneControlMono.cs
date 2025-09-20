@@ -118,21 +118,22 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         Debug.Log("BackToBlogList - 从详情返回到博客浏览界面");
         
-
+        LoadBlogScene();
         UnloadBlogDetailScene();
         
 
-        LoadBlogScene();
+
     }
     
     public void BackToInitialScene()
     {
         Debug.Log("BackToInitialScene - 返回到最初界面");
-        
+
+        loadDeskScene();
         UnloadBlogDetailScene();
         UnloadBlogScene();
         
-        loadDeskScene();
+        
     }
 
 }
