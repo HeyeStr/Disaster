@@ -1,7 +1,6 @@
 using UnityEngine;
-using System.Collections;
 
-public class BlogDeleteButton : MonoBehaviour
+public class BlogBackButton : MonoBehaviour
 {
     private GameObject MonitorGameObject;
     private Transform buttonTransform;
@@ -13,7 +12,7 @@ public class BlogDeleteButton : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 targetScale;
     private bool isHovering = false;
-
+    
     void Start()
     {
         MonitorGameObject = GameObject.FindGameObjectWithTag("Monitor");
@@ -31,27 +30,35 @@ public class BlogDeleteButton : MonoBehaviour
     {
         isHovering = true;
         targetScale = originalScale * hoverScale;
-        Debug.Log("鼠标悬停到按钮上");
+        Debug.Log("鼠标悬停到返回按钮上");
     }
     
     void OnMouseExit()
     {
         isHovering = false;
         targetScale = originalScale;
-        Debug.Log("鼠标离开按钮");
+        Debug.Log("鼠标离开返回按钮");
     }
     
     private void OnMouseDown()
     {
-        Debug.Log("BlogDeleteButton 按钮被点击！");
+        Debug.Log("点击了返回按钮，准备返回到博客列表场景");
         
         if (MonitorGameObject != null)
         {
             SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
             if (sceneControl != null)
             {
-                sceneControl.BackToInitialScene();
+                sceneControl.BackToBlogList();
             }
+            else
+            {
+                Debug.LogWarning("Monitor对象上没有SceneControlMono组件！");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Monitor对象未找到！请确保场景中有带有'Monitor'标签的对象");
         }
     }
 }
