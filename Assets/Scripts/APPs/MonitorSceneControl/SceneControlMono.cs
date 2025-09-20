@@ -22,12 +22,7 @@ public class SceneControlMono : MonoBehaviour                                   
     // Update is called once per frame
     void Update()
     {
-        if (!test)
-        {
-            SceneManager.LoadSceneAsync(BlogScene, LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync(BlogScene);
-            test = true;
-        }
+        // 移除了测试代码，避免干扰正常场景切换
     }
     public void LoadBlogScene()
     {
@@ -89,13 +84,30 @@ public class SceneControlMono : MonoBehaviour                                   
         Debug.Log("LoadBlogDetailScene");
         try
         {
-
+            // 先卸载博客浏览场景
             UnloadBlogScene();
-            SceneManager.LoadSceneAsync("BlogDetailScene", LoadSceneMode.Additive);
+            
+            // 等待一帧确保卸载完成，然后加载详情场景
+            StartCoroutine(LoadBlogDetailSceneCoroutine());
         }
         catch (System.Exception e)
         {
             Debug.LogError($"加载BlogDetailScene失败: {e.Message}");
+        }
+    }
+    
+    private IEnumerator LoadBlogDetailSceneCoroutine()
+    {
+        // 等待一帧确保场景卸载完成
+        yield return null;
+        
+        // 加载博客详情场景
+        var operation = SceneManager.LoadSceneAsync("BlogDetailScene", LoadSceneMode.Additive);
+        yield return operation;
+        
+        if (operation.isDone)
+        {
+            Debug.Log("BlogDetailScene加载完成");
         }
     }
 
@@ -128,8 +140,23 @@ public class SceneControlMono : MonoBehaviour                                   
         // 先卸载博客详情场景
         UnloadBlogDetailScene();
         
-        // 再加载博客浏览场景
-        LoadBlogScene();
+        // 等待一帧确保卸载完成，然后加载博客浏览场景
+        StartCoroutine(BackToBlogListCoroutine());
+    }
+    
+    private IEnumerator BackToBlogListCoroutine()
+    {
+        // 等待一帧确保场景卸载完成
+        yield return null;
+        
+        // 加载博客浏览场景
+        var operation = SceneManager.LoadSceneAsync("BlogScene", LoadSceneMode.Additive);
+        yield return operation;
+        
+        if (operation.isDone)
+        {
+            Debug.Log("BlogScene加载完成");
+        }
     }
     
     public void BackToInitialScene()
@@ -140,8 +167,23 @@ public class SceneControlMono : MonoBehaviour                                   
         UnloadBlogDetailScene();
         UnloadBlogScene();
         
-        // 再加载桌面场景
-        loadDeskScene();
+        // 等待一帧确保卸载完成，然后加载桌面场景
+        StartCoroutine(BackToInitialSceneCoroutine());
+    }
+    
+    private IEnumerator BackToInitialSceneCoroutine()
+    {
+        // 等待一帧确保场景卸载完成
+        yield return null;
+        
+        // 加载桌面场景
+        var operation = SceneManager.LoadSceneAsync(DeskScene, LoadSceneMode.Additive);
+        yield return operation;
+        
+        if (operation.isDone)
+        {
+            Debug.Log("DeskScene加载完成");
+        }
     }
 
 }

@@ -45,6 +45,12 @@ public class BlogDeleteButton : MonoBehaviour
     {
         Debug.Log("BlogDeleteButton 按钮被点击！");
         
+        // 阻止事件继续传播，确保其他UI元素不会响应这个点击
+        if (Event.current != null)
+        {
+            Event.current.Use();
+        }
+        
         if (MonitorGameObject != null)
         {
             SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
