@@ -171,11 +171,11 @@ public class ToDoList : MonoBehaviour
         // 更新按钮状态
         if (previousButton != null)
         {
-            previousButton.interactable = currentPage > 0;
+            previousButton.gameObject.SetActive(currentPage > 0 && moved);
         }
         if (nextButton != null)
         {
-            nextButton.interactable = currentPage < totalPages - 1;
+            nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
 
@@ -195,9 +195,6 @@ public class ToDoList : MonoBehaviour
 
     private void UpdatePageContent()
     {
-        Debug.Log($"开始更新页面内容，当前页：{currentPage}");
-        Debug.Log($"当前页面任务数量：{currentTaskItems.Count}");
-        
         // 清除当前显示的任务项
         foreach (var item in currentTaskItems)
         {
@@ -209,19 +206,6 @@ public class ToDoList : MonoBehaviour
         if (currentPage < pageContents.Count)
         {
             List<string> currentPageTasks = pageContents[currentPage];
-            Debug.Log($"当前页任务列表数量：{currentPageTasks.Count}");
-            
-            // 检查必要组件
-            if (taskItemPrefab == null)
-            {
-                Debug.LogError("Task Item Prefab 未赋值！");
-                return;
-            }
-            if (contentParent == null)
-            {
-                Debug.LogError("Content Parent 未赋值！");
-                return;
-            }
             
             // 创建新的任务项
             foreach (string task in currentPageTasks)
@@ -231,11 +215,6 @@ public class ToDoList : MonoBehaviour
                 if (taskText != null)
                 {
                     taskText.text = task;
-                    Debug.Log($"创建任务项：{task}");
-                }
-                else
-                {
-                    Debug.LogError("Task Item Prefab 中没有找到 Text 组件！");
                 }
                 currentTaskItems.Add(newTask);
             }
