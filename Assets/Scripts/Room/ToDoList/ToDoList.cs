@@ -15,11 +15,11 @@ public class ToDoList : MonoBehaviour
     private PlayerInputManager inputManager; // 新增输入管理器引用
     
     [SerializeField]
-    private Button closeButton; // 关闭按钮引用
+    private GameObject closeButton; // 关闭按钮引用
     [SerializeField]
-    private Button previousButton; // 上一页按钮
+    private GameObject previousButton; // 上一页按钮
     [SerializeField]
-    private Button nextButton;     // 下一页按钮
+    private GameObject nextButton;     // 下一页按钮
 
     public  int currentPage = 0;   // 当前页码
     public  int totalPages = 0;    // 总页数
@@ -46,22 +46,19 @@ public class ToDoList : MonoBehaviour
         // 设置关闭按钮的点击事件
         if (closeButton != null)
         {
-            closeButton.onClick.AddListener(OnCloseButtonClick);
             // 初始时隐藏关闭按钮
-            closeButton.gameObject.SetActive(false);
+            closeButton.SetActive(false);
         }
 
         // 设置翻页按钮的点击事件
         if (previousButton != null)
         {
-            previousButton.onClick.AddListener(OnPreviousButtonClick);
-            previousButton.gameObject.SetActive(false);
+            previousButton.SetActive(false);
         }
 
         if (nextButton != null)
         {
-            nextButton.onClick.AddListener(OnNextButtonClick);
-            nextButton.gameObject.SetActive(false);
+            nextButton.SetActive(false);
         }
     }
 
@@ -84,13 +81,19 @@ public class ToDoList : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.1f);
             if (Vector3.Distance(transform.position, targetPos) < 0.01f)
             {
-                transform.position = targetPos;
+                if (targetPos.x > -8f) {
+                    transform.GetComponent<BoxCollider2D>().enabled = false;
+                }
+                else
+                {
+                    transform.GetComponent<BoxCollider2D>().enabled = true;
+                }
+                    transform.position = targetPos;
                 StarttoMove = false;
-                
                 // 根据移动状态显示或隐藏关闭按钮
                 if (closeButton != null)
                 {
-                    closeButton.gameObject.SetActive(moved);
+                    closeButton.SetActive(moved);
                 }
             }
         }
@@ -106,36 +109,38 @@ public class ToDoList : MonoBehaviour
             // 展开时显示所有按钮
             if (closeButton != null)
             {
-                closeButton.gameObject.SetActive(true);
+                closeButton.SetActive(true);
             }
             if (previousButton != null)
             {
-                previousButton.gameObject.SetActive(true);
+                previousButton.SetActive(true);
             }
             if (nextButton != null)
             {
-                nextButton.gameObject.SetActive(true);
+                nextButton.SetActive(true);
             }
             UpdatePageButtonsState();
         }
         StarttoMove = true;
     }
 
-    private void OnCloseButtonClick()
+    public  void OnCloseButtonClick()
     {
         if (moved)
         {
+
+            
             targetPos = leftPos;
             moved = false;
             StarttoMove = true;
             // 关闭时隐藏所有按钮
-            closeButton.gameObject.SetActive(false);
-            previousButton.gameObject.SetActive(false);
-            nextButton.gameObject.SetActive(false);
+            closeButton.SetActive(false);
+            previousButton.SetActive(false);
+            nextButton.SetActive(false);
         }
     }
 
-    private void OnPreviousButtonClick()
+    public  void OnPreviousButtonClick()
     {
         if (currentPage > 0)
         {
@@ -144,7 +149,7 @@ public class ToDoList : MonoBehaviour
         }
     }
 
-    private void OnNextButtonClick()
+    public  void OnNextButtonClick()
     {
         if (currentPage < totalPages - 1)
         {
@@ -158,11 +163,11 @@ public class ToDoList : MonoBehaviour
         // 更新按钮状态
         if (previousButton != null)
         {
-            previousButton.gameObject.SetActive(currentPage > 0 && moved);
+            previousButton.SetActive(currentPage > 0 && moved);
         }
         if (nextButton != null)
         {
-            nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
+            nextButton.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
   
