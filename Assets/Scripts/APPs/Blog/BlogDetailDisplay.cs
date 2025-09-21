@@ -16,6 +16,7 @@ public class BlogDetailDisplay : MonoBehaviour
     
     void LoadBlogContent()
     {
+
         Debug.Log("LoadBlogContent 开始执行");
         
         if (BlogContentManager.Instance != null)
@@ -25,10 +26,13 @@ public class BlogDetailDisplay : MonoBehaviour
             if (data != null)
             {
                 Debug.Log($"获取到博客数据: {data.title}");
-                
-                // 更新图片
+                if (data.BlogType == "Mission")
+                {
+                    BlogContentManager.Instance.MissionDisplay_TodoList(data.blogId);
+                }
                 if (blogImage != null)
                 {
+                    
                     blogImage.sprite = data.blogImage;
                     Debug.Log("图片已更新");
                 }

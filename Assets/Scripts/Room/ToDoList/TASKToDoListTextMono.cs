@@ -7,14 +7,15 @@ using UnityEngine;
 
 public class TaskToDoListTextMono : MonoBehaviour
 {
-    public GameObject TextPrefab;
     public List<Mission> Missions;
+    public List<string> DisplayMissions;
     void Start()
     {
         Missions = new List<Mission>();
 
         AddTask("王朝烈马", 0);
         Debug.Log(Missions[0].MissionName);
+        AddTask("78游戏", 1);
     }
 
     // Update is called once per frame
@@ -25,26 +26,24 @@ public class TaskToDoListTextMono : MonoBehaviour
             AddInformation(0, "王朝烈马");
 
         }
-        
+        DisplayMissions = new List<string>();
+        foreach (Mission mission in Missions)
+        {
+            DisplayMissions.Add(mission.MissionName);
+        }
     }
     public void AddInformation(int MissionIndex, string Information)
     {
         Debug.Log("AddInformation");
-        Transform TextCanvasTransform = transform.Find("TextCanvas");
+
         foreach (var Mission in Missions)
         {
             if (Mission.MissionIndex == MissionIndex)
             {
-                int i = 0;
-                while (i < Mission.Informations.Count)
-                {
-                    i++;
-                }
+                
+                
                 Mission.Informations.Add ( Information);
-                GameObject NewText_Information = GameObject.Instantiate(TextPrefab);
-                NewText_Information.transform.parent = TextCanvasTransform;
-                NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0 );
-                NewText_Information.GetComponent<TextMeshProUGUI>().text = Information;
+                gameObject.GetComponent<ToDoList>().DisplayTaskPage(MissionIndex);
                 break;
             }
         }
@@ -63,9 +62,9 @@ public class TaskToDoListTextMono : MonoBehaviour
         });
         ToDoList todolist = transform.gameObject.GetComponent<ToDoList>();
         transform.gameObject.GetComponent<ToDoList>().totalPages++;
-        todolist.UpdatePageContent();
+        todolist.DisplayTaskPage(0);
     }
-    public bool HasTask(int MissionIndex,string MissionName)
+    public bool HasTask(int MissionIndex)
     {
         foreach(var mission in Missions)
         {
@@ -78,7 +77,7 @@ public class TaskToDoListTextMono : MonoBehaviour
         
     }
 
-    public int GetTaskPage(int MissionIndex, string MissionName)
+    public int GetTaskPage(int MissionIndex)
     {
         for (int i=0;i<Missions.Count;i++) {
             if (MissionIndex == Missions[i].MissionIndex)

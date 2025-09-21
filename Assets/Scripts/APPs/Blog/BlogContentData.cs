@@ -6,6 +6,12 @@ public class BlogContentData : ScriptableObject
 {
     [Header("博客基本信息")]
     public string blogId;           // 博客唯一ID
+
+
+    public string BlogType;         //博客类型：Mission or News
+    public int MissionIndex;        // 如果博客是Mission ,设置MissionIndex
+
+
     public string title;            // 博客标题
     [TextArea(3, 5)]
     public string content;          // 博客内容
