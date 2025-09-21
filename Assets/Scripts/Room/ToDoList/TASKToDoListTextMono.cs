@@ -65,6 +65,29 @@ public class TaskToDoListTextMono : MonoBehaviour
         transform.gameObject.GetComponent<ToDoList>().totalPages++;
         todolist.UpdatePageContent();
     }
+    public bool HasTask(int MissionIndex,string MissionName)
+    {
+        foreach(var mission in Missions)
+        {
+            if (mission.MissionIndex == MissionIndex)
+            {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+
+    public int GetTaskPage(int MissionIndex, string MissionName)
+    {
+        for (int i=0;i<Missions.Count;i++) {
+            if (MissionIndex == Missions[i].MissionIndex)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
     public Vector3 GetNewInformationPosition(int Missionindex)
     {
         foreach (var Mission in Missions)

@@ -4,24 +4,20 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
+public class HighlightInformationMono : MonoBehaviour
 {
     GameObject gameObjectList;
     public bool HighLightStringStarttoMove;
     public float MoveSpeed;
-    
+
+
+    public string StringInformation;                     //任务相关信息
+    public string missionName;                          //任务相关信息
+    public int missionIndex;                            //任务相关信息
     void Start()
     {
         HighLightStringStarttoMove = false;
-        
-        // 确保有GraphicRaycaster组件
-        if (GetComponent<GraphicRaycaster>() == null)
-        {
-            gameObject.AddComponent<GraphicRaycaster>();
-        }
     }
 
     // Update is called once per frame
@@ -32,9 +28,27 @@ public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
         {
             // 获取目标位置的世界坐标
             gameObjectList = GameObject.FindGameObjectWithTag("ToDoList");
-            Vector3 Targetposition = gameObjectList.GetComponent<TaskToDoListTextMono>().GetNewInformationPosition(0);                  //0待定
+            TaskToDoListTextMono tasktoDoListTextMono = gameObjectList.GetComponent<TaskToDoListTextMono>();
+            ToDoList toDoList = gameObjectList.GetComponent<ToDoList>();
+            if (!tasktoDoListTextMono.HasTask(missionIndex, missionName))
+            {
+                tasktoDoListTextMono.AddTask(missionName, missionIndex);
+                
+                int currentpage= tasktoDoListTextMono.GetTaskPage(missionIndex, missionName);
+                toDoList.currentPage = currentpage;
+                toDoList.UpdatePageContent();
+            }
+            else
+            {
+                int currentpage = tasktoDoListTextMono.GetTaskPage(missionIndex, missionName);
+                toDoList.currentPage = currentpage;
+                toDoList.UpdatePageContent();
+            }
 
-            // 移动到目标位置
+
+            Vector3 Targetposition = tasktoDoListTextMono.GetNewInformationPosition(0);                  //0待定
+            
+
             transform.position= math.lerp(transform.position, Targetposition, 0.1f);
             //transform.position +=  MoveSpeed * Time.deltaTime *  (Vector3)math.normalize(new float3(Targetposition.x - transform.position.x, Targetposition.y - transform.position.y, Targetposition.z - transform.position.z));
 
@@ -46,7 +60,7 @@ public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
 
                 HighLightStringStarttoMove = false;
                 
-                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0,transform.gameObject.GetComponent <TextMeshProUGUI>().text);                                         //0是待修改的量
+                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0, StringInformation);                                         //0是待修改的量
                 Destroy(gameObject);
             }
         }
@@ -54,25 +68,7 @@ public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
     void OnMouseDown()
     {
         HighLightStringStarttoMove=true;
-        //string HighLightString = transform.gameObject.GetComponent<TextMeshProUGUI>().text;
-        //gameObjectList = GameObject.FindGameObjectWithTag("ToDoList");
-        //// 查找Canvas子物体 
-        //Transform canvasTransform = gameObjectList.transform.Find("CanvasA");
-        //// 在Canvas中查找InformationButton
-        //Transform InformationRecord = canvasTransform.Find("InformationRecord");
-
-        //GameObject informationButton = InformationRecord.gameObject;
-        //informationButton.GetComponent<TextMeshProUGUI>().text = "";
-        
 
 
-
-    }
-    
-    // 使用UI事件系统替代OnMouseDown
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("HighlightInformationMono 被点击了！");
-        HighLightStringStarttoMove = true;
     }
 }
