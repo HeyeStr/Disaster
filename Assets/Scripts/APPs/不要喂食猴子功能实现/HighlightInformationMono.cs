@@ -4,15 +4,24 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class HighlightInformationMono : MonoBehaviour
+public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
 {
     GameObject gameObjectList;
     public bool HighLightStringStarttoMove;
     public float MoveSpeed;
+    
     void Start()
     {
         HighLightStringStarttoMove = false;
+        
+        // 确保有GraphicRaycaster组件
+        if (GetComponent<GraphicRaycaster>() == null)
+        {
+            gameObject.AddComponent<GraphicRaycaster>();
+        }
     }
 
     // Update is called once per frame
@@ -58,5 +67,12 @@ public class HighlightInformationMono : MonoBehaviour
 
 
 
+    }
+    
+    // 使用UI事件系统替代OnMouseDown
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("HighlightInformationMono 被点击了！");
+        HighLightStringStarttoMove = true;
     }
 }
