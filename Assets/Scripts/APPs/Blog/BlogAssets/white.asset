@@ -15,7 +15,7 @@ MonoBehaviour:
   blogId: white_blog
   title: 
   content: 
-  blogImage: {fileID: 21300000, guid: 5b70a3fb9ec07af418e050d3a12a559f, type: 3}
+  blogImage: {fileID: -1945834858, guid: b1148fe40c8c94248b71db9972511fae, type: 3}
   backgroundImage: {fileID: 0}
   titleColor: {r: 0, g: 0, b: 0, a: 1}
   contentColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
