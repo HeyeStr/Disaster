@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class BlogDetailDisplay : MonoBehaviour
 {
     [Header("UI组件")]
-    public Image blogImage;  // 只需要图片组件
+    public Image blogImage;  
     
     void Start()
     {
@@ -18,7 +18,6 @@ public class BlogDetailDisplay : MonoBehaviour
             BlogContentData data = BlogContentManager.Instance.GetCurrentBlog();
             if (data != null)
             {
-                // 只更新图片
                 if (blogImage != null)
                 {
                     blogImage.sprite = data.blogImage;

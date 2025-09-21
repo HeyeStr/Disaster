@@ -164,18 +164,18 @@ public class ToDoList : MonoBehaviour
             nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
-    private void InitializeTaskData()
-    {
-        // 初始化空的任务数据，不自动生成示例任务
-        // 任务将在需要时通过AddTask方法添加
-        pageContents.Add(new List<string>()); // 至少有一页
+    // private void InitializeTaskData()
+    // {
+    //     // 初始化空的任务数据，不自动生成示例任务
+    //     // 任务将在需要时通过AddTask方法添加
+    //     pageContents.Add(new List<string>()); // 至少有一页
         
-        // 更新总页数
-        totalPages = pageContents.Count;
+    //     // 更新总页数
+    //     totalPages = pageContents.Count;
         
-        // 不自动显示内容，等待用户操作
-        // UpdatePageContent(); // 注释掉自动显示
-    }
+    //     // 不自动显示内容，等待用户操作
+    //     // UpdatePageContent(); // 注释掉自动显示
+    // }
     
 
     public  void UpdatePageContent()
@@ -193,11 +193,11 @@ public class ToDoList : MonoBehaviour
         {
             TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
         }
-        foreach (var item in currentTaskItems)
-        {
-            Destroy(item);
-        }
-        currentTaskItems.Clear();
+        // foreach (var item in currentTaskItems)
+        // {
+        //     Destroy(item);
+        // }
+        // currentTaskItems.Clear();
 
         // 获取当前页的任务列表
         //if (currentPage < pageContents.Count)
