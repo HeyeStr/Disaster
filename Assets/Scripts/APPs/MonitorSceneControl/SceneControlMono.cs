@@ -76,6 +76,7 @@ public class SceneControlMono : MonoBehaviour                                   
                 Debug.Log("DeskScene未加载，跳过卸载");
             }
         }
+        
         catch (System.Exception e)
         {
             Debug.LogWarning($"卸载DeskScene时出现异常，跳过执行: {e.Message}");
