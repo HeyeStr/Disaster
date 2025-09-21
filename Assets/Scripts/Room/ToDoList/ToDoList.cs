@@ -155,11 +155,11 @@ public class ToDoList : MonoBehaviour
         // 更新按钮状态
         if (previousButton != null)
         {
-            previousButton.interactable = currentPage > 0;
+            previousButton.gameObject.SetActive(currentPage > 0 && moved);
         }
         if (nextButton != null)
         {
-            nextButton.interactable = currentPage < totalPages - 1;
+            nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
 
