@@ -47,7 +47,6 @@ public class BlogDetailDisplay : MonoBehaviour
             if (BlogContentManager.Instance != null)
             {
                 Debug.Log("BlogContentManager.Instance 存在");
-                BlogContentData data = BlogContentManager.Instance.GetCurrentBlog();
                 if (data != null)
                 {
                     Debug.Log($"获取到博客数据: {data.title}");
