@@ -47,21 +47,39 @@ public class SceneControlMono : MonoBehaviour                                   
             if (scene.IsValid() && scene.isLoaded)
             {
                 SceneManager.UnloadSceneAsync("BlogScene");
+                Debug.Log("BlogScene卸载成功");
             }
             else
             {
-                Debug.LogWarning("BlogScene未加载或无效，跳过卸载");
+                Debug.Log("BlogScene未加载，跳过卸载");
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"卸载BlogScene失败: {e.Message}");
+            Debug.LogWarning($"卸载BlogScene时出现异常，跳过执行: {e.Message}");
         }
     }
     public void UnloadDeskScene()
     {
         Debug.Log("UnloadDeskScene");
-        SceneManager.UnloadSceneAsync(DeskScene);
+        try
+        {
+            // 检查场景是否存在且已加载
+            var scene = SceneManager.GetSceneByName("DeskScene");
+            if (scene.IsValid() && scene.isLoaded)
+            {
+                SceneManager.UnloadSceneAsync("DeskScene");
+                Debug.Log("DeskScene卸载成功");
+            }
+            else
+            {
+                Debug.Log("DeskScene未加载，跳过卸载");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning($"卸载DeskScene时出现异常，跳过执行: {e.Message}");
+        }
     }
     public void loadDeskScene()
     {
@@ -146,7 +164,7 @@ public class SceneControlMono : MonoBehaviour                                   
     
     private IEnumerator BackToBlogListCoroutine()
     {
-        // 等待一帧确保场景卸载完成
+        
         yield return null;
         
         // 加载博客浏览场景
