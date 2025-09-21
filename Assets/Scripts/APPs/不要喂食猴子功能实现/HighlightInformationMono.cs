@@ -30,21 +30,11 @@ public class HighlightInformationMono : MonoBehaviour
             gameObjectList = GameObject.FindGameObjectWithTag("ToDoList");
             TaskToDoListTextMono tasktoDoListTextMono = gameObjectList.GetComponent<TaskToDoListTextMono>();
             ToDoList toDoList = gameObjectList.GetComponent<ToDoList>();
-            if (!tasktoDoListTextMono.HasTask(missionIndex, missionName))
+            if (!tasktoDoListTextMono.HasTask(missionIndex))
             {
                 tasktoDoListTextMono.AddTask(missionName, missionIndex);
-                
-                int currentpage= tasktoDoListTextMono.GetTaskPage(missionIndex, missionName);
-                toDoList.currentPage = currentpage;
-                toDoList.UpdatePageContent();
             }
-            else
-            {
-                int currentpage = tasktoDoListTextMono.GetTaskPage(missionIndex, missionName);
-                toDoList.currentPage = currentpage;
-                toDoList.UpdatePageContent();
-            }
-
+            
 
             Vector3 Targetposition = tasktoDoListTextMono.GetNewInformationPosition(0);                  //0待定
             
@@ -55,12 +45,9 @@ public class HighlightInformationMono : MonoBehaviour
             if (math.distance(Targetposition, transform.position) < 0.3)
             {
                 
-                Transform canvasTransform = gameObjectList.transform.Find("CanvasA");
-
-
                 HighLightStringStarttoMove = false;
                 
-                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0, StringInformation);                                         //0是待修改的量
+                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0, StringInformation);                           //0是待修改的量
                 Destroy(gameObject);
             }
         }
