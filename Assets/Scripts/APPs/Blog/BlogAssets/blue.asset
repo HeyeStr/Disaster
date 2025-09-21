@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: blue
   m_EditorClassIdentifier: 
   blogId: blue_blog
+  BlogType: Mission
+  MissionIndex: 0
   title: 
   content: 
   blogImage: {fileID: 21300000, guid: 5b70a3fb9ec07af418e050d3a12a559f, type: 3}

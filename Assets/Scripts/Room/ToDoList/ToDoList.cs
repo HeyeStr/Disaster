@@ -22,7 +22,10 @@ public class ToDoList : MonoBehaviour
     private Button nextButton;     // 下一页按钮
 
     public  int currentPage = 0;   // 当前页码
-    public  int totalPages = 3;    // 总页数
+    public  int totalPages = 0;    // 总页数
+
+    public GameObject TextPrefab;
+    public GameObject TextCanvasPrefab;
 
     void Start()
     {
@@ -138,7 +141,6 @@ public class ToDoList : MonoBehaviour
         {
             currentPage--;
             UpdatePageContent();
-            UpdatePageButtonsState();
         }
     }
 
@@ -148,7 +150,6 @@ public class ToDoList : MonoBehaviour
         {
             currentPage++;
             UpdatePageContent();
-            UpdatePageButtonsState();
         }
     }
 
@@ -170,39 +171,44 @@ public class ToDoList : MonoBehaviour
     {
         List<Mission> missions = gameObject.GetComponent<TaskToDoListTextMono>().Missions;
 
-        Transform TextCanvastransform= transform.Find("TextCanvas");
         
-        Transform TaskHeadTexttransform= TextCanvastransform.Find("TaskHeadText");
+        Transform TextCanvastransform= transform.Find("TextCanvas(Clone)");
+
+        if (TextCanvastransform != null)
+        {
+            Debug.Log("destroy");
+            Destroy(TextCanvastransform.gameObject);
+        }
+        GameObject NewTextCanvas =GameObject.Instantiate(TextCanvasPrefab);
+        Debug.Log("Instantiate");
+        NewTextCanvas.transform.position = new Vector3(transform.position.x, 0, 0);
+        NewTextCanvas.transform.parent= transform;
+        Transform TaskHeadTexttransform= NewTextCanvas.transform.Find("TaskHeadText");
+        
         if (missions.Count > currentPage)
         {
             TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
         }
-        // foreach (var item in currentTaskItems)
-        // {
-        //     Destroy(item);
-        // }
-        // currentTaskItems.Clear();
+        for(int i =0;i< missions[currentPage].Informations.Count; i++)
+        {
+            GameObject NewText_Information = GameObject.Instantiate(TextPrefab);
+            NewText_Information.transform.parent = NewTextCanvas.transform;
+            NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
+            NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i];
+        }
 
-        // 获取当前页的任务列表
-        //if (currentPage < pageContents.Count)
-        //{
-        //    List<string> currentPageTasks = pageContents[currentPage];
-            
-        //    // 创建新的任务项
-        //    foreach (string task in currentPageTasks)
-        //    {
-        //        GameObject newTask = Instantiate(taskItemPrefab, contentParent);
-        //        Text taskText = newTask.GetComponentInChildren<Text>();
-        //        if (taskText != null)
-        //        {
-        //            taskText.text = task;
-        //        }
-        //        currentTaskItems.Add(newTask);
-        //    }
-        //}
+        UpdatePageButtonsState();
 
         Debug.Log($"切换到第 {currentPage + 1} 页");
     }
 
+
+    public void DisplayTaskPage(int missionIndex)
+    {
+        int missionpage= gameObject.GetComponent<TaskToDoListTextMono>().GetTaskPage(missionIndex);
+        currentPage = missionpage;
+        UpdatePageContent();
+        
+    }
    
 }
