@@ -1050,9 +1050,6 @@ MonoBehaviour:
   closeButton: {fileID: 856278198}
   previousButton: {fileID: 1507477008}
   nextButton: {fileID: 208889186}
-  currentPage: 0
-  taskItemPrefab: {fileID: 7795850752898269619, guid: ef7c1a2ce3c3c1c44b97080201cdd002, type: 3}
-  contentParent: {fileID: 0}
 --- !u!61 &1166343043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1551,6 +1548,7 @@ MonoBehaviour:
   allBlogContents:
   - {fileID: 11400000, guid: 7d2c9e148c92c49d18f97d2655ac168a, type: 2}
   - {fileID: 11400000, guid: 29fb55d80fbe1472fa4e8323ef463d92, type: 2}
+  - {fileID: 11400000, guid: 50ba5e19b1f43471cb93ab4c7cbf3748, type: 2}
 --- !u!1 &1650603261
 GameObject:
   m_ObjectHideFlags: 0
