@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Common;
+using EventSo;
 using Manager;
 using TMPro;
 using UnityEngine;
@@ -12,8 +14,13 @@ namespace Dialogue
     {
         public PlayerInputManager playerInput;
 
+        [Header("事件引用")]
+        public TransmitMessageEventSo dialogueEvent;
+        
         [SerializeField] TMP_Text textLabel;
 
+        [SerializeField] private GameObject dialogueObj;
+        
         [SerializeField] Image dialogueImage;
 
         [SerializeField] TextAsset textFile;
@@ -48,18 +55,19 @@ namespace Dialogue
         
         void Awake()
         {
-            InitTextList(textFile);
+            dialogueObj.SetActive(false);
         }
 
         private void OnEnable()
         {
+            dialogueEvent.Event += InitDialogue;
+            
             textFinished = true;
             cancelTyping = false;
             isInBranchSelection = false;
             HideBranchPanel();
             ClearBranchOptions();
             isInBranchSelection = false;
-            StartCoroutine(FillTextWordByWord());
         }
 
         // Update is called once per frame
@@ -74,6 +82,8 @@ namespace Dialogue
         // 当对话框禁用时清理
         private void OnDisable()
         {
+            dialogueEvent.Event -= InitDialogue;
+            
             HideBranchPanel();
             ClearBranchOptions();
             isInBranchSelection = false;
@@ -89,7 +99,7 @@ namespace Dialogue
         private void DialogueInput()
         {
             // 文本全部输出完，结束对话
-            if (dialogueEnd.StartsWith(textList[index]) || index >= textList.Count)
+            if (index >= textList.Count || dialogueEnd.StartsWith(textList[index]))
             {
                 gameObject.SetActive(false);
                 index = 0;
@@ -143,14 +153,12 @@ namespace Dialogue
 
         public void SwitchDialogue()
         {
-            switch (textList[index])
+            if (textList[index].StartsWith(playerName))
             {
-                case "A":
-                    index++;
-                    break;
-                case "B":
-                    index++;
-                    break;
+                index ++;
+            } else if (textList[index].StartsWith(personName))
+            {
+                index ++;
             }
         }
 
@@ -203,7 +211,6 @@ namespace Dialogue
 
                 // 继续显示对话
                 DialogueInput();
-                Debug.Log(index);
             }
             else
             {
@@ -233,6 +240,16 @@ namespace Dialogue
             {
                 Destroy(child.gameObject);
             }
+        }
+
+        private void InitDialogue(AssistanceMessage message)
+        {
+            textFile = message.dialogueFile;
+            dialogueImage = message.headImage;
+            personName = message.personName;
+            dialogueObj.SetActive(true);
+            InitTextList(textFile);
+            StartCoroutine(FillTextWordByWord());
         }
     }
 }
