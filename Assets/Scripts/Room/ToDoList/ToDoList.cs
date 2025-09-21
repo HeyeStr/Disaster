@@ -11,7 +11,7 @@ public class ToDoList : MonoBehaviour
     private Vector3 centerPos; // 屏幕中心对应的 World 位置
     private bool StarttoMove;
     private Vector3 targetPos; // 目标位置
-
+    
     private PlayerInputManager inputManager; // 新增输入管理器引用
     
     [SerializeField]
@@ -21,7 +21,7 @@ public class ToDoList : MonoBehaviour
     [SerializeField]
     private Button nextButton;     // 下一页按钮
 
-    private int currentPage = 0;   // 当前页码
+    public  int currentPage = 0;   // 当前页码
     public  int totalPages = 3;    // 总页数
 
     void Start()
@@ -164,31 +164,15 @@ public class ToDoList : MonoBehaviour
             nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
-    // private void InitializeTaskData()
-    // {
-    //     // 初始化空的任务数据，不自动生成示例任务
-    //     // 任务将在需要时通过AddTask方法添加
-    //     pageContents.Add(new List<string>()); // 至少有一页
-        
-    //     // 更新总页数
-    //     totalPages = pageContents.Count;
-        
-    //     // 不自动显示内容，等待用户操作
-    //     // UpdatePageContent(); // 注释掉自动显示
-    // }
-    
+  
 
     public  void UpdatePageContent()
     {
         List<Mission> missions = gameObject.GetComponent<TaskToDoListTextMono>().Missions;
 
         Transform TextCanvastransform= transform.Find("TextCanvas");
-
+        
         Transform TaskHeadTexttransform= TextCanvastransform.Find("TaskHeadText");
-        Debug.Log("TaskHeadTexttransform.gameObject" + TaskHeadTexttransform.gameObject);
-        Debug.Log("TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>()" + TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>());
-        Debug.Log("missions.Count" + missions.Count);
-        Debug.Log("currentPage" + currentPage);
         if (missions.Count > currentPage)
         {
             TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
