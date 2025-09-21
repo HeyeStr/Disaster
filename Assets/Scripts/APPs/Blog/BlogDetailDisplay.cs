@@ -26,8 +26,10 @@ public class BlogDetailDisplay : MonoBehaviour
             if (data != null)
             {
                 Debug.Log($"获取到博客数据: {data.title}");
-                
-                // 更新图片
+                if (data.BlogType == "Mission")
+                {
+                    BlogContentManager.Instance.MissionDisplay_TodoList(data.blogId);
+                }
                 if (blogImage != null)
                 {
                     
