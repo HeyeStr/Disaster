@@ -177,6 +177,22 @@ public class ToDoList : MonoBehaviour
         }
     }
     
+<<<<<<< HEAD
+=======
+    private void InitializeTaskData()
+    {
+        // 初始化空的任务数据，不自动生成示例任务
+        // 任务将在需要时通过AddTask方法添加
+        pageContents.Add(new List<string>()); // 至少有一页
+        
+        // 更新总页数
+        totalPages = pageContents.Count;
+        
+        // 不自动显示内容，等待用户操作
+        // UpdatePageContent(); // 注释掉自动显示
+    }
+    
+>>>>>>> 902847cdf11d52cf8321dcb1477c7d12d4c9c99c
 
     public  void UpdatePageContent()
     {
