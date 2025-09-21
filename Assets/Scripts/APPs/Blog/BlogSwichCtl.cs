@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class BlogSwichCtl : MonoBehaviour
 {
-    public GameObject MonitorGameObject;
+    [Header("博客内容设置")]
+    public string blogId = "white_blog";
+    
+    private GameObject MonitorGameObject;
     
     void Start()
     {
@@ -11,11 +14,11 @@ public class BlogSwichCtl : MonoBehaviour
     
     private void OnMouseDown()
     {
-        // 检查是否点击到了其他UI元素（如按钮）
+        // 检查是否点击到了其他UI元素
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D[] colliders = Physics2D.OverlapPointAll(mousePos);
         
-        // 如果点击到了其他UI元素，不执行博客图片的点击逻辑
+
         foreach (Collider2D col in colliders)
         {
             if (col.gameObject != gameObject && 
@@ -28,13 +31,19 @@ public class BlogSwichCtl : MonoBehaviour
             }
         }
         
-        Debug.Log("点击了博客图片，准备切换到博客详情场景");
+        Debug.Log($"点击了博客图片，博客ID: {blogId}");
         
         if (MonitorGameObject != null)
         {
             SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
             if (sceneControl != null)
             {
+                // 设置当前博客内容
+                if (BlogContentManager.Instance != null)
+                {
+                    BlogContentManager.Instance.SetCurrentBlog(blogId);
+                }
+                
                 sceneControl.LoadBlogDetailScene();
             }
             else

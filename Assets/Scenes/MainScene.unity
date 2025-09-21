@@ -1424,10 +1424,13 @@ MonoBehaviour:
   closeButton: {fileID: 856278198}
   previousButton: {fileID: 1507477008}
   nextButton: {fileID: 208889186}
+<<<<<<< HEAD
   currentPage: 0
   totalPages: 3
   taskItemPrefab: {fileID: 7795850752898269619, guid: ef7c1a2ce3c3c1c44b97080201cdd002, type: 3}
   contentParent: {fileID: 0}
+=======
+>>>>>>> 96b1b38af2f4981ceca94c8b27c0b4073214c099
 --- !u!61 &1166343043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1791,6 +1794,7 @@ GameObject:
   - component: {fileID: 1567694947}
   - component: {fileID: 1567694946}
   - component: {fileID: 1567694949}
+  - component: {fileID: 1567694950}
   m_Layer: 0
   m_Name: Monitor
   m_TagString: Monitor
@@ -1823,8 +1827,8 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: d60fbf2a7d9812747a8338c24ecb946a, type: 3}
     _sceneName: DeskScene
   BlogDetailScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+    _sceneName: BlogDetailScene
   test: 0
 --- !u!212 &1567694947
 SpriteRenderer:
@@ -1909,6 +1913,23 @@ MonoBehaviour:
   Desk: 0
   DistributePanal: 0
   sceneControlMono: {fileID: 0}
+--- !u!114 &1567694950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567694945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed66be58022fd4b4ca3e04f8dac6edf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBlogData: {fileID: 0}
+  allBlogContents:
+  - {fileID: 11400000, guid: 7d2c9e148c92c49d18f97d2655ac168a, type: 2}
+  - {fileID: 11400000, guid: 29fb55d80fbe1472fa4e8323ef463d92, type: 2}
+  - {fileID: 11400000, guid: 50ba5e19b1f43471cb93ab4c7cbf3748, type: 2}
 --- !u!1 &1650603261
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,21 +20,9 @@ public class ToDoList : MonoBehaviour
     private Button previousButton; // 上一页按钮
     [SerializeField]
     private Button nextButton;     // 下一页按钮
-      [SerializeField]
+
     private int currentPage = 0;   // 当前页码
     public  int totalPages = 3;    // 总页数
-
-    [SerializeField]
-    private GameObject taskItemPrefab; // 任务项预制体
-    
-    [SerializeField]
-    private Transform contentParent; // 内容的父物体（通常是一个 Panel 或 ScrollView 的 Content ）
-
-    // 用于存储所有页面的任务数据
-    private List<List<string>> pageContents = new List<List<string>>();
-    
-    // 当前页面显示的任务项对象
-    private List<GameObject> currentTaskItems = new List<GameObject>();
 
     void Start()
     {
@@ -176,9 +164,6 @@ public class ToDoList : MonoBehaviour
             nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
-    
-<<<<<<< HEAD
-=======
     private void InitializeTaskData()
     {
         // 初始化空的任务数据，不自动生成示例任务
@@ -192,7 +177,6 @@ public class ToDoList : MonoBehaviour
         // UpdatePageContent(); // 注释掉自动显示
     }
     
->>>>>>> 902847cdf11d52cf8321dcb1477c7d12d4c9c99c
 
     public  void UpdatePageContent()
     {
