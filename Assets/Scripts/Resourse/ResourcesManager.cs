@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourcesMono : MonoBehaviour
+public class ResourcesManager : MonoBehaviour
 {
+    public static ResourcesManager Instance;
     public int LivingResource;
     public int FoodResource;
     public int MedicalResource;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         LivingResource = 0;

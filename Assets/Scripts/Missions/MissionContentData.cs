@@ -1,18 +1,15 @@
 // 创建新文件：Assets/Scripts/Apps/Blog/BlogContentData.cs
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Mission Content", menuName = "Missions/MissionContentData")]
-public class MissionContentData : ScriptableObject
+[CreateAssetMenu(fileName = "New Blog Content", menuName = "Blog/Blog Content Data")]
+public class BlogContentData : ScriptableObject
 {
-    [Header("任务基本信息")]
-    public int MissionIndex;           // 博客唯一ID
+    [Header("博客基本信息")]
+    public string blogId;           // 博客唯一ID
 
 
-
-    [Header("任务正确资源信息")]
-    public int RequireFoodQuantity;
-    public int RequireLivingQuantity;
-    public int RequireMedicineQuantity;
+    public string BlogType;         //博客类型：Mission or News
+    public int MissionIndex;        // 如果博客是Mission ,设置MissionIndex
 
 
     public string title;            // 博客标题
