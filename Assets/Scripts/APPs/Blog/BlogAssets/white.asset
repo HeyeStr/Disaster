@@ -21,3 +21,11 @@ MonoBehaviour:
   contentColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   titleFont: {fileID: 0}
   contentFont: {fileID: 0}
+  hasClickableText: 1
+  clickableText: this is white
+  textSpawnPosition: {x: 0, y: 0}
+  textFontSize: 3
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  textSize: {x: 100, y: 30}
+  missionName: 
+  missionIndex: 0

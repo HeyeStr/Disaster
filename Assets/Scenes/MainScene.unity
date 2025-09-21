@@ -1248,6 +1248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighLightStringStarttoMove: 0
   MoveSpeed: 0
+  StringInformation: 
+  missionName: 
+  missionIndex: 0
 --- !u!114 &892114142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,6 +1385,7 @@ MonoBehaviour:
   closeButton: {fileID: 856278198}
   previousButton: {fileID: 1507477008}
   nextButton: {fileID: 208889186}
+  currentPage: 0
   totalPages: 3
 --- !u!61 &1166343043
 BoxCollider2D:
@@ -2063,6 +2067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighLightStringStarttoMove: 0
   MoveSpeed: 30
+  StringInformation: 
+  missionName: 
+  missionIndex: 0
 --- !u!114 &2119732499
 MonoBehaviour:
   m_ObjectHideFlags: 0
