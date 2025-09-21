@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058ce819359e54bdd95ead672408bef7, type: 3}
-  m_Name: red
+  m_Script: {fileID: 11500000, guid: 174c7e9e904e2f34994692a9b068d710, type: 3}
+  m_Name: red mission
   m_EditorClassIdentifier: 
   blogId: red_blog
+  BlogType: Mission
+  MissionIndex: 1
   title: 
   content: 
   blogImage: {fileID: 2631046323181635569, guid: c902e08bd83e04947b6e8d7f31f385be, type: 3}
@@ -21,3 +23,11 @@ MonoBehaviour:
   contentColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   titleFont: {fileID: 0}
   contentFont: {fileID: 0}
+  hasClickableText: 0
+  clickableText: 
+  textSpawnPosition: {x: 0, y: 0}
+  textFontSize: 16
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  textSize: {x: 200, y: 30}
+  missionName: 
+  missionIndex: 0
