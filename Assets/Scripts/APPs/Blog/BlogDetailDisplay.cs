@@ -24,7 +24,6 @@ public class BlogDetailDisplay : MonoBehaviour
     
     void LoadBlogContent()
     {
-<<<<<<< HEAD
         if (BlogContentManager.Instance == null)
         {
             Debug.LogWarning("BlogContentManager.Instance为空！");
@@ -42,7 +41,6 @@ public class BlogDetailDisplay : MonoBehaviour
         if (blogImage != null)
         {
             blogImage.sprite = data.blogImage;
-=======
 
         Debug.Log("LoadBlogContent 开始执行");
         
@@ -96,7 +94,6 @@ public class BlogDetailDisplay : MonoBehaviour
             {
                 Debug.LogWarning("BlogContentData为空！");
             }
->>>>>>> 4fca4609daac2c9c1ce0fc1762f0bd955722ee8c
         }
         else
         {
