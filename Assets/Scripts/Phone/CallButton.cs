@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Common;
 using EventSo;
 using Manager;
 using UnityEngine;
@@ -12,7 +11,7 @@ namespace Phone
 
         public string targetTag;
         
-        public TransmitMessageEventSo dialogueEvent;
+        public SendMessageEventSo dialogueEvent;
         
         public PhoneController phoneController;
         
@@ -27,11 +26,10 @@ namespace Phone
                     StartCoroutine(StartDialogue());
                 }
             }
-
             IEnumerator StartDialogue()
             {
                 yield return new WaitForSeconds(callWaitTime);
-                dialogueEvent.EventRise(phoneController.assistanceMessage);
+                dialogueEvent.EventRise(phoneController.phoneNumber);
             }
         }
     }

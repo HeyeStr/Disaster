@@ -6,7 +6,7 @@ using TMPro;
 
 public class ToDoList : MonoBehaviour
 {
-    private bool moved = false;
+    public  bool moved = false;
     private Vector3 leftPos;   // 初始位置
     private Vector3 centerPos; // 屏幕中心对应的 World 位置
     private bool StarttoMove;
@@ -100,7 +100,7 @@ public class ToDoList : MonoBehaviour
     }
 
     // 将原来的 OnMouseDown 逻辑移到这个方法中
-    private void HandleClick()
+    public  void HandleClick()
     {
         if (!moved)
         {

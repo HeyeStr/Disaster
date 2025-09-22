@@ -36,20 +36,25 @@ public class DistributeBarMono : MonoBehaviour
                 if (mission.PhoneNumber == PhoneNumber)
                 {
 
-
+                    missions.Remove(mission);
                     return Score;
                 }
                 else
                 {
                     Score = 0;                                  //电话和地址对不上任务失败
 
-
+                    missions.Remove(mission);
                     return Score;
 
                 }
             }
         }
         return Score;
+    }
+    private void OnMouseDown()
+    {
+       Submit();
+
     }
     public void DeleteInformation()
     {

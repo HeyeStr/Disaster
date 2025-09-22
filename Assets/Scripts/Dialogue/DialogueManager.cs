@@ -4,18 +4,27 @@ using System.Collections.Generic;
 using Common;
 using EventSo;
 using Manager;
+using Phone;
+using SettingSo;
+using SettingSo.Setting;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Dialogue
 {
-    public class DialogueManager : MonoBehaviour
+    public class DialogueManager : AcceptMessage
     {
+        public DialogueTurnMapSo turnMap;
+        
+        public CustomMessageSo messageMap;
+        
+        public static DialogueManager Instance;
+        
         public PlayerInputManager playerInput;
 
         [Header("事件引用")]
-        public TransmitMessageEventSo dialogueEvent;
+        public SendMessageEventSo dialogueEvent;
         
         [SerializeField] TMP_Text textLabel;
 
@@ -33,7 +42,7 @@ namespace Dialogue
 
         [SerializeField] private string branchEnd = "[/OPTION]";
         
-        [SerializeField] private string dialogueEnd = "[END]";
+        [SerializeField] private string pauseSign = "[SELECT]";
 
         [SerializeField] private string playerName;
         
@@ -52,9 +61,21 @@ namespace Dialogue
         public bool cancelTyping;
 
         public bool isInBranchSelection;
+
+        public bool dialoguePause;
+        
+        public bool canSelect;
         
         void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
             dialogueObj.SetActive(false);
         }
 
@@ -67,13 +88,15 @@ namespace Dialogue
             isInBranchSelection = false;
             HideBranchPanel();
             ClearBranchOptions();
-            isInBranchSelection = false;
         }
 
-        // Update is called once per frame
         void Update()
         {
-            if (playerInput.ClickDialogue && !isInBranchSelection)
+            if (isInBranchSelection)
+                return;
+            if (canSelect)
+                return;
+            if (playerInput.ClickDialogue)
             {
                 DialogueInput();
             }
@@ -99,7 +122,7 @@ namespace Dialogue
         private void DialogueInput()
         {
             // 文本全部输出完，结束对话
-            if (index >= textList.Count || dialogueEnd.StartsWith(textList[index]))
+            if (index >= textList.Count)
             {
                 gameObject.SetActive(false);
                 index = 0;
@@ -120,35 +143,42 @@ namespace Dialogue
         IEnumerator FillTextWordByWord()
         {
             textFinished = false;
-            textLabel.text = "";
-
             // 检查是否需要切换对话
             SwitchDialogue();
+            if (textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase))
+            {
+                canSelect = true;
+                yield break;
+            }
 
+            if (isInBranchSelection)
+                yield break;
+            textLabel.text = "";
             string currentText = textList[index];
             // 逐个显示一行文字
-            foreach (var single in currentText)
+            int letter = 0;
+            while (!cancelTyping && letter < currentText.Length)
             {
-                // 中断逐个打字
-                if (cancelTyping)
-                {
-                    textLabel.text = currentText;
-                    cancelTyping = false;
-                    break;
-                }
-
-                textLabel.text += single;
+                textLabel.text += currentText[letter];
+                letter++;
                 yield return new WaitForSeconds(textSpeed);
-            }
-
+            } 
+            // foreach (var single in currentText)
+            // {
+            //     // 中断逐个打字
+            //     if (cancelTyping)
+            //     {
+            //         textLabel.text = currentText;
+            //         cancelTyping = false;
+            //         break;
+            //     }
+            //
+            //     textLabel.text += single;
+            //     yield return new WaitForSeconds(textSpeed);
+            // }
+            textLabel.text = textList[index];
             textFinished = true;
             index++;
-            
-            if (index < textList.Count && textList[index].StartsWith(branchSign))
-            {
-                yield return null; // 延迟一帧
-                ParseAndShowBranches();
-            }
         }
 
         public void SwitchDialogue()
@@ -156,9 +186,14 @@ namespace Dialogue
             if (textList[index].StartsWith(playerName))
             {
                 index ++;
-            } else if (textList[index].StartsWith(personName))
+            }
+            if (textList[index].StartsWith(personName))
             {
                 index ++;
+            }
+            if (textList[index].StartsWith(branchSign, StringComparison.OrdinalIgnoreCase))
+            {
+                ParseAndShowBranches();
             }
         }
 
@@ -170,8 +205,8 @@ namespace Dialogue
             {
                 Destroy(child.gameObject);
             }
-
-            int currentIndex = index + 1;
+            
+            int currentIndex = index;
             while (currentIndex < textList.Count &&
                    !textList[currentIndex].Equals(branchEnd, StringComparison.OrdinalIgnoreCase))
             {
@@ -195,11 +230,11 @@ namespace Dialogue
                 // 显示分支面板
             }
             ShowBranchPanel();
-            index = currentIndex + 1;
         }
 
         private void OnBranchSelected(int targetIndex)
         {
+            textFinished = true;
             // 隐藏分支面板
             HideBranchPanel();
             isInBranchSelection = false;
@@ -242,14 +277,33 @@ namespace Dialogue
             }
         }
 
-        private void InitDialogue(AssistanceMessage message)
+        private void InitDialogue(string phoneNumber)
         {
+            Debug.Log("开始对话");
+            Message message = messageMap.GetValue(phoneNumber);
             textFile = message.dialogueFile;
             dialogueImage = message.headImage;
             personName = message.personName;
             dialogueObj.SetActive(true);
             InitTextList(textFile);
             StartCoroutine(FillTextWordByWord());
+        }
+
+        public void SwitchTargetRaw(string text)
+        {
+            if (canSelect)
+            {
+                canSelect = false;
+                dialoguePause = false;
+                Debug.Log("测试" + turnMap.GetValue(text));
+                index = turnMap.GetValue(text) - 1;
+                StartCoroutine(FillTextWordByWord());
+            }
+        }
+
+        public override void AcceptString(string message)
+        {
+            SwitchTargetRaw(message);
         }
     }
 }

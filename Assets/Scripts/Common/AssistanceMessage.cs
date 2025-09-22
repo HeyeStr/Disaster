@@ -3,13 +3,9 @@ using UnityEngine.UI;
 
 namespace Common
 {
-    public class AssistanceMessage : MonoBehaviour
+    [CreateAssetMenu(menuName = "MessageObj")]
+    public class Message : ScriptableObject
     {
-        /**
-         * 电话号码
-         */
-        public string phoneNumber;
-        
         /**
          * 对话内容
          */
@@ -24,5 +20,6 @@ namespace Common
          * 名字
          */
         public string personName;
+        
     }
 }
