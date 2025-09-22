@@ -66,6 +66,8 @@ public class PhoneNumberBarMono : MonoBehaviour
     }
     private void InputDistributeBar(string PhoneNumber)
     {
+        Transform PhoneNumberTexttransform = transform.Find("PhoneNumberText");
+        PhoneNumberTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = PhoneNumber;
         DistributeBar.GetComponent<DistributeBarMono>().PhoneNumber = PhoneNumber;
     }
     private void OnMouseDown()
@@ -74,5 +76,10 @@ public class PhoneNumberBarMono : MonoBehaviour
         todolist.HandleClick();
         InputMode = true;
         
+    }
+    public void DeleteInformation()
+    {
+        Transform PhoneNumberTexttransform = transform.Find("PhoneNumberText");
+        PhoneNumberTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = "";
     }
 }

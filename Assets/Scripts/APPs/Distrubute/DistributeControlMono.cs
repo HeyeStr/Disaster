@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class DistributeControlMono : MonoBehaviour
@@ -7,6 +8,7 @@ public class DistributeControlMono : MonoBehaviour
     public GameObject ToDoList;
 
     public List<GameObject> DistributeBars;
+   
     void Start()
     {
         ToDoList = GameObject.FindGameObjectWithTag("ToDoList");
@@ -20,8 +22,9 @@ public class DistributeControlMono : MonoBehaviour
     }
     public void SubmitAll()
     {
+        CalculatePoints calculatePoints= gameObject.GetComponent<CalculatePoints>();
         foreach (GameObject distributBar in DistributeBars) {
-            distributBar.GetComponent<DistributeBarMono>().Submit();
+            int ScoreofOne = distributBar.GetComponent<DistributeBarMono>().Submit();
             DistributeBars.Remove(distributBar);
             Destroy(distributBar);
         

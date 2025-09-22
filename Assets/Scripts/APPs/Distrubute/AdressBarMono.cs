@@ -10,6 +10,7 @@ public class AddressBarMono : MonoBehaviour
     private ToDoList todolist;
     public GameObject DistributeBar;
     public bool InputMode;
+    
     void Start()
     {
         mainCamera = Camera.main;
@@ -65,9 +66,11 @@ public class AddressBarMono : MonoBehaviour
     }
 
 
-    private void InputDistributeBar(string Address)
+    private void InputDistributeBar(string PhoneNumber)
     {
-        DistributeBar.GetComponent<DistributeBarMono>().PhoneNumber = Address;
+        Transform AddressTexttransform = transform.Find("AddressText");
+        AddressTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text= PhoneNumber;
+        DistributeBar.GetComponent<DistributeBarMono>().PhoneNumber = PhoneNumber;
     }
     private void OnMouseDown()
     {
@@ -76,4 +79,9 @@ public class AddressBarMono : MonoBehaviour
         InputMode = true;
 
     }
+    public void DeleteInformation()
+    {
+        Transform AddressTexttransform = transform.Find("AddressText");
+        AddressTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = "";
+    } 
 }
