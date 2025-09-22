@@ -43,6 +43,8 @@ namespace Dialogue
         [SerializeField] private string branchEnd = "[/OPTION]";
         
         [SerializeField] private string pauseSign = "[SELECT]";
+        
+        [SerializeField] private string endSign = "[END]";
 
         [SerializeField] private string playerName;
         
@@ -122,7 +124,7 @@ namespace Dialogue
         private void DialogueInput()
         {
             // 文本全部输出完，结束对话
-            if (index >= textList.Count)
+            if (index >= textList.Count || endSign.StartsWith(textList[index]))
             {
                 gameObject.SetActive(false);
                 index = 0;
@@ -297,13 +299,13 @@ namespace Dialogue
                 dialoguePause = false;
                 Debug.Log("测试" + turnMap.GetValue(text));
                 index = turnMap.GetValue(text) - 1;
-                StartCoroutine(FillTextWordByWord());
+                DialogueInput();
             }
         }
 
         public override void AcceptString(string message)
         {
-            SwitchTargetRaw(message);
+            DialogueInput();
         }
     }
 }

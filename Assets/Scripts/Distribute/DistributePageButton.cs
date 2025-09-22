@@ -12,9 +12,6 @@ namespace Distribute
         [Header("结算页面")]
         public GameObject endPage;
         
-        [Header("页面按钮")]
-        public Button closeButton;
-        
         public Button createMessageButton;
         
         public Button commitButton;
@@ -37,7 +34,6 @@ namespace Distribute
             index = 0;
             endPage.SetActive(false);
             createMessageButton.onClick.AddListener(CreateNewMessage);
-            closeButton.onClick.AddListener(ClosePage);
             commitButton.onClick.AddListener(CommitPlan);
         }
 

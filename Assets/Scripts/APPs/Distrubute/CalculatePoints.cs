@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class GradeConfig
@@ -29,185 +26,74 @@ public class CalculatePoints : MonoBehaviour
 {
     [Header("档位配置")]
     [SerializeField] private GradeConfig[] gradeConfigs = new GradeConfig[5];
-    
+
     [Header("风险系数")]
     [SerializeField] private float[] riskCoefficients = new float[3] { 1.1f, 1.25f, 1.5f };
-    
-    [Header("总分显示")]
-    [SerializeField] private Text totalScoreText; // UI Text组件
-    [SerializeField] private string scorePrefix = "总分: "; // 分数前缀
-    [SerializeField] private string scoreSuffix = " 分"; // 分数后缀
-    
-    [Header("测试数据")]
-    public int testGradeIndex = 0;
-    public RiskFactor testRiskFactor = RiskFactor.Low;
-    public float testAllocation = 100f;
-    public float testActualDemand = 80f;
-    
-    // 从外部传入的参数
-    private float currentActualDemand = 0f;
-    private float currentPlayerAllocation = 0f;
-    
-    // 累加分数相关
-    private float totalAccumulatedScore = 0f;
-    private List<float> scoreHistory = new List<float>(); // 记录每次计算的分数
-    
+
     void Start()
     {
         InitializeDefaultGrades();
-        UpdateTotalScoreDisplay();
     }
-    
-    void Update()
+
+
+
+    public float Calculate(int allocation_living, int allocation_food, int allocation_medicine, 
+                          int actualDemand_living, int actualDemand_food, int actualDemand_medicine, int settledPeople)
     {
-        // 测试用 - 按空格键计算测试分数
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            float result = CalculateTotalScore(testGradeIndex, testRiskFactor, testAllocation, testActualDemand);
-            AddToTotalScore(result);
-        }
+        float totalScore = 0f;
+
+        RiskFactor riskFactor = GetRiskFactorBySettledPeople(settledPeople);
+
         
-        // 测试用 - 按R键重置总分
-        if (Input.GetKeyDown(KeyCode.R))
+
+        int livingGradeIndex = GetGradeIndexByDemand(actualDemand_living);
+        float livingScore = CalculateTotalScore(livingGradeIndex, riskFactor, allocation_living, actualDemand_living);
+        
+        int foodGradeIndex = GetGradeIndexByDemand(actualDemand_food);
+        float foodScore = CalculateTotalScore(foodGradeIndex, riskFactor, allocation_food, actualDemand_food);
+
+        int medicineGradeIndex = GetGradeIndexByDemand(actualDemand_medicine);
+        float medicineScore = CalculateTotalScore(medicineGradeIndex, riskFactor, allocation_medicine, actualDemand_medicine);
+        
+        totalScore = livingScore + foodScore + medicineScore;
+        
+        return totalScore;
+    }
+
+    private RiskFactor GetRiskFactorBySettledPeople(int settledPeople)
+    {
+        if (settledPeople < 20)
         {
-            ResetTotalScore();
+            return RiskFactor.Low;      
+        }
+        else if (settledPeople <= 60)
+        {
+            return RiskFactor.Medium;   
+        }
+        else
+        {
+            return RiskFactor.High;    
         }
     }
     
-    /// <summary>
-    /// 设置总分显示的Text组件
-    /// </summary>
-    /// <param name="textComponent">UI Text组件</param>
-    public void SetTotalScoreText(Text textComponent)
+
+    private int GetGradeIndexByDemand(int demand)
     {
-        totalScoreText = textComponent;
-        UpdateTotalScoreDisplay();
-    }
-    
-    /// <summary>
-    /// 将分数添加到总分中
-    /// </summary>
-    /// <param name="score">要添加的分数</param>
-    public void AddToTotalScore(float score)
-    {
-        totalAccumulatedScore += score;
-        scoreHistory.Add(score);
-        UpdateTotalScoreDisplay();
-        Debug.Log($"添加分数: {score}, 当前总分: {totalAccumulatedScore}");
-    }
-    
-    /// <summary>
-    /// 计算分数并自动添加到总分
-    /// </summary>
-    /// <param name="gradeIndex">档位索引</param>
-    /// <param name="riskFactor">风险系数</param>
-    /// <param name="allocation">分配量</param>
-    /// <param name="actualDemand">实际需求量</param>
-    /// <returns>计算得出的分数</returns>
-    public float CalculateAndAddScore(int gradeIndex, RiskFactor riskFactor, float allocation, float actualDemand)
-    {
-        float score = CalculateTotalScore(gradeIndex, riskFactor, allocation, actualDemand);
-        AddToTotalScore(score);
-        return score;
-    }
-    
-    /// <summary>
-    /// 使用当前值计算分数并添加到总分
-    /// </summary>
-    /// <param name="gradeIndex">档位索引</param>
-    /// <param name="riskFactor">风险系数</param>
-    /// <returns>计算得出的分数</returns>
-    public float CalculateAndAddScoreWithCurrentValues(int gradeIndex, RiskFactor riskFactor)
-    {
-        float score = CalculateScoreWithCurrentValues(gradeIndex, riskFactor);
-        AddToTotalScore(score);
-        return score;
-    }
-    
-    /// <summary>
-    /// 获取当前总分
-    /// </summary>
-    /// <returns>累积总分</returns>
-    public float GetTotalScore()
-    {
-        return totalAccumulatedScore;
-    }
-    
-    /// <summary>
-    /// 重置总分
-    /// </summary>
-    public void ResetTotalScore()
-    {
-        totalAccumulatedScore = 0f;
-        scoreHistory.Clear();
-        UpdateTotalScoreDisplay();
-        Debug.Log("总分已重置");
-    }
-    
-    /// <summary>
-    /// 获取分数历史记录
-    /// </summary>
-    /// <returns>分数历史列表</returns>
-    public List<float> GetScoreHistory()
-    {
-        return new List<float>(scoreHistory);
-    }
-    
-    /// <summary>
-    /// 更新总分显示
-    /// </summary>
-    private void UpdateTotalScoreDisplay()
-    {
-        if (totalScoreText != null)
+        switch (demand)
         {
-            totalScoreText.text = $"{scorePrefix}{totalAccumulatedScore:F1}{scoreSuffix}";
+            case 1:
+                return 4;  // 需求量1 → 使用档位5 (基础分20，扣分基数4)
+            case 2:
+                return 3;  // 需求量2 → 使用档位4 (基础分30，扣分基数6)
+            case 3:
+                return 2;  // 需求量3 → 使用档位3 (基础分40，扣分基数8)
+            case 4:
+                return 1;  // 需求量4 → 使用档位2 (基础分70，扣分基数14)
+            case 5:
+                return 0;  // 需求量5 → 使用档位1 (基础分100，扣分基数20)
+            default:
+                return 0;  // 默认使用档位1
         }
-    }
-    
-    /// <summary>
-    /// 设置分数显示格式
-    /// </summary>
-    /// <param name="prefix">前缀文本</param>
-    /// <param name="suffix">后缀文本</param>
-    public void SetScoreDisplayFormat(string prefix, string suffix)
-    {
-        scorePrefix = prefix;
-        scoreSuffix = suffix;
-        UpdateTotalScoreDisplay();
-    }
-
-    public void SetActualDemand(float actualDemand)
-    {
-        currentActualDemand = actualDemand;
-        Debug.Log($"设置实际需求量: {actualDemand}");
-    }
-
-    public void SetPlayerAllocation(float playerAllocation)
-    {
-        currentPlayerAllocation = playerAllocation;
-        Debug.Log($"设置玩家分配量: {playerAllocation}");
-    }
-
-    public void SetBothValues(float actualDemand, float playerAllocation)
-    {
-        currentActualDemand = actualDemand;
-        currentPlayerAllocation = playerAllocation;
-        Debug.Log($"设置值 - 实际需求量: {actualDemand}, 玩家分配量: {playerAllocation}");
-    }
-
-    public float CalculateScoreWithCurrentValues(int gradeIndex, RiskFactor riskFactor)
-    {
-        return CalculateTotalScore(gradeIndex, riskFactor, currentPlayerAllocation, currentActualDemand);
-    }
-
-    public float GetCurrentActualDemand()
-    {
-        return currentActualDemand;
-    }
-
-    public float GetCurrentPlayerAllocation()
-    {
-        return currentPlayerAllocation;
     }
     
     private void InitializeDefaultGrades()
@@ -222,12 +108,11 @@ public class CalculatePoints : MonoBehaviour
         }
     }
     
-    public float CalculateTotalScore(int gradeIndex, RiskFactor riskFactor, float allocation, float actualDemand)
+    private float CalculateTotalScore(int gradeIndex, RiskFactor riskFactor, float allocation, float actualDemand)
     {
         // 验证输入参数
         if (gradeIndex < 0 || gradeIndex >= gradeConfigs.Length)
         {
-            Debug.LogError("档位索引超出范围");
             return 0f;
         }
         
@@ -252,7 +137,6 @@ public class CalculatePoints : MonoBehaviour
                 break;
         }
         
-        Debug.Log($"实际需求量: {grade.actualDemand}, 风险系数: {riskCoeff}, 关系: {relation}, 总分: {totalScore}");
         return totalScore;
     }
     
@@ -283,17 +167,5 @@ public class CalculatePoints : MonoBehaviour
         float shortage = actualDemand - allocation;
         float deduction = shortage * grade.deductionBase * riskCoeff;
         return grade.baseScore - deduction;
-    }
-    
-    public GradeConfig GetGradeConfig(int gradeIndex)
-    {
-        if (gradeIndex >= 0 && gradeIndex < gradeConfigs.Length)
-            return gradeConfigs[gradeIndex];
-        return null;
-    }
-
-    public void SetRiskCoefficient(RiskFactor factor, float coefficient)
-    {
-        riskCoefficients[(int)factor] = coefficient;
     }
 }

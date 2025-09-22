@@ -1,7 +1,6 @@
 using System.Collections;
 using Common;
 using EventSo;
-using Manager;
 using UnityEngine;
 
 namespace Phone
@@ -26,8 +25,6 @@ namespace Phone
 
         public bool buttonClose;
 
-        [Header("玩家输入类")] public PlayerInputManager playerInput;
-
         [Header("动画曲线")] [SerializeField] public CustomAnimationCurve slideCurve;
 
         private void OnEnable()
@@ -45,23 +42,11 @@ namespace Phone
             if (phoneOpenEvent != null)
                 phoneOpenEvent.Event -= ActiveButton;
         }
-
-        // Update is called once per frame
-        void Update()
+        
+        private void OnMouseDown()
         {
-            ClickMoveObject();
-        }
-
-        private void ClickMoveObject()
-        {
-            if (playerInput.ClickMouse && !isSliding && buttonClose)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(playerInput.MousePosition, Vector2.zero);
-                if (hit.collider && !string.IsNullOrEmpty(targetTag) && hit.collider.CompareTag(targetTag))
-                {
-                    StartCoroutine(SlideMove(buttonClose, hidePosition, showPosition));
-                }
-            }
+            if (!isSliding && buttonClose)
+                StartCoroutine(SlideMove(buttonClose, hidePosition, showPosition));
         }
 
         // maxTime时间实现pos1到pos2平滑移动
