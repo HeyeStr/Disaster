@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77bbb9194e2548d47829a69a9cd8df7a
+guid: b4c8763075d29784587a23d12cd97e43
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlogBackgound_0
+      name: BlogM_Mission_Test_1_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 87
-        width: 355
-        height: 227
+        x: 201
+        y: 799
+        width: 598
+        height: 636
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21d9089f5d751964ebd5f9bdfdd9d84b
-      internalID: -591415050
+      spriteID: f8f60b32482ae364788d6ca6b0afef7b
+      internalID: -333685785
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BlogBackgound_0: -591415050
+      BlogM_Mission_Test_1_0: -333685785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

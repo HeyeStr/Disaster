@@ -17,7 +17,7 @@ MonoBehaviour:
   MissionIndex: 1
   title: 
   content: 
-  blogImage: {fileID: 2631046323181635569, guid: c902e08bd83e04947b6e8d7f31f385be, type: 3}
+  blogImage: {fileID: -333685785, guid: b4c8763075d29784587a23d12cd97e43, type: 3}
   backgroundImage: {fileID: 0}
   titleColor: {r: 0, g: 0, b: 0, a: 1}
   contentColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
