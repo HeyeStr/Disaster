@@ -975,7 +975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8fb9316096e3848af8ac5cdc3014da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayMissions: []
 --- !u!1 &1274198998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,8 +1009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBlogData: {fileID: 0}
   allBlogContents:
-  - {fileID: 11400000, guid: 78a87f87dce90c14daf12a2ba45907fb, type: 2}
-  - {fileID: 11400000, guid: 661e95838747da94f9f5b4b2afdd693f, type: 2}
+  - {fileID: 11400000, guid: 76feeabfb0c384fd3a2485440dc76cbf, type: 2}
 --- !u!114 &1274199000
 MonoBehaviour:
   m_ObjectHideFlags: 0
