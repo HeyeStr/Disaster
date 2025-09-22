@@ -16,6 +16,8 @@ namespace Distribute
         
         public Button commitButton;
 
+        public GameObject Parentobject;
+
         [Header("信息条目预制体")] public GameObject messagePrefab;
 
         [Header("信息条目间距")] public float spacing;
@@ -39,9 +41,10 @@ namespace Distribute
 
         public void CreateNewMessage()
         {
-            Instantiate(messagePrefab, contentContainer);
-            // Instantiate(messagePrefab, startPosition - new Vector3(0, spacing * index, 0), Quaternion.identity,
-            //     contentContainer);
+            //Instantiate(messagePrefab, contentContainer);
+            GameObject NewMessageBar= Instantiate(messagePrefab);
+            NewMessageBar.transform.position = new Vector3(0, 0, 0);
+            NewMessageBar.transform.parent = Parentobject.transform;
             index++;
         }
         

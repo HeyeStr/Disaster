@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class LivingBarDistributeMono : MonoBehaviour
 {
     public GameObject MonitorObject;
@@ -11,28 +11,32 @@ public class LivingBarDistributeMono : MonoBehaviour
     public int MissionIndex;
     ResourcesManager SourceManager;
     private GameObject Text;
+    private GameObject Slider;
     void Start()
     {
+        LivingDistributeQuantity = 0;
         MonitorObject = GameObject.FindGameObjectWithTag("Monitor");
         SourceManager = MonitorObject.GetComponent<ResourcesManager>();
         Text = transform.Find("Text").gameObject;
         Text.GetComponent<TextMeshProUGUI>().text = "0";
-        
+        Slider = transform.Find("SliderLiving").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        NewLivingQuantity = (int)Slider.GetComponent<Slider>().value;
         if (NewLivingQuantity != LivingDistributeQuantity)
         {
+            
             int TotalLivingResource = SourceManager.LivingResource;
             if (NewLivingQuantity > LivingDistributeQuantity)
             {
-                
 
+                Debug.Log("NewLivingQuantity > LivingDistributeQuantity");
                 if (TotalLivingResource - NewLivingQuantity + LivingDistributeQuantity < 0)
                 {
-                    //food资源小于0，不能这样操作！！！！！！！！！！！！！
+                    Slider.GetComponent<Slider>().value = LivingDistributeQuantity;
                 }
                 else
                 {
@@ -46,7 +50,7 @@ public class LivingBarDistributeMono : MonoBehaviour
             else
             {
                 TotalLivingResource += LivingDistributeQuantity - NewLivingQuantity;
-                SourceManager.MedicalResource = TotalLivingResource;
+                SourceManager.LivingResource = TotalLivingResource;
                 LivingDistributeQuantity = NewLivingQuantity;
                 Text.GetComponent<TextMeshProUGUI>().text = LivingDistributeQuantity.ToString();
             }

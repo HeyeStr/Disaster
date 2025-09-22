@@ -11,31 +11,44 @@ public class PhoneNumberBarMono : MonoBehaviour
     private ToDoList todolist;
     public GameObject DistributeBar;
     public bool InputMode;
+    public bool WaittingTime;
     void Start()
     {
         mainCamera = Camera.main;
         TodolistObject = GameObject.FindGameObjectWithTag("ToDoList");
         todolist = TodolistObject.GetComponent<ToDoList>();
-        InputMode = false;  
+        InputMode = false;
+        WaittingTime = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (WaittingTime)
+        {
+            if (TodolistObject.transform.position.x == -7.1f)
+            {
+                InputMode = true;
+                WaittingTime = false;
+            }
+        }
         if (InputMode) 
         {
             if (Input.GetMouseButtonDown(0))
             {
 
                 Vector3 mouseScreenPos = Input.mousePosition;
-                if (mouseScreenPos.x > -4f)
+                if (mouseScreenPos.x > 1050f)
                 {
+                    todolist.OnCloseButtonClick();
                     InputMode = false;
                 }
-                else if (mouseScreenPos.y > 4.2f || mouseScreenPos.y < -4.2f)
-                {
-                    InputMode = false;
-                }
+                //else if (mouseScreenPos.y > 4.2f || mouseScreenPos.y < -4.2f)
+                //{
+                //    todolist.OnCloseButtonClick();
+
+                //    InputMode = false;
+                //}
                 else
                 {
                     Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
@@ -48,7 +61,8 @@ public class PhoneNumberBarMono : MonoBehaviour
                         {
                             string Information = hit.collider.gameObject.transform.GetComponent<TextMeshProUGUI>().text;
                             InputDistributeBar(Information);
-                              InputMode = false;
+                            todolist.OnCloseButtonClick();
+                            InputMode = false;
                         }
                         else
                         {
@@ -74,8 +88,8 @@ public class PhoneNumberBarMono : MonoBehaviour
     {
         
         todolist.HandleClick();
-        InputMode = true;
-        
+        WaittingTime = true;
+
     }
     public void DeleteInformation()
     {
