@@ -5,15 +5,14 @@ using UnityEngine;
 public class DistributeBarMono : MonoBehaviour
 {
     private GameObject DistributeControlObject;
-    public int missionIndex;
     public string Address;
     public string PhoneNumber;
     public int LivingResourceQuantity;
     public int FoodResourceQuantity;
     public int MedicalResourceQuantity;
     public int Score;
-    private GameObject AddressBar;
-    private GameObject PhoneNumberBar;
+    public  GameObject AddressBar;
+    public  GameObject PhoneNumberBar;
     
     void Start()
     {
@@ -51,15 +50,13 @@ public class DistributeBarMono : MonoBehaviour
         }
         return Score;
     }
-    private void OnMouseDown()
-    {
-       Submit();
-
-    }
     public void DeleteInformation()
     {
+        
         Address = "";
         PhoneNumber = "";
+        AddressBar .GetComponent<AddressBarMono>().DeleteInformation();
+        PhoneNumberBar.GetComponent<PhoneNumberBarMono>().DeleteInformation();
     }
     public void SetFoodResourceQuantity(int Quantity)
     {
