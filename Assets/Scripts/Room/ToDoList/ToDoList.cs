@@ -9,7 +9,7 @@ public class ToDoList : MonoBehaviour
     public  bool moved = false;
     private Vector3 leftPos;   // 初始位置
     private Vector3 centerPos; // 屏幕中心对应的 World 位置
-    private bool StarttoMove;
+    public bool StarttoMove;
     private Vector3 targetPos; // 目标位置
     
     private PlayerInputManager inputManager; // 新增输入管理器引用
@@ -88,7 +88,7 @@ public class ToDoList : MonoBehaviour
                 {
                     transform.GetComponent<BoxCollider2D>().enabled = true;
                 }
-                    transform.position = targetPos;
+                transform.position = targetPos;
                 StarttoMove = false;
                 // 根据移动状态显示或隐藏关闭按钮
                 if (closeButton != null)

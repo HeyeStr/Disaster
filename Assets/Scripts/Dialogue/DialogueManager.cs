@@ -15,29 +15,43 @@ namespace Dialogue
 {
     public class DialogueManager : AcceptMessage
     {
+        [Header("信息点击跳转映射")]
         public DialogueTurnMapSo turnMap;
         
+        [Header("电话信息映射")]
         public CustomMessageSo messageMap;
         
-        public static DialogueManager Instance;
+        static DialogueManager Instance;
         
         public PlayerInputManager playerInput;
 
         [Header("事件引用")]
         public SendMessageEventSo dialogueEvent;
         
-        [SerializeField] TMP_Text textLabel;
-
+        [Header("笔记本对象")]
+        public ToDoList toDoList;
+        
+        [Header("对话框组件")]
         [SerializeField] private GameObject dialogueObj;
         
-        [SerializeField] Image dialogueImage;
+        [SerializeField] Image headImage;
+        
+        [SerializeField] TMP_Text textLabel;
+        
+        [Header("玩家头像")]
+        [SerializeField] Sprite playerHead;
 
+        [Header("对话人头像")]
+        [SerializeField] Sprite personHead;
+
+        [Header("对话文本")]
         [SerializeField] TextAsset textFile;
 
         [SerializeField] int index;
 
         [SerializeField] float textSpeed;
 
+        [Header("文本特殊关键词")]
         [SerializeField] private string branchSign = "[OPTION]";
 
         [SerializeField] private string branchEnd = "[/OPTION]";
@@ -50,6 +64,7 @@ namespace Dialogue
         
         [SerializeField] private string personName;
         
+        [Header("对话选择对话框")]
         [SerializeField] private GameObject optionPrefab;
 
         [SerializeField] private Transform optionContainer;
@@ -58,13 +73,12 @@ namespace Dialogue
 
         private List<string> textList = new List<string>();
 
+        [Header("对话状态")]
         public bool textFinished;
 
         public bool cancelTyping;
 
         public bool isInBranchSelection;
-
-        public bool dialoguePause;
         
         public bool canSelect;
         
@@ -149,6 +163,7 @@ namespace Dialogue
             SwitchDialogue();
             if (textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase))
             {
+                toDoList.StarttoMove = true;
                 canSelect = true;
                 yield break;
             }
@@ -187,10 +202,14 @@ namespace Dialogue
         {
             if (textList[index].StartsWith(playerName))
             {
+                if (playerHead)
+                    headImage.sprite = playerHead; 
                 index ++;
             }
             if (textList[index].StartsWith(personName))
             {
+                if (personHead)
+                    headImage.sprite = personHead;
                 index ++;
             }
             if (textList[index].StartsWith(branchSign, StringComparison.OrdinalIgnoreCase))
@@ -284,7 +303,7 @@ namespace Dialogue
             Debug.Log("开始对话");
             Message message = messageMap.GetValue(phoneNumber);
             textFile = message.dialogueFile;
-            dialogueImage = message.headImage;
+            personHead = message.headImage;
             personName = message.personName;
             dialogueObj.SetActive(true);
             InitTextList(textFile);
@@ -296,7 +315,6 @@ namespace Dialogue
             if (canSelect)
             {
                 canSelect = false;
-                dialoguePause = false;
                 Debug.Log("测试" + turnMap.GetValue(text));
                 index = turnMap.GetValue(text) - 1;
                 DialogueInput();

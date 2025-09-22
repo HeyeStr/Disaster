@@ -1790,13 +1790,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f54dfa417d29974fb1271d71361a113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnMap: {fileID: 11400000, guid: 08347118c0325494db4af6f67714a579, type: 2}
-  messageMap: {fileID: 11400000, guid: 7ad51a64ed39cc746bcc9a2b54c7d6de, type: 2}
+  turnMap: {fileID: 11400000, guid: 10ce401dd608a6441935f82882fa6872, type: 2}
+  messageMap: {fileID: 11400000, guid: 0948f383d8163ca48a8d0080b949a04b, type: 2}
   playerInput: {fileID: 654659890}
   dialogueEvent: {fileID: 11400000, guid: 14cb6ace02c04f24d85047915f364106, type: 2}
-  textLabel: {fileID: 159850650}
+  toDoList: {fileID: 0}
   dialogueObj: {fileID: 1524491916}
-  dialogueImage: {fileID: 0}
+  headImage: {fileID: 0}
+  textLabel: {fileID: 159850650}
+  playerHead: {fileID: 0}
+  personHead: {fileID: 0}
   textFile: {fileID: 0}
   index: 0
   textSpeed: 0.05
@@ -1812,7 +1815,6 @@ MonoBehaviour:
   textFinished: 0
   cancelTyping: 0
   isInBranchSelection: 0
-  dialoguePause: 0
   canSelect: 0
 --- !u!4 &1660910316
 Transform:

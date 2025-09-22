@@ -14,7 +14,7 @@ namespace Common
         /**
          * 对话头像
          */
-        public Image headImage;
+        public Sprite headImage;
         
         /**
          * 名字
