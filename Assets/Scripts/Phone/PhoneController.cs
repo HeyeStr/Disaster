@@ -1,56 +1,40 @@
-﻿using System;
-using System.Collections;
-using Common;
-using EventSo;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 
 namespace Phone
 {
-    public class PhoneController : MonoBehaviour
+    public class PhoneController : AcceptMessage
     {
-        [Header("事件引用")]
-        public TransmitMessageEventSo callEvent;
-
         [Header("UI引用")]
         public TMP_Text numberLabel;
 
         [Header("时间设置")]
         public float durTime;
         
-        public AssistanceMessage assistanceMessage;
+        public string phoneNumber;
 
         private void Awake()
         {
             numberLabel.text = "";
         }
 
-        private void OnEnable()
-        {
-            callEvent.Event += CallPhone;
-        }
-
-        private void OnDisable()
-        {
-            callEvent.Event -= CallPhone;
-        }
-
-        private void CallPhone(AssistanceMessage message)
-        {
-            assistanceMessage = message;
-            Debug.Log(message.phoneNumber);
-            StartCoroutine(CallPhoneWordByWord(message));
-        }
-
-        IEnumerator CallPhoneWordByWord(AssistanceMessage message)
+        IEnumerator CallPhoneWordByWord(string message)
         {
             numberLabel.text = "";
-            foreach (var num in message.phoneNumber)
+            foreach (var num in message)
             {
                 Debug.Log(num);
                 numberLabel.text += num;
                 yield return new WaitForSeconds(durTime);
             }
+
+            phoneNumber = message;
+        }
+
+        public override void AcceptString(string message)
+        {
+            StartCoroutine(CallPhoneWordByWord(message));
         }
     }
 }
