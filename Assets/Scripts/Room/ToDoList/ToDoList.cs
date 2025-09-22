@@ -6,7 +6,7 @@ using TMPro;
 
 public class ToDoList : MonoBehaviour
 {
-    private bool moved = false;
+    public  bool moved = false;
     private Vector3 leftPos;   // 初始位置
     private Vector3 centerPos; // 屏幕中心对应的 World 位置
     private bool StarttoMove;
@@ -15,14 +15,17 @@ public class ToDoList : MonoBehaviour
     private PlayerInputManager inputManager; // 新增输入管理器引用
     
     [SerializeField]
-    private Button closeButton; // 关闭按钮引用
+    private GameObject closeButton; // 关闭按钮引用
     [SerializeField]
-    private Button previousButton; // 上一页按钮
+    private GameObject previousButton; // 上一页按钮
     [SerializeField]
-    private Button nextButton;     // 下一页按钮
+    private GameObject nextButton;     // 下一页按钮
 
     public  int currentPage = 0;   // 当前页码
-    public  int totalPages = 3;    // 总页数
+    public  int totalPages = 0;    // 总页数
+
+    public GameObject TextPrefab;
+    public GameObject TextCanvasPrefab;
 
     void Start()
     {
@@ -43,22 +46,19 @@ public class ToDoList : MonoBehaviour
         // 设置关闭按钮的点击事件
         if (closeButton != null)
         {
-            closeButton.onClick.AddListener(OnCloseButtonClick);
             // 初始时隐藏关闭按钮
-            closeButton.gameObject.SetActive(false);
+            closeButton.SetActive(false);
         }
 
         // 设置翻页按钮的点击事件
         if (previousButton != null)
         {
-            previousButton.onClick.AddListener(OnPreviousButtonClick);
-            previousButton.gameObject.SetActive(false);
+            previousButton.SetActive(false);
         }
 
         if (nextButton != null)
         {
-            nextButton.onClick.AddListener(OnNextButtonClick);
-            nextButton.gameObject.SetActive(false);
+            nextButton.SetActive(false);
         }
     }
 
@@ -81,20 +81,26 @@ public class ToDoList : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.1f);
             if (Vector3.Distance(transform.position, targetPos) < 0.01f)
             {
-                transform.position = targetPos;
+                if (targetPos.x > -8f) {
+                    transform.GetComponent<BoxCollider2D>().enabled = false;
+                }
+                else
+                {
+                    transform.GetComponent<BoxCollider2D>().enabled = true;
+                }
+                    transform.position = targetPos;
                 StarttoMove = false;
-                
                 // 根据移动状态显示或隐藏关闭按钮
                 if (closeButton != null)
                 {
-                    closeButton.gameObject.SetActive(moved);
+                    closeButton.SetActive(moved);
                 }
             }
         }
     }
 
     // 将原来的 OnMouseDown 逻辑移到这个方法中
-    private void HandleClick()
+    public  void HandleClick()
     {
         if (!moved)
         {
@@ -103,52 +109,52 @@ public class ToDoList : MonoBehaviour
             // 展开时显示所有按钮
             if (closeButton != null)
             {
-                closeButton.gameObject.SetActive(true);
+                closeButton.SetActive(true);
             }
             if (previousButton != null)
             {
-                previousButton.gameObject.SetActive(true);
+                previousButton.SetActive(true);
             }
             if (nextButton != null)
             {
-                nextButton.gameObject.SetActive(true);
+                nextButton.SetActive(true);
             }
             UpdatePageButtonsState();
         }
         StarttoMove = true;
     }
 
-    private void OnCloseButtonClick()
+    public  void OnCloseButtonClick()
     {
         if (moved)
         {
+
+            
             targetPos = leftPos;
             moved = false;
             StarttoMove = true;
             // 关闭时隐藏所有按钮
-            closeButton.gameObject.SetActive(false);
-            previousButton.gameObject.SetActive(false);
-            nextButton.gameObject.SetActive(false);
+            closeButton.SetActive(false);
+            previousButton.SetActive(false);
+            nextButton.SetActive(false);
         }
     }
 
-    private void OnPreviousButtonClick()
+    public  void OnPreviousButtonClick()
     {
         if (currentPage > 0)
         {
             currentPage--;
             UpdatePageContent();
-            UpdatePageButtonsState();
         }
     }
 
-    private void OnNextButtonClick()
+    public  void OnNextButtonClick()
     {
         if (currentPage < totalPages - 1)
         {
             currentPage++;
             UpdatePageContent();
-            UpdatePageButtonsState();
         }
     }
 
@@ -157,11 +163,11 @@ public class ToDoList : MonoBehaviour
         // 更新按钮状态
         if (previousButton != null)
         {
-            previousButton.gameObject.SetActive(currentPage > 0 && moved);
+            previousButton.SetActive(currentPage > 0 && moved);
         }
         if (nextButton != null)
         {
-            nextButton.gameObject.SetActive(currentPage < totalPages - 1 && moved);
+            nextButton.SetActive(currentPage < totalPages - 1 && moved);
         }
     }
   
@@ -170,39 +176,44 @@ public class ToDoList : MonoBehaviour
     {
         List<Mission> missions = gameObject.GetComponent<TaskToDoListTextMono>().Missions;
 
-        Transform TextCanvastransform= transform.Find("TextCanvas");
         
-        Transform TaskHeadTexttransform= TextCanvastransform.Find("TaskHeadText");
+        Transform TextCanvastransform= transform.Find("TextCanvas(Clone)");
+
+        if (TextCanvastransform != null)
+        {
+            Debug.Log("destroy");
+            Destroy(TextCanvastransform.gameObject);
+        }
+        GameObject NewTextCanvas =GameObject.Instantiate(TextCanvasPrefab);
+        Debug.Log("Instantiate");
+        NewTextCanvas.transform.position = new Vector3(transform.position.x, 0, 0);
+        NewTextCanvas.transform.parent= transform;
+        Transform TaskHeadTexttransform= NewTextCanvas.transform.Find("TaskHeadText");
+        
         if (missions.Count > currentPage)
         {
             TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
         }
-        // foreach (var item in currentTaskItems)
-        // {
-        //     Destroy(item);
-        // }
-        // currentTaskItems.Clear();
+        for(int i =0;i< missions[currentPage].Informations.Count; i++)
+        {
+            GameObject NewText_Information = GameObject.Instantiate(TextPrefab);
+            NewText_Information.transform.parent = NewTextCanvas.transform;
+            NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
+            NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i];
+        }
 
-        // 获取当前页的任务列表
-        //if (currentPage < pageContents.Count)
-        //{
-        //    List<string> currentPageTasks = pageContents[currentPage];
-            
-        //    // 创建新的任务项
-        //    foreach (string task in currentPageTasks)
-        //    {
-        //        GameObject newTask = Instantiate(taskItemPrefab, contentParent);
-        //        Text taskText = newTask.GetComponentInChildren<Text>();
-        //        if (taskText != null)
-        //        {
-        //            taskText.text = task;
-        //        }
-        //        currentTaskItems.Add(newTask);
-        //    }
-        //}
+        UpdatePageButtonsState();
 
         Debug.Log($"切换到第 {currentPage + 1} 页");
     }
 
+
+    public void DisplayTaskPage(int missionIndex)
+    {
+        int missionpage= gameObject.GetComponent<TaskToDoListTextMono>().GetTaskPage(missionIndex);
+        currentPage = missionpage;
+        UpdatePageContent();
+        
+    }
    
 }

@@ -8,6 +8,8 @@ TagManager:
   - Test
   - BlogApp
   - ToDoList
+  - InformationInToDoList
+  - Distribute
   layers:
   - Default
   - TransparentFX

@@ -3,18 +3,18 @@ using UnityEngine;
 public class BlogContentManager : MonoBehaviour
 {
     public static BlogContentManager Instance;
-    
+
     [Header("当前博客内容")]
     public BlogContentData currentBlogData;
-    
+
     [Header("博客内容列表")]
     public BlogContentData[] allBlogContents;
-    
+
     void Awake()
     {
         Instance = this;
     }
-    
+
     public void SetCurrentBlog(string blogId)
     {
         foreach (var blog in allBlogContents)
@@ -28,9 +28,19 @@ public class BlogContentManager : MonoBehaviour
         }
         Debug.LogWarning($"未找到博客ID: {blogId}");
     }
-    
+
     public BlogContentData GetCurrentBlog()
     {
         return currentBlogData;
+    }
+    public void MissionDisplay_TodoList(string blogID) {
+        GameObject ListObject = GameObject.FindGameObjectWithTag("ToDoList");
+        TaskToDoListTextMono taskToDoListTextMono= ListObject.GetComponent<TaskToDoListTextMono>();
+        ToDoList toDoList=ListObject.GetComponent<ToDoList>(); 
+        if (taskToDoListTextMono.HasTask(GetCurrentBlog().MissionIndex))
+        {
+            toDoList.DisplayTaskPage(GetCurrentBlog().MissionIndex);
+        }
+
     }
 }

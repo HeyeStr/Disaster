@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
+public class HighlightInformationMono : MonoBehaviour
 {
     GameObject gameObjectList;
     public bool HighLightStringStarttoMove;
@@ -32,52 +32,35 @@ public class HighlightInformationMono : MonoBehaviour, IPointerClickHandler
             gameObjectList = GameObject.FindGameObjectWithTag("ToDoList");
             TaskToDoListTextMono tasktoDoListTextMono = gameObjectList.GetComponent<TaskToDoListTextMono>();
             ToDoList toDoList = gameObjectList.GetComponent<ToDoList>();
-            if (!tasktoDoListTextMono.HasTask(missionIndex, missionName))
+            if (!tasktoDoListTextMono.HasTask(missionIndex))
             {
                 tasktoDoListTextMono.AddTask(missionName, missionIndex);
-                
-                int currentpage= tasktoDoListTextMono.GetTaskPage(missionIndex, missionName);
-                toDoList.currentPage = currentpage;
-                toDoList.UpdatePageContent();
             }
-            else
-            {
-                int currentpage = tasktoDoListTextMono.GetTaskPage(missionIndex, missionName);
-                toDoList.currentPage = currentpage;
-                toDoList.UpdatePageContent();
-            }
-
+            
 
             Vector3 Targetposition = tasktoDoListTextMono.GetNewInformationPosition(0);                  //0待定
             
 
-            transform.position= math.lerp(transform.position, Targetposition, 0.1f);
+            transform.position= math.lerp(transform.position, Targetposition, MoveSpeed);
             //transform.position +=  MoveSpeed * Time.deltaTime *  (Vector3)math.normalize(new float3(Targetposition.x - transform.position.x, Targetposition.y - transform.position.y, Targetposition.z - transform.position.z));
 
             if (math.distance(Targetposition, transform.position) < 0.3)
             {
                 
-                Transform canvasTransform = gameObjectList.transform.Find("CanvasA");
-
-
                 HighLightStringStarttoMove = false;
                 
-                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0, StringInformation);                                         //0是待修改的量
+                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0, StringInformation);                           //0是待修改的量
                 Destroy(gameObject);
             }
         }
     }
     void OnMouseDown()
     {
-        HighLightStringStarttoMove=true;
+        HighLightStringStarttoMove = true;
+        Transform Texttransform= transform.Find("Text1");
+        Texttransform.gameObject.GetComponent<TextMeshProUGUI>().text = StringInformation;
 
 
     }
     
-    // 使用UI事件系统替代OnMouseDown
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("HighlightInformationMono 被点击了！");
-        HighLightStringStarttoMove = true;
-    }
 }
