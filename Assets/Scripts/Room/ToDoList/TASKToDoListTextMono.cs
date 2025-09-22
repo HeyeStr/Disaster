@@ -8,7 +8,7 @@ using UnityEngine;
 public class TaskToDoListTextMono : MonoBehaviour
 {
     public List<Mission> Missions;
-    public List<string> DisplayMissions;
+
     void Start()
     {
         Missions = new List<Mission>();
@@ -25,11 +25,6 @@ public class TaskToDoListTextMono : MonoBehaviour
         {
             AddInformation(0, "王朝烈马");
 
-        }
-        DisplayMissions = new List<string>();
-        foreach (Mission mission in Missions)
-        {
-            DisplayMissions.Add(mission.MissionName);
         }
     }
     public void AddInformation(int MissionIndex, string Information)
