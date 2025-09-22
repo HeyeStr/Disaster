@@ -154,8 +154,6 @@ Transform:
   - {fileID: 2021614157}
   - {fileID: 654659891}
   - {fileID: 1587666007}
-  - {fileID: 5094302824061010148}
-  - {fileID: 1940370907}
   - {fileID: 804981582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -907,19 +905,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2070768960}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!222 &548292910
-CanvasRenderer:
-  m_ObjectHideFlags: 8
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_CullTransparentMesh: 1
 --- !u!1 &630625309
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +938,7 @@ Transform:
   m_GameObject: {fileID: 630625309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.166, z: 0}
+  m_LocalPosition: {x: 0.016, y: -0.166, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -994,7 +984,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1035,7 +1025,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.0023634727}
@@ -1053,8 +1043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112c876e94f54dd8a55d07c052438418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 654659890}
-  targetTag: Finish
   dialogueEvent: {fileID: 11400000, guid: 14cb6ace02c04f24d85047915f364106, type: 2}
   phoneController: {fileID: 1587666009}
   callWaitTime: 0.5
@@ -1350,17 +1338,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1179414026 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3384100703723572197, guid: a053da085591ab1409df97f5fa0da7ae, type: 3}
-  m_PrefabInstance: {fileID: 5094302824061010147}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fced345775a84105be1d1b8489cc1630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &882203642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,10 +1638,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.21797448}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1675,7 +1652,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.56405103}
   m_EdgeRadius: 0
 --- !u!212 &1587666006
 SpriteRenderer:
@@ -1768,7 +1745,6 @@ MonoBehaviour:
   isSliding: 0
   backButton: {fileID: 1809217509}
   buttonClose: 0
-  playerInput: {fileID: 654659890}
   slideCurve: {fileID: 11400000, guid: 012b0dfab38d39848880a3e16f897d93, type: 2}
 --- !u!114 &1587666009
 MonoBehaviour:
@@ -1827,6 +1803,7 @@ MonoBehaviour:
   branchSign: '[OPTION]'
   branchEnd: '[/OPTION]'
   pauseSign: '[SELECT]'
+  endSign: '[END]'
   playerName: A
   personName: B
   optionPrefab: {fileID: 1825877577895433532, guid: b4c577f9e719f054daf5ce216b368fcb, type: 3}
@@ -2694,24 +2671,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2127491998}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!222 &2127492001
-CanvasRenderer:
-  m_ObjectHideFlags: 8
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_CullTransparentMesh: 1
---- !u!4 &5094302824061010148 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3242744418792177029, guid: a053da085591ab1409df97f5fa0da7ae, type: 3}
-  m_PrefabInstance: {fileID: 5094302824061010147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
