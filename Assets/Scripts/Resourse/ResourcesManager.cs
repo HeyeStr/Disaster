@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
-    public static ResourcesManager Instance;
     public int LivingResource;
     public int FoodResource;
     public int MedicalResource;
 
-    void Awake()
-    {
-        Instance = this;
-    }
     
     void Start()
     {
@@ -26,28 +21,17 @@ public class ResourcesManager : MonoBehaviour
     {
         
     }
-    public void AddLivingResource(int addition)
+    public void SetLivingResource(int Quantity)
     {
-        LivingResource += addition;
+        LivingResource = Quantity;
     }
-    public void DeclineLivingResource(int decline)
+    
+    public void SetFoodResource(int Quantity)
     {
-        LivingResource -= decline;
+        FoodResource = Quantity;
     }
-    public void AddFoodResource(int addition)
+    public void SetMedicalResource(int Quantity)
     {
-        FoodResource += addition;
-    }
-    public void DeclineFoodResource(int decline)
-    {
-        FoodResource -= decline;
-    }
-    public void AddMedicalResource(int addition)
-    {
-        MedicalResource += addition;
-    }
-    public void DeclineMedicalResource(int decline)
-    {
-        MedicalResource -= decline;
+        MedicalResource = Quantity;
     }
 }

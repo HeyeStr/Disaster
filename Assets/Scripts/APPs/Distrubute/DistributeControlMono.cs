@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DistributeControlMono : MonoBehaviour
 {
-    public GameObject Mission_DistributeBar;
     public GameObject ToDoList;
+
+    public List<GameObject> DistributeBars;
     void Start()
     {
         ToDoList = GameObject.FindGameObjectWithTag("ToDoList");
@@ -17,4 +18,14 @@ public class DistributeControlMono : MonoBehaviour
     {
         
     }
+    public void SubmitAll()
+    {
+        foreach (GameObject distributBar in DistributeBars) {
+            distributBar.GetComponent<DistributeBarMono>().Submit();
+            DistributeBars.Remove(distributBar);
+            Destroy(distributBar);
+        
+        }
+    }
+
 }
