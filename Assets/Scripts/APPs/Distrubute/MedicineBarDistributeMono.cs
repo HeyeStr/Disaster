@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MedicineBarDistributeMono : MonoBehaviour
@@ -9,10 +10,14 @@ public class MedicineBarDistributeMono : MonoBehaviour
     public int NewMedicineQuantity;
     public int MissionIndex;
     ResourcesManager SourceManager;
+    private GameObject Text;
     void Start()
     {
-        MonitorObject= GameObject.FindGameObjectWithTag("Monitor");
+        MonitorObject = GameObject.FindGameObjectWithTag("Monitor");
         SourceManager = MonitorObject.GetComponent<ResourcesManager>();
+        Text = transform.Find("Text").gameObject;
+        Text.GetComponent<TextMeshProUGUI>().text = "0";
+       
     }
 
     // Update is called once per frame
@@ -34,6 +39,7 @@ public class MedicineBarDistributeMono : MonoBehaviour
 
                     SourceManager.MedicalResource= TotalMedicalResource;
                     MedicineDistributeQuantity = NewMedicineQuantity;
+                    Text.GetComponent<TextMeshProUGUI>().text = MedicineDistributeQuantity.ToString();
                 }
             }
             else
@@ -41,6 +47,7 @@ public class MedicineBarDistributeMono : MonoBehaviour
                 TotalMedicalResource +=  MedicineDistributeQuantity- NewMedicineQuantity;
                 SourceManager.MedicalResource = TotalMedicalResource;
                 MedicineDistributeQuantity = NewMedicineQuantity;
+                Text.GetComponent<TextMeshProUGUI>().text = MedicineDistributeQuantity.ToString();
             }
         }
     }

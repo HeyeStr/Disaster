@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FoodBarDistributeMono : MonoBehaviour
@@ -9,10 +11,13 @@ public class FoodBarDistributeMono : MonoBehaviour
     public int NewFoodQuantity;
     public int MissionIndex;
     ResourcesManager SourceManager;
+    private GameObject Text;
     void Start()
     {
         MonitorObject = GameObject.FindGameObjectWithTag("Monitor");
         SourceManager = MonitorObject.GetComponent<ResourcesManager>();
+        Text = transform.Find("Text").gameObject;
+        Text.GetComponent<TextMeshProUGUI>().text="0";
     }
 
     // Update is called once per frame
@@ -34,6 +39,8 @@ public class FoodBarDistributeMono : MonoBehaviour
                     TotalFoodResource -= NewFoodQuantity - FoodDistributeQuantity;
 
                     SourceManager.FoodResource = TotalFoodResource;
+                    FoodDistributeQuantity = NewFoodQuantity;
+                    Text.GetComponent<TextMeshProUGUI>().text = FoodDistributeQuantity.ToString();
                 }
             }
             else
@@ -41,6 +48,7 @@ public class FoodBarDistributeMono : MonoBehaviour
                 TotalFoodResource += FoodDistributeQuantity - NewFoodQuantity;
                 SourceManager.MedicalResource = TotalFoodResource;
                 FoodDistributeQuantity = NewFoodQuantity;
+                Text.GetComponent<TextMeshProUGUI>().text = FoodDistributeQuantity.ToString();
             }
         }
     }

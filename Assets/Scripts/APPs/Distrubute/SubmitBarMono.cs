@@ -18,7 +18,7 @@ public class SubmitBar : MonoBehaviour
     private void OnMouseDown()
     {
         DistributeObject = GameObject.FindGameObjectWithTag("Distribute");
-        DistributeObject.GetComponent<DistributeBarMono>().Submit();
+        DistributeObject.GetComponent<DistributeControlMono>().SubmitAll();
 
     }
 }
