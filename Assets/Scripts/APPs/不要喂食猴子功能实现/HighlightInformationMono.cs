@@ -26,12 +26,28 @@ public class HighlightInformationMono : MonoBehaviour
     void Start()
     {
         HighLightStringStarttoMove = false;
+        
         if (clickedTexts.Contains(textId))
         {
-            // 禁用
             GetComponent<Collider2D>().enabled = false;
-            // 直接销毁
-            // Destroy(gameObject);
+            
+
+            Image imageComponent = GetComponent<Image>();
+            if (imageComponent != null)
+            {
+                imageComponent.enabled = false;
+            }
+            
+
+            Transform textTransform = transform.Find("Text1");
+            if (textTransform != null)
+            {
+                TextMeshProUGUI textComponent = textTransform.GetComponent<TextMeshProUGUI>();
+                if (textComponent != null)
+                {
+                    textComponent.enabled = false;
+                }
+            }
         }
     }
 
@@ -66,16 +82,18 @@ public class HighlightInformationMono : MonoBehaviour
     
     void OnMouseDown()
     {
-        // 检查点击
+        // 检查是否已经点击过
         if (clickedTexts.Contains(textId))
         {
             return; 
         }
+        
+        // 标记为已点击
         clickedTexts.Add(textId);
 
         HighLightStringStarttoMove = true;
         Transform Texttransform= transform.Find("Text1");
         Texttransform.gameObject.GetComponent<TextMeshProUGUI>().text = StringInformation;
     }
-    
+
 }
