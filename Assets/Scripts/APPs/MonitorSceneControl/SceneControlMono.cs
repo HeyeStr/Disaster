@@ -22,41 +22,100 @@ public class SceneControlMono : MonoBehaviour                                   
     // Update is called once per frame
     void Update()
     {
-        // 移除了测试代码，避免干扰正常场景切换
+       
     }
     public void LoadBlogScene()
     {
-        Debug.Log("LoadBlogScene");
+        LoadBlogSceneForDay(1); 
+    }
+    
+    // 加载指定天数的博客场景
+    public void LoadBlogSceneForDay(int day)
+    {
+        if (GameDayManager.Instance != null)
+        {
+            string sceneName = GameDayManager.Instance.GetBlogSceneName(day);
+            LoadBlogSceneByName(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("GameDayManager.Instance为空，使用默认博客场景");
+            LoadBlogSceneByName("BlogScene");
+        }
+    }
+    
+
+    /// 加载当前天数的博客场景
+
+    public void LoadCurrentDayBlogScene()
+    {
+        if (GameDayManager.Instance != null)
+        {
+            string sceneName = GameDayManager.Instance.GetCurrentBlogSceneName();
+            LoadBlogSceneByName(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("GameDayManager.Instance为空，使用默认博客场景");
+            LoadBlogSceneByName("BlogScene");
+        }
+    }
+    
+
+    // 根据场景名称加载博客场景
+
+    private void LoadBlogSceneByName(string sceneName)
+    {
+        Debug.Log($"LoadBlogScene: {sceneName}");
         try
         {
-            SceneManager.LoadSceneAsync("BlogScene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"加载BlogScene失败: {e.Message}");
+            Debug.LogError($"加载{sceneName}失败: {e.Message}");
         }
     }
     
     public void UnloadBlogScene()
     {
-        Debug.Log("UnloadBlogScene");
+        Debug.Log("UnloadBlogScene - 卸载所有博客场景");
+        
+        // 卸载所有可能的博客场景
+        string[] blogSceneNames = {
+            "BlogScene",
+            "BlogScene_Day1",
+            "BlogScene_Day2", 
+            "BlogScene_Day3",
+            "BlogScene_Day4",
+            "BlogScene_Day5",
+            "BlogScene_Day6",
+            "BlogScene_Day7"
+        };
+        
+        foreach (string sceneName in blogSceneNames)
+        {
+            UnloadSceneByName(sceneName);
+        }
+    }
+    
+    /// <summary>
+    /// 根据场景名称卸载场景
+    /// </summary>
+    private void UnloadSceneByName(string sceneName)
+    {
         try
         {
-            // 检查场景是否存在且已加载
-            var scene = SceneManager.GetSceneByName("BlogScene");
+            var scene = SceneManager.GetSceneByName(sceneName);
             if (scene.IsValid() && scene.isLoaded)
             {
-                SceneManager.UnloadSceneAsync("BlogScene");
-                Debug.Log("BlogScene卸载成功");
-            }
-            else
-            {
-                Debug.Log("BlogScene未加载，跳过卸载");
+                SceneManager.UnloadSceneAsync(sceneName);
+                Debug.Log($"{sceneName} 卸载成功");
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning($"卸载BlogScene时出现异常，跳过执行: {e.Message}");
+            Debug.LogWarning($"卸载{sceneName}时出现异常: {e.Message}");
         }
     }
     public void UnloadDeskScene()
