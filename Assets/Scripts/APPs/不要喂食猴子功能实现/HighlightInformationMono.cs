@@ -64,7 +64,6 @@ public class HighlightInformationMono : MonoBehaviour
             {
                 tasktoDoListTextMono.AddTask(missionName, missionIndex);
             }
-            
             Vector3 Targetposition = tasktoDoListTextMono.GetNewInformationPosition(0);                  //0待定
             
             transform.position= math.lerp(transform.position, Targetposition, MoveSpeed);
@@ -74,7 +73,7 @@ public class HighlightInformationMono : MonoBehaviour
             {
                 HighLightStringStarttoMove = false;
                 
-                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(0, StringInformation);                           //0是待修改的量
+                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(missionIndex, StringInformation);                           //0是待修改的量
                 Destroy(gameObject);
             }
         }

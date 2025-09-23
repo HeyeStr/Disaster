@@ -45,19 +45,25 @@ public class TaskToDoListTextMono : MonoBehaviour
     }
     public void AddTask(string Missionname,int Missionindex)
     {
+        GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
+        AllMissionsMono allMissionsMono = Monitor.GetComponent<AllMissionsMono>();
         Debug.Log("AddTask");
         int i = 0;
         while (i < Missions.Count) {
             i++;
         }
-        Missions.Add(new Mission { 
-            MissionName= Missionname,
-            MissionIndex=Missionindex,
-            Informations=new List<string>()
+        Missions.Add(new Mission
+        {
+            MissionName = Missionname,
+            MissionIndex = Missionindex,
+            Informations = new List<string>(),
+            Address = allMissionsMono.GetAddress(Missionindex),
+            PhoneNumber=allMissionsMono.GetPhoneNumber(Missionindex)
         });
+
         ToDoList todolist = transform.gameObject.GetComponent<ToDoList>();
         transform.gameObject.GetComponent<ToDoList>().totalPages++;
-        todolist.DisplayTaskPage(0);
+        todolist.DisplayTaskPage(i);
     }
     public bool HasTask(int MissionIndex)
     {

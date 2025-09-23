@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 
 public class DistributeControlMono : MonoBehaviour
 {
     public GameObject ToDoList;
-
     public List<GameObject> DistributeBars;
+    public GameObject Score;
    
     void Start()
     {
@@ -22,13 +23,14 @@ public class DistributeControlMono : MonoBehaviour
     }
     public void SubmitAll()
     {
+        Debug.Log("SubmitAllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
         CalculatePoints calculatePoints= gameObject.GetComponent<CalculatePoints>();
+        int TotalScore = 0;
         foreach (GameObject distributBar in DistributeBars) {
-            int ScoreofOne = distributBar.GetComponent<DistributeBarMono>().Submit();
-            DistributeBars.Remove(distributBar);
-            Destroy(distributBar);
-        
+            TotalScore += distributBar.GetComponent<DistributeBarMono>().Submit();
+            Score.GetComponent<TextMeshProUGUI>().text=TotalScore.ToString();
         }
+        DistributeBars.Clear();
     }
 
 }
