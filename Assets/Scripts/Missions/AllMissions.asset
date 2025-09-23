@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllMisions:
   - MissionInedx: 1
-    Address: "\u738B\u671D\u70C8\u9A6C1"
-    PhoneNumber: "\u738B\u671D\u70C8\u9A6C2"
-    FoodResource: 5
-    MedicineResource: 5
-    LivingResource: 5
+    Address: "\u5357\u4E34\u5E02\u5B81\u5DDE\u533A\u65B0\u57CE\u8857\u9053\u7B2C\u4E00\u4E2D\u5B66\u4E34\u65F6\u5B89\u7F6E\u70B9"
+    PhoneNumber: "\u5468\u8001\u5E08 139 8765 432"
+    FoodResource: 3
+    MedicineResource: 0
+    LivingResource: 2
+  - MissionInedx: 2
+    Address: "\u5357\u4E34\u5E02\u5B81\u5DDE\u533A\u6EE8\u6CB3\u8857\u9053\u6DA6\u56ED\u5929\u5730\u5C0F\u533A"
+    PhoneNumber: "\u674E\u4F1F 138 1234 567"
+    FoodResource: 0
+    MedicineResource: 0
+    LivingResource: 1
   missionindex: 0
