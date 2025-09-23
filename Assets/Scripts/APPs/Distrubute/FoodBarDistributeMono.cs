@@ -13,6 +13,7 @@ public class FoodBarDistributeMono : MonoBehaviour
     ResourcesManager SourceManager;
     private GameObject Text;
     private GameObject Slider;
+    public GameObject DistributeBar;
     void Start()
     {
         FoodDistributeQuantity = 0;
@@ -46,6 +47,7 @@ public class FoodBarDistributeMono : MonoBehaviour
                     SourceManager.FoodResource = TotalFoodResource;
                     FoodDistributeQuantity = NewFoodQuantity;
                     Text.GetComponent<TextMeshProUGUI>().text = FoodDistributeQuantity.ToString();
+                    DistributeBar.GetComponent<DistributeBarMono>().SetFoodResourceQuantity (FoodDistributeQuantity);
                 }
             }
             else
@@ -54,6 +56,7 @@ public class FoodBarDistributeMono : MonoBehaviour
                 SourceManager.FoodResource = TotalFoodResource;
                 FoodDistributeQuantity = NewFoodQuantity;
                 Text.GetComponent<TextMeshProUGUI>().text = FoodDistributeQuantity.ToString();
+                DistributeBar.GetComponent<DistributeBarMono>().SetFoodResourceQuantity(FoodDistributeQuantity);
             }
         }
     }

@@ -14,7 +14,6 @@ namespace Distribute
         
         public Button createMessageButton;
         
-        public Button commitButton;
 
         public GameObject Parentobject;
 
@@ -36,13 +35,14 @@ namespace Distribute
             index = 0;
             endPage.SetActive(false);
             createMessageButton.onClick.AddListener(CreateNewMessage);
-            commitButton.onClick.AddListener(CommitPlan);
         }
 
         public void CreateNewMessage()
         {
             //Instantiate(messagePrefab, contentContainer);
             GameObject NewMessageBar= Instantiate(messagePrefab);
+            DistributeControlMono distributeControlMono = gameObject.GetComponent<DistributeControlMono>();
+            distributeControlMono.DistributeBars.Add(NewMessageBar);
             NewMessageBar.transform.position = new Vector3(0, 0, 0);
             NewMessageBar.transform.parent = Parentobject.transform;
             index++;

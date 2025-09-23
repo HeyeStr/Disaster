@@ -95,6 +95,7 @@ MonoBehaviour:
   StringInformation: information
   missionName: 
   missionIndex: 0
+  textId: 
 --- !u!61 &2168950446906040386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &612833889713401852
 MonoBehaviour:
   m_ObjectHideFlags: 0

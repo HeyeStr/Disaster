@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6328786341258881803}
   - component: {fileID: 2820724714718014034}
   m_Layer: 5
-  m_Name: 'Text '
+  m_Name: Text
   m_TagString: InformationInToDoList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

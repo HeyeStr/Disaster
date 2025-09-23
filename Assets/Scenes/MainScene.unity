@@ -844,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moved: 0
+  StarttoMove: 0
   closeButton: {fileID: 856278196}
   previousButton: {fileID: 1507477006}
   nextButton: {fileID: 208889185}
@@ -990,6 +991,7 @@ GameObject:
   - component: {fileID: 1274199000}
   - component: {fileID: 1274198999}
   - component: {fileID: 1274199004}
+  - component: {fileID: 1274199005}
   m_Layer: 0
   m_Name: Monitor
   m_TagString: Monitor
@@ -1138,6 +1140,19 @@ MonoBehaviour:
   LivingResource: 2
   FoodResource: 2
   MedicalResource: 5
+--- !u!114 &1274199005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274198998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c5e23655d561f4494a3490024bdb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allMissionsData: {fileID: 11400000, guid: 0dc57b800aa75ce4e8e14d60eb37e97d, type: 2}
 --- !u!1 &1358664779
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,5 +103,6 @@ public class AddressBarMono : MonoBehaviour
     {
         Transform AddressTexttransform = transform.Find("AddressText");
         AddressTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = "";
+        DistributeBar.GetComponent<DistributeBarMono>().Address = "";
     } 
 }

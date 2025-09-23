@@ -12,6 +12,7 @@ public class LivingBarDistributeMono : MonoBehaviour
     ResourcesManager SourceManager;
     private GameObject Text;
     private GameObject Slider;
+    public GameObject DistributeBar;
     void Start()
     {
         LivingDistributeQuantity = 0;
@@ -45,6 +46,7 @@ public class LivingBarDistributeMono : MonoBehaviour
                     SourceManager.LivingResource = TotalLivingResource;
                     LivingDistributeQuantity = NewLivingQuantity;
                     Text.GetComponent<TextMeshProUGUI>().text = LivingDistributeQuantity.ToString();
+                    DistributeBar.GetComponent<DistributeBarMono>().SetLivingResourceQuantity(LivingDistributeQuantity);
                 }
             }
             else
@@ -53,6 +55,7 @@ public class LivingBarDistributeMono : MonoBehaviour
                 SourceManager.LivingResource = TotalLivingResource;
                 LivingDistributeQuantity = NewLivingQuantity;
                 Text.GetComponent<TextMeshProUGUI>().text = LivingDistributeQuantity.ToString();
+                DistributeBar.GetComponent<DistributeBarMono>().SetLivingResourceQuantity(LivingDistributeQuantity);
             }
         }
     }

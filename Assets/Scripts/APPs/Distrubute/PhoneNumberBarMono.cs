@@ -95,5 +95,6 @@ public class PhoneNumberBarMono : MonoBehaviour
     {
         Transform PhoneNumberTexttransform = transform.Find("PhoneNumberText");
         PhoneNumberTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = "";
+        DistributeBar.GetComponent<DistributeBarMono>().PhoneNumber = "";
     }
 }

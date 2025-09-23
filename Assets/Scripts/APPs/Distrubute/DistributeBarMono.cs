@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DistributeBarMono : MonoBehaviour
@@ -28,6 +29,10 @@ public class DistributeBarMono : MonoBehaviour
         GameObject TodoList = GameObject.FindGameObjectWithTag("ToDoList");
         List<Mission> missions = TodoList.GetComponent<TaskToDoListTextMono>().Missions;
         Score = 0;
+        Transform textransform = gameObject.transform.Find("TextScore");
+        CalculatePoints calculatePoints = gameObject.GetComponent<CalculatePoints>();
+        GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
+        AllMissionsMono allMissionsMono = Monitor.GetComponent<AllMissionsMono>();
         foreach (var mission in missions)
         {
             if (mission.Address == Address)
@@ -35,19 +40,27 @@ public class DistributeBarMono : MonoBehaviour
                 if (mission.PhoneNumber == PhoneNumber)
                 {
 
+                    
+                    textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
+                    // Score = calculatePoints.Calculate(LivingResourceQuantity, FoodResourceQuantity, MedicalResourceQuantity, allMissionsMono.GetLivingResource(), allMissionsMono.GetFoodResource(), allMissionsMono.GetMedicineResource());
+
                     missions.Remove(mission);
                     return Score;
                 }
                 else
                 {
-                    Score = 0;                                  //µç»°ºÍµØÖ·¶Ô²»ÉÏÈÎÎñÊ§°Ü
+                    Score = 0;                                  //ï¿½ç»°ï¿½Íµï¿½Ö·ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
 
+                   
+                    textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
                     missions.Remove(mission);
                     return Score;
 
                 }
             }
         }
+        textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
+
         return Score;
     }
     public void DeleteInformation()

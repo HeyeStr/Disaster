@@ -14,6 +14,7 @@ public class MedicineBarDistributeMono : MonoBehaviour
     ResourcesManager SourceManager;
     private GameObject Text;
     private GameObject Slider;
+    public GameObject DistributeBar;
     void Start()
     {
         MedicineDistributeQuantity = 0;
@@ -47,6 +48,7 @@ public class MedicineBarDistributeMono : MonoBehaviour
                     SourceManager.MedicalResource= TotalMedicalResource;
                     MedicineDistributeQuantity = NewMedicineQuantity;
                     Text.GetComponent<TextMeshProUGUI>().text = MedicineDistributeQuantity.ToString();
+                    DistributeBar.GetComponent<DistributeBarMono>().SetMedicalResourceQuantity(MedicineDistributeQuantity);
                 }
             }
             else
@@ -55,6 +57,7 @@ public class MedicineBarDistributeMono : MonoBehaviour
                 SourceManager.MedicalResource = TotalMedicalResource;
                 MedicineDistributeQuantity = NewMedicineQuantity;
                 Text.GetComponent<TextMeshProUGUI>().text = MedicineDistributeQuantity.ToString();
+                DistributeBar.GetComponent<DistributeBarMono>().SetMedicalResourceQuantity(MedicineDistributeQuantity);
             }
         }
     }
