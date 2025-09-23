@@ -63,7 +63,7 @@ public class TaskToDoListTextMono : MonoBehaviour
 
         ToDoList todolist = transform.gameObject.GetComponent<ToDoList>();
         transform.gameObject.GetComponent<ToDoList>().totalPages++;
-        todolist.DisplayTaskPage(0);
+        todolist.DisplayTaskPage(i);
     }
     public bool HasTask(int MissionIndex)
     {
