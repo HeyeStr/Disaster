@@ -25,7 +25,7 @@ public enum AllocationRelation
 public class CalculatePoints : MonoBehaviour
 {
     [Header("档位配置")]
-    [SerializeField] private GradeConfig[] gradeConfigs = new GradeConfig[5];
+    [SerializeField] private GradeConfig[] gradeConfigs = new GradeConfig[6];
 
     [Header("风险系数设置")]
     public float LowRiskIndex = 1.1f;      // 低风险系数
@@ -47,6 +47,9 @@ public class CalculatePoints : MonoBehaviour
     {
         float totalScore = 0f;
 
+        Debug.Log($"输入参数 - 分配量: Living:{allocation_living}, Food:{allocation_food}, Medicine:{allocation_medicine}");
+        Debug.Log($"输入参数 - 实际需求: Living:{actualDemand_living}, Food:{actualDemand_food}, Medicine:{actualDemand_medicine}");
+
         int livingGradeIndex = GetGradeIndexByDemand(actualDemand_living);
         float livingScore = CalculateTotalScore(livingGradeIndex, allocation_living, actualDemand_living);
         
@@ -59,9 +62,10 @@ public class CalculatePoints : MonoBehaviour
         totalScore = livingScore + foodScore + medicineScore;
         Debug.Log(allocation_living+" " + allocation_food + " " + allocation_medicine + " " + actualDemand_living + " " + actualDemand_food + " " + actualDemand_medicine);
 
-        Debug.Log("livingScore" + livingScore);
-        Debug.Log("foodScore" + foodScore);
-        Debug.Log("medicineScore" + medicineScore);
+        Debug.Log("livingScore: " + livingScore);
+        Debug.Log("foodScore: " + foodScore);
+        Debug.Log("medicineScore: " + medicineScore);
+        Debug.Log("totalScore: " + totalScore);
         return totalScore;
     }
 
@@ -69,6 +73,8 @@ public class CalculatePoints : MonoBehaviour
     {
         switch (demand)
         {
+            case 0:
+                return 5;  // 需求量0 → 使用档位6 (基础分0，扣分基数0)
             case 1:
                 return 4;  // 需求量1 → 使用档位5 (基础分20，扣分基数4)
             case 2:
@@ -80,19 +86,54 @@ public class CalculatePoints : MonoBehaviour
             case 5:
                 return 0;  // 需求量5 → 使用档位1 (基础分100，扣分基数20)
             default:
-                return 0;  // 默认使用档位1
+                Debug.LogWarning($"未知的需求量: {demand}，使用默认档位");
+                return 5;  // 默认使用需求量0的档位
         }
     }
     
     private void InitializeDefaultGrades()
     {
-        if (gradeConfigs[0] == null)
+
+        
+        // 根据GetGradeIndexByDemand的映射关系正确初始化
+        gradeConfigs[0] = new GradeConfig { actualDemand = "5", baseScore = 100f, deductionBase = 20f }; // 需求量5 → 索引0
+        gradeConfigs[1] = new GradeConfig { actualDemand = "4", baseScore = 70f, deductionBase = 14f };  // 需求量4 → 索引1
+        gradeConfigs[2] = new GradeConfig { actualDemand = "3", baseScore = 40f, deductionBase = 8f };   // 需求量3 → 索引2
+        gradeConfigs[3] = new GradeConfig { actualDemand = "2", baseScore = 30f, deductionBase = 6f };   // 需求量2 → 索引3
+        gradeConfigs[4] = new GradeConfig { actualDemand = "1", baseScore = 20f, deductionBase = 4f };   // 需求量1 → 索引4
+        gradeConfigs[5] = new GradeConfig { actualDemand = "0", baseScore = 0f, deductionBase = 0f };    // 需求量0 → 索引5
+        
+        Debug.Log("配置创建完成！");
+        for (int i = 0; i < gradeConfigs.Length; i++)
         {
-            gradeConfigs[0] = new GradeConfig { actualDemand = "1", baseScore = 100f, deductionBase = 20f };
-            gradeConfigs[1] = new GradeConfig { actualDemand = "2", baseScore = 70f, deductionBase = 14f };
-            gradeConfigs[2] = new GradeConfig { actualDemand = "3", baseScore = 40f, deductionBase = 8f };
-            gradeConfigs[3] = new GradeConfig { actualDemand = "4", baseScore = 30f, deductionBase = 6f };
-            gradeConfigs[4] = new GradeConfig { actualDemand = "5", baseScore = 20f, deductionBase = 4f };
+            if (gradeConfigs[i] != null)
+            {
+                Debug.Log($"gradeConfigs[{i}]: 需求量{gradeConfigs[i].actualDemand}, 基础分{gradeConfigs[i].baseScore}, 扣分基数{gradeConfigs[i].deductionBase}");
+            }
+            else
+            {
+                Debug.Log($"gradeConfigs[{i}]: null");
+            }
+        }
+        
+        // 测试需求量为0的情况
+        TestZeroDemandCase();
+    }
+    
+    private void TestZeroDemandCase()
+    {
+        Debug.Log("=== 测试需求量为0的情况 ===");
+        float score = Calculate(0, 0, 0, 0, 0, 0);
+        Debug.Log($"需求量和分配量都为0时的得分: {score}");
+        
+        // 预期结果应该是0分，因为需求量0对应基础分0
+        if (Mathf.Approximately(score, 0f))
+        {
+            Debug.Log("✓ 测试通过：需求量为0时正确返回0分");
+        }
+        else
+        {
+            Debug.LogWarning($"✗ 测试失败：需求量为0时应该返回0分，但实际返回{score}分");
         }
     }
     
@@ -111,16 +152,46 @@ public class CalculatePoints : MonoBehaviour
         }
     }
     
+    private GradeConfig GetGradeConfig(int gradeIndex)
+    {
+        // 直接返回对应的配置，不依赖数组
+        switch (gradeIndex)
+        {
+            case 0: // 需求量5
+                return new GradeConfig { actualDemand = "5", baseScore = 100f, deductionBase = 20f };
+            case 1: // 需求量4
+                return new GradeConfig { actualDemand = "4", baseScore = 70f, deductionBase = 14f };
+            case 2: // 需求量3
+                return new GradeConfig { actualDemand = "3", baseScore = 40f, deductionBase = 8f };
+            case 3: // 需求量2
+                return new GradeConfig { actualDemand = "2", baseScore = 30f, deductionBase = 6f };
+            case 4: // 需求量1
+                return new GradeConfig { actualDemand = "1", baseScore = 20f, deductionBase = 4f };
+            case 5: // 需求量0
+                return new GradeConfig { actualDemand = "0", baseScore = 0f, deductionBase = 0f };
+            default:
+                Debug.LogError($"无效的档位索引: {gradeIndex}");
+                return new GradeConfig { actualDemand = "default", baseScore = 0f, deductionBase = 0f };
+        }
+    }
+
     private float CalculateTotalScore(int gradeIndex, float allocation, float actualDemand)
     {
         // 验证输入参数
-        if (gradeIndex < 0 || gradeIndex >= gradeConfigs.Length)
+        if (gradeIndex < 0 || gradeIndex >= 6)
         {
+            Debug.LogError($"无效的档位索引: {gradeIndex}");
             return 0f;
         }
         
-        GradeConfig grade = gradeConfigs[gradeIndex];
+        // 直接获取配置，不依赖数组
+        GradeConfig grade = GetGradeConfig(gradeIndex);
+        
+        Debug.Log($"档位索引: {gradeIndex}, 基础分: {grade.baseScore}, 扣分基数: {grade.deductionBase}");
+        Debug.Log($"分配量: {allocation}, 实际需求: {actualDemand}");
+        
         AllocationRelation relation = GetAllocationRelation(allocation, actualDemand);
+        Debug.Log($"分配关系: {relation}");
         
         float totalScore = 0f;
         
@@ -128,14 +199,17 @@ public class CalculatePoints : MonoBehaviour
         {
             case AllocationRelation.Equal:
                 totalScore = CalculateEqualScore(grade);
+                Debug.Log($"相等分配，计算结果: {totalScore} = {grade.baseScore} * {GetCurrentRiskIndex()}");
                 break;
                 
             case AllocationRelation.Excess:
                 totalScore = CalculateExcessScore(grade);
+                Debug.Log($"过量分配，计算结果: {totalScore}");
                 break;
                 
             case AllocationRelation.Shortage:
                 totalScore = CalculateShortageScore(grade, allocation, actualDemand);
+                Debug.Log($"不足分配，计算结果: {totalScore}");
                 break;
         }
         
@@ -167,7 +241,7 @@ public class CalculatePoints : MonoBehaviour
     private float CalculateShortageScore(GradeConfig grade, float allocation, float actualDemand)
     {
         float shortage = actualDemand - allocation;
-        float deduction = shortage * grade.deductionBase * GetCurrentRiskIndex();
+        float deduction = shortage * grade.baseScore/4 * GetCurrentRiskIndex();
         return grade.baseScore - deduction;
     }
 }
