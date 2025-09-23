@@ -462,7 +462,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -896,7 +896,7 @@ MonoBehaviour:
   nextButton: {fileID: 208889185}
   currentPage: 0
   totalPages: 0
-  TextPrefab: {fileID: 4573859777300281143, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
+  TextPrefab: {fileID: 7422287293587355801, guid: 84503450e69f2bd4680d5c0e885aef4f, type: 3}
   TextCanvasPrefab: {fileID: 9073773762801224888, guid: 17b04c41ca1b8024a862b91943494a13, type: 3}
 --- !u!61 &1166343043
 BoxCollider2D:

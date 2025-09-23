@@ -755,6 +755,7 @@ MonoBehaviour:
   FoodDistributeQuantity: 0
   NewFoodQuantity: 0
   MissionIndex: 0
+  DistributeBar: {fileID: 0}
 --- !u!1 &340177526
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 829.3, y: -272.3}
+  m_AnchoredPosition: {x: 2036, y: -964}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340177528
@@ -1038,6 +1039,7 @@ MonoBehaviour:
   mainCamera: {fileID: 770544813}
   DistributeBar: {fileID: 394519485}
   InputMode: 0
+  WaittingTime: 0
 --- !u!1 &488850742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,9 +2489,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appPage: {fileID: 1689639592}
   endPage: {fileID: 1145195462}
-  closeButton: {fileID: 864867593}
   createMessageButton: {fileID: 1305213386}
-  commitButton: {fileID: 593735451}
+  Parentobject: {fileID: 0}
   messagePrefab: {fileID: 394519485}
   spacing: 120
   startPosition: {x: 0, y: 0, z: 0}
@@ -2898,6 +2899,7 @@ MonoBehaviour:
   MedicineDistributeQuantity: 0
   NewMedicineQuantity: 0
   MissionIndex: 0
+  DistributeBar: {fileID: 0}
 --- !u!1 &1766495058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,6 +3201,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   DistributeBar: {fileID: 394519485}
   InputMode: 0
+  WaittingTime: 0
 --- !u!1 &1929758257
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,6 +3506,7 @@ MonoBehaviour:
   LivingDistributeQuantity: 0
   NewLivingQuantity: 0
   MissionIndex: 0
+  DistributeBar: {fileID: 0}
 --- !u!1 &2010280145
 GameObject:
   m_ObjectHideFlags: 0

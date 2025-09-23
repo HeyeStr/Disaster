@@ -86,11 +86,11 @@ public class AddressBarMono : MonoBehaviour
     }
 
 
-    private void InputDistributeBar(string PhoneNumber)
+    private void InputDistributeBar(string Address)
     {
         Transform AddressTexttransform = transform.Find("AddressText");
-        AddressTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text= PhoneNumber;
-        DistributeBar.GetComponent<DistributeBarMono>().PhoneNumber = PhoneNumber;
+        AddressTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text= Address;
+        DistributeBar.GetComponent<DistributeBarMono>().Address = Address;
     }
     private void OnMouseDown()
     {

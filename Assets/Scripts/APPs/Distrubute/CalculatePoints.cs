@@ -43,7 +43,7 @@ public class CalculatePoints : MonoBehaviour
 
 
     public float Calculate(int allocation_living, int allocation_food, int allocation_medicine, 
-                          int actualDemand_living, int actualDemand_food, int actualDemand_medicine, int settledPeople)
+                          int actualDemand_living, int actualDemand_food, int actualDemand_medicine)
     {
         float totalScore = 0f;
 
@@ -57,7 +57,11 @@ public class CalculatePoints : MonoBehaviour
         float medicineScore = CalculateTotalScore(medicineGradeIndex, allocation_medicine, actualDemand_medicine);
         
         totalScore = livingScore + foodScore + medicineScore;
-        
+        Debug.Log(allocation_living+" " + allocation_food + " " + allocation_medicine + " " + actualDemand_living + " " + actualDemand_food + " " + actualDemand_medicine);
+
+        Debug.Log("livingScore" + livingScore);
+        Debug.Log("foodScore" + foodScore);
+        Debug.Log("medicineScore" + medicineScore);
         return totalScore;
     }
 

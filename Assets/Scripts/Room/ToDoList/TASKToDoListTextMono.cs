@@ -8,6 +8,7 @@ using UnityEngine;
 public class TaskToDoListTextMono : MonoBehaviour
 {
     public List<Mission> Missions;
+    int x;
 
     void Start()
     {
@@ -18,13 +19,12 @@ public class TaskToDoListTextMono : MonoBehaviour
         AddTask("78游戏", 1);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.G))
         {
-            AddInformation(0, "王朝烈马");
-
+            AddInformation(0, "王朝烈马"+x.ToString());
+            x++;
         }
     }
     public void AddInformation(int MissionIndex, string Information)
@@ -40,6 +40,19 @@ public class TaskToDoListTextMono : MonoBehaviour
                 Mission.Informations.Add ( Information);
                 gameObject.GetComponent<ToDoList>().DisplayTaskPage(MissionIndex);
                 break;
+            }
+        }
+    }
+    public void DeleteInformation(string Information,int page)
+    {
+        
+        for(int i=0;i< Missions[page].Informations.Count; i++)
+        {
+            if (Missions[page].Informations[i] == Information) {
+                Missions[page].Informations.Remove(Missions[page].Informations[i]);
+
+                ToDoList todolist = transform.gameObject.GetComponent<ToDoList>();
+                todolist.DisplayTaskPage(Missions[page].MissionIndex);
             }
         }
     }

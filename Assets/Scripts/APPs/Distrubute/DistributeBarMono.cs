@@ -40,16 +40,17 @@ public class DistributeBarMono : MonoBehaviour
                 if (mission.PhoneNumber == PhoneNumber)
                 {
 
-                    
+                    Debug.Log("calculatehere");
                     textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
-                    // Score = calculatePoints.Calculate(LivingResourceQuantity, FoodResourceQuantity, MedicalResourceQuantity, allMissionsMono.GetLivingResource(), allMissionsMono.GetFoodResource(), allMissionsMono.GetMedicineResource());
-
+                    Score = (int)calculatePoints.Calculate(LivingResourceQuantity, FoodResourceQuantity, MedicalResourceQuantity, allMissionsMono.GetLivingResource(mission.MissionIndex), allMissionsMono.GetFoodResource(mission.MissionIndex), allMissionsMono.GetMedicineResource(mission.MissionIndex));
+                    Debug.Log(Score + "Score");
                     missions.Remove(mission);
                     return Score;
                 }
                 else
                 {
-                    Score = 0;                                  //�绰�͵�ַ�Բ�������ʧ��
+                    Debug.Log("calculatehere2222222222");
+                    Score = 0;                                
 
                    
                     textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
