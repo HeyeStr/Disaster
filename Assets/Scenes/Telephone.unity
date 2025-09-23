@@ -2738,7 +2738,7 @@ AudioSource:
   m_GameObject: {fileID: 1587666003}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3938781306733215718, guid: 93a595c4999e8e247b14cec12cfb26e5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2876,6 +2876,7 @@ MonoBehaviour:
   optionPrefab: {fileID: 1825877577895433532, guid: b4c577f9e719f054daf5ce216b368fcb, type: 3}
   optionContainer: {fileID: 1768548041}
   branchPanel: {fileID: 326279047}
+  isDialogue: 0
   textFinished: 0
   cancelTyping: 0
   isInBranchSelection: 0
