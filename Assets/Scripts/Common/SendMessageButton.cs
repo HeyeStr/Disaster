@@ -8,15 +8,15 @@ namespace Common
     {
         public bool isEndButton;
         
-        public TextMeshPro textMeshPro;
+        public TextMeshProUGUI textMeshPro;
 
         public AcceptMessage interactObj;
         
         public bool canSelect;
-        private void Awake()
-        {
-            canSelect = true;
-        }
+        //private void Awake()
+        //{
+        //    //canSelect = true;
+        //}
 
         private void OnMouseDown()
         {
