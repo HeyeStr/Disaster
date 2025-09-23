@@ -21,6 +21,57 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 37b1261b367fa2e4a9b1fd66c0aec3dd
   - enabled: 1
+    path: Assets/Scenes/Level/Day 1.unity
+    guid: ab89583177e864c4594734607186d989
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day1.unity
+    guid: cc9447be1a13f47cca9597a4977c5a36
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day2.unity
+    guid: 14b9d79e5ab7e404daf772e50f2a94db
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day3.unity
+    guid: 7ad43c7516bea41b7a0df53003c17cae
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day4.unity
+    guid: 7f6f5a114417a4fb2a2d5d8796c2e3e0
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day5.unity
+    guid: af34950ab3f624fd9b50789055fcf5e2
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day6.unity
+    guid: 30fe8daa403fc4007b06361d5d266d37
+  - enabled: 1
+    path: Assets/Scenes/Level/BlogScene_Day7.unity
+    guid: 4b77f666f473742cc85a869aae820967
+  - enabled: 1
+    path: Assets/Scenes/Level/GameFail.unity
+    guid: 0a193eaa97237c04ba773827c7d47385
+  - enabled: 1
+    path: Assets/Scenes/MainScene 1.unity
+    guid: 5ee43e34afbae46fa8fbcc48cc270006
+  - enabled: 1
+    path: Assets/Scenes/NewDistributeScene.unity
+    guid: eab057edf83b346a7affacd18a9228f5
+  - enabled: 1
+    path: Assets/Scenes/PictureMaking.unity
+    guid: 247349817fc23164da6b9b3ab3e28a9f
+  - enabled: 1
+    path: Assets/Scenes/Telephone.unity
+    guid: 83a6e1b8e20359b478a97857f4baa011
+  - enabled: 1
+    path: Assets/Scenes/TestBlogMenuScene 1.unity
+    guid: 5cbdcf60493718848a0f79598273f3cb
+  - enabled: 1
+    path: Assets/Scenes/TestMainScene 1.unity
+    guid: 11612c1c784deab43a1a0aa88b2c260c
+  - enabled: 1
+    path: Assets/Scenes/Level/GameFinish.unity
+    guid: 3b2c4d641201706488d74b4efbf2cf85
+  - enabled: 1
+    path: Assets/Scenes/Level/GameStar.unity
+    guid: b4652b155b8e47145bc1ede2e87d2813
+  - enabled: 1
     path: Assets/Scenes/BlogMenuScene.unity
     guid: 972294cf3eb2ea04793b7ebe053f03f3
   - enabled: 1
