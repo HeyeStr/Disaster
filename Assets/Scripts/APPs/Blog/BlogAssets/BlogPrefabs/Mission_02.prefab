@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5236899244898389100}
   - component: {fileID: 1446928197881520349}
   m_Layer: 0
-  m_Name: Mission_01_01
+  m_Name: Mission_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 6843482017641091689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.43, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1200287593449439788}
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 363899731, guid: 4dff490ff7b73064fbdc39b9bb2418af, type: 3}
+  m_Sprite: {fileID: -1530167985, guid: 89850a56eec97e848b3d8ff04d019384, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -94,11 +94,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
-      value: Mission_01_01_text3
+      value: Mission_01_02_text3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: missionIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u98DF\u54C1\u7C7B3\u4EFD\u989D"
+      value: "\u4E00\u4F4D\u6709\u9AD8\u8840\u538B"
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -166,11 +170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.728
+      value: 4.985
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.911
+      value: 6.644
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -195,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1.869
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.575
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -221,11 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
-      value: Mission_01_01_text5
+      value: Mission_01_02_text5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: missionIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u5468\u8001\u5E08 139 8765 432"
+      value: "\u674E\u4F1F 138 1234 567"
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -321,11 +333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.759
+      value: -0.263
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.208
+      value: 1.437
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -352,11 +364,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
-      value: Mission_01_01_text2
+      value: Mission_01_02_text2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: missionIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u63A5\u6536\u5468\u8FB9\u53D7\u707E\u7FA4\u4F1742\u4EBA"
+      value: "\u4E00\u5BB6\u516D\u53E3"
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -428,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 8.739
+      value: 8.95
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -444,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5559719
+      value: 1.5935341
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalScale.y
@@ -452,7 +468,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.337
+      value: -1.229
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -477,17 +497,33 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
-      value: Mission_01_01_text1
+      value: Mission_01_02_text1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: missionIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u5357\u4E34\u5E02\u5B81\u5DDE\u533A\u65B0\u57CE\u8857\u9053\u7B2C\u4E00\u4E2D\u5B66\u4E34\u65F6\u5B89\u7F6E\u70B9"
+      value: "\u5357\u4E34\u5E02\u5B81\u5DDE\u533A\u6EE8\u6CB3\u8857\u9053\u6DA6\u56ED\u5929\u5730\u5C0F\u533A"
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -559,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 9.4
+      value: 10.36
       objectReference: {fileID: 0}
     - target: {fileID: 5058602030477868963, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -575,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.9378374
+      value: 4.3808436
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalScale.y
@@ -583,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.85
+      value: -0.569
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -610,11 +646,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
-      value: Mission_01_01_text4
+      value: Mission_01_02_text4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: missionIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u751F\u6D3B\u7269\u8D442\u4EFD\u989D"
+      value: "\u98DF\u7269\u548C\u996E\u7528\u6C34"
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -702,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.8263141
+      value: 1.5523852
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_LocalScale.y
@@ -710,7 +750,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.782
+      value: -1.614
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610196610728842456, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.982
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

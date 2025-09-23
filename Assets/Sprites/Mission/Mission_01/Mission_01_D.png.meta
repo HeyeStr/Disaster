@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e3435d9c45f1b8f4fb21587be51b2e76
+guid: e905d910fe547c9448030fd8f5d5aeba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlogD_Mission_Test_2_0
+      name: Mission_01_D_0
       rect:
         serializedVersion: 2
         x: 201
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63f68b28cd3a382459540474bbef5ce0
-      internalID: -974648424
+      spriteID: a042add2c1726e7418972037db4fc35c
+      internalID: 562157030
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BlogD_Mission_Test_2_0: -974648424
+      Mission_01_D_0: 562157030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
