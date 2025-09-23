@@ -1,3 +1,4 @@
+using Phone;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class MonitorMonoBehaviour : MonoBehaviour
     public bool Desk;
     public bool DistributePanal;
     public SceneControlMono sceneControlMono;
+    public AcceptMessage PhoneObject;
+    public AcceptMessage Dialogue;
 
     void Start()
     {

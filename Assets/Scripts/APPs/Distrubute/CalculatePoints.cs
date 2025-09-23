@@ -25,7 +25,7 @@ public enum AllocationRelation
 public class CalculatePoints : MonoBehaviour
 {
     [Header("档位配置")]
-    [SerializeField] private GradeConfig[] gradeConfigs = new GradeConfig[5];
+    [SerializeField] private GradeConfig[] gradeConfigs = new GradeConfig[6];
 
     [Header("风险系数设置")]
     public float LowRiskIndex = 1.1f;      // 低风险系数
@@ -73,6 +73,8 @@ public class CalculatePoints : MonoBehaviour
     {
         switch (demand)
         {
+            case 0:
+                return 5;  // 需求量0 → 使用档位6 (基础分0，扣分基数0)
             case 1:
                 return 4;  // 需求量1 → 使用档位5 (基础分20，扣分基数4)
             case 2:
@@ -84,7 +86,8 @@ public class CalculatePoints : MonoBehaviour
             case 5:
                 return 0;  // 需求量5 → 使用档位1 (基础分100，扣分基数20)
             default:
-                return 0;  // 默认使用档位1
+                Debug.LogWarning($"未知的需求量: {demand}，使用默认档位");
+                return 5;  // 默认使用需求量0的档位
         }
     }
     
@@ -98,6 +101,7 @@ public class CalculatePoints : MonoBehaviour
         gradeConfigs[2] = new GradeConfig { actualDemand = "3", baseScore = 40f, deductionBase = 8f };   // 需求量3 → 索引2
         gradeConfigs[3] = new GradeConfig { actualDemand = "2", baseScore = 30f, deductionBase = 6f };   // 需求量2 → 索引3
         gradeConfigs[4] = new GradeConfig { actualDemand = "1", baseScore = 20f, deductionBase = 4f };   // 需求量1 → 索引4
+        gradeConfigs[5] = new GradeConfig { actualDemand = "0", baseScore = 0f, deductionBase = 0f };    // 需求量0 → 索引5
         
         Debug.Log("配置创建完成！");
         for (int i = 0; i < gradeConfigs.Length; i++)
@@ -110,6 +114,26 @@ public class CalculatePoints : MonoBehaviour
             {
                 Debug.Log($"gradeConfigs[{i}]: null");
             }
+        }
+        
+        // 测试需求量为0的情况
+        TestZeroDemandCase();
+    }
+    
+    private void TestZeroDemandCase()
+    {
+        Debug.Log("=== 测试需求量为0的情况 ===");
+        float score = Calculate(0, 0, 0, 0, 0, 0);
+        Debug.Log($"需求量和分配量都为0时的得分: {score}");
+        
+        // 预期结果应该是0分，因为需求量0对应基础分0
+        if (Mathf.Approximately(score, 0f))
+        {
+            Debug.Log("✓ 测试通过：需求量为0时正确返回0分");
+        }
+        else
+        {
+            Debug.LogWarning($"✗ 测试失败：需求量为0时应该返回0分，但实际返回{score}分");
         }
     }
     
@@ -143,6 +167,8 @@ public class CalculatePoints : MonoBehaviour
                 return new GradeConfig { actualDemand = "2", baseScore = 30f, deductionBase = 6f };
             case 4: // 需求量1
                 return new GradeConfig { actualDemand = "1", baseScore = 20f, deductionBase = 4f };
+            case 5: // 需求量0
+                return new GradeConfig { actualDemand = "0", baseScore = 0f, deductionBase = 0f };
             default:
                 Debug.LogError($"无效的档位索引: {gradeIndex}");
                 return new GradeConfig { actualDemand = "default", baseScore = 0f, deductionBase = 0f };
@@ -152,7 +178,7 @@ public class CalculatePoints : MonoBehaviour
     private float CalculateTotalScore(int gradeIndex, float allocation, float actualDemand)
     {
         // 验证输入参数
-        if (gradeIndex < 0 || gradeIndex >= 5)
+        if (gradeIndex < 0 || gradeIndex >= 6)
         {
             Debug.LogError($"无效的档位索引: {gradeIndex}");
             return 0f;

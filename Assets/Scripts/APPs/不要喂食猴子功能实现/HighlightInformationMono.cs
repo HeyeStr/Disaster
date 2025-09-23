@@ -15,7 +15,7 @@ public class HighlightInformationMono : MonoBehaviour
     GameObject gameObjectList;
     public bool HighLightStringStarttoMove;
     public float MoveSpeed;
-    
+    public bool IsTelephone;
     public string StringInformation;                     //任务相关信息
     public string missionName;                          //任务相关信息
     public int missionIndex;                            //任务相关信息
@@ -73,7 +73,7 @@ public class HighlightInformationMono : MonoBehaviour
             {
                 HighLightStringStarttoMove = false;
                 
-                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(missionIndex, StringInformation);                           //0是待修改的量
+                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(missionIndex, StringInformation, IsTelephone);                           //0是待修改的量
                 Destroy(gameObject);
             }
         }

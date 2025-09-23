@@ -42,6 +42,7 @@ namespace Phone
 
         public override void AcceptString(SendMessageButton button, string message)
         {
+            Debug.Log(message);
             StartCoroutine(CallPhoneWordByWord(message));
         }
     }

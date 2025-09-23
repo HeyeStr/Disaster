@@ -29,7 +29,9 @@ public class DistributeControlMono : MonoBehaviour
         foreach (GameObject distributBar in DistributeBars) {
             TotalScore += distributBar.GetComponent<DistributeBarMono>().Submit();
             Score.GetComponent<TextMeshProUGUI>().text=TotalScore.ToString();
+
         }
+
         DistributeBars.Clear();
     }
 
