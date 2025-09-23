@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8fb3d88ba1b8dc4eb2bec0b54e7e2f1
+guid: 89850a56eec97e848b3d8ff04d019384
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mission_01_02_D_0
+      name: Mission_02_D_0
       rect:
         serializedVersion: 2
         x: 201
-        y: 271
+        y: 24
         width: 598
-        height: 1131
+        height: 1632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9581ed8051b51140bf6adb63ed28272
-      internalID: 952310261
+      spriteID: b88c5cc18aa153d478c198b138e2182a
+      internalID: -1530167985
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mission_01_02_D_0: 952310261
+      Mission_02_D_0: -1530167985
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
