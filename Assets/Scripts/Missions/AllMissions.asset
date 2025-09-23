@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AllMissions
   m_EditorClassIdentifier: 
   AllMisions:
-  - MissionInedx: 0
+  - MissionInedx: 1
     Address: "\u738B\u671D\u70C8\u9A6C1"
     PhoneNumber: "\u738B\u671D\u70C8\u9A6C2"
     FoodResource: 5

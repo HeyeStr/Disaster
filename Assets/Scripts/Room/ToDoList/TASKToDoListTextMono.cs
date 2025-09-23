@@ -65,6 +65,7 @@ public class TaskToDoListTextMono : MonoBehaviour
         while (i < Missions.Count) {
             i++;
         }
+        Debug.Log("Missions"+ Missions);
         Missions.Add(new Mission
         {
             MissionName = Missionname,
