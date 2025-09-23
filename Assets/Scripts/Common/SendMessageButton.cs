@@ -6,6 +6,8 @@ namespace Common
 {
     public class SendMessageButton : MonoBehaviour
     {
+        public bool isEndButton;
+        
         public TextMeshPro textMeshPro;
 
         public AcceptMessage interactObj;

@@ -1,6 +1,5 @@
 using System.Collections;
 using Common;
-using EventSo;
 using UnityEngine;
 
 namespace Phone
@@ -14,9 +13,7 @@ namespace Phone
         [SerializeField] private string targetTag;
 
         [SerializeField] private float maxTime;
-
-        public VoidEventSo phoneOpenEvent;
-
+        
         public float timer;
 
         public bool isSliding;
@@ -33,14 +30,6 @@ namespace Phone
             isSliding = false;
             backButton.SetActive(false);
             transform.position = hidePosition;
-            if (phoneOpenEvent != null)
-                phoneOpenEvent.Event += ActiveButton;
-        }
-
-        private void OnDisable()
-        {
-            if (phoneOpenEvent != null)
-                phoneOpenEvent.Event -= ActiveButton;
         }
         
         private void OnMouseDown()
@@ -66,7 +55,7 @@ namespace Phone
             buttonClose = !buttonClose;
             if (finalState)
             {
-                phoneOpenEvent?.EventRise();
+                ActiveButton();
             }
         }
 

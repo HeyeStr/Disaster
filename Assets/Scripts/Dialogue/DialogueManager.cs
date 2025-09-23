@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Common;
-using EventSo;
 using Manager;
 using Phone;
 using SettingSo;
@@ -15,9 +14,6 @@ namespace Dialogue
 {
     public class DialogueManager : AcceptMessage
     {
-        [Header("结束对话文本内容")]
-        public string selectEndText;
-        
         [Header("信息点击跳转映射")]
         public DialogueTurnMapSo turnMap;
         
@@ -27,9 +23,6 @@ namespace Dialogue
         static DialogueManager Instance;
         
         public PlayerInputManager playerInput;
-
-        [Header("事件引用")]
-        public SendMessageEventSo dialogueEvent;
         
         [Header("笔记本对象")]
         public ToDoList toDoList;
@@ -79,6 +72,8 @@ namespace Dialogue
         private List<string> textList = new List<string>();
 
         [Header("对话状态")]
+        [SerializeField] public bool isDialogue;
+        
         [SerializeField] public bool textFinished;
 
         [SerializeField] public bool cancelTyping;
@@ -106,8 +101,6 @@ namespace Dialogue
 
         private void OnEnable()
         {
-            dialogueEvent.Event += InitDialogue;
-            
             textFinished = true;
             cancelTyping = false;
             isInBranchSelection = false;
@@ -121,7 +114,7 @@ namespace Dialogue
                 return;
             if (canSelect)
                 return;
-            if (playerInput.ClickDialogue)
+            if (isDialogue && playerInput.ClickDialogue)
             {
                 DialogueInput();
             }
@@ -130,8 +123,6 @@ namespace Dialogue
         // 当对话框禁用时清理
         private void OnDisable()
         {
-            dialogueEvent.Event -= InitDialogue;
-            
             HideBranchPanel();
             ClearBranchOptions();
             isInBranchSelection = false;
@@ -147,9 +138,10 @@ namespace Dialogue
         private void DialogueInput()
         {
             // 文本全部输出完，结束对话
-            if (index >= textList.Count || endSign.StartsWith(textList[index]))
+            if (index >= textList.Count || endSign.Equals(textList[index]))
             {
-                gameObject.SetActive(false);
+                dialogueObj.SetActive(false);
+                isDialogue = false;
                 index = 0;
                 return;
             }
@@ -170,7 +162,7 @@ namespace Dialogue
             textFinished = false;
             // 检查是否需要切换对话
             SwitchDialogue();
-            if (canSelect || textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase)) {
+            if (canSelect || textList[index].Equals(pauseSign)) {
                 yield break;
             }
 
@@ -226,7 +218,7 @@ namespace Dialogue
                     headImage.sprite = personHead;
                 index ++;
             }
-            if (textList[index].StartsWith(optionSign, StringComparison.OrdinalIgnoreCase))
+            if (textList[index].Equals(optionSign, StringComparison.OrdinalIgnoreCase))
             {
                 ParseAndShowBranches();
             }
@@ -312,11 +304,12 @@ namespace Dialogue
             }
         }
 
-        private void InitDialogue(string phoneNumber)
+        public void InitDialogue(string phoneNumber)
         {
             Debug.Log(JsonUtility.ToJson(messageMap));
             Debug.Log(phoneNumber);
             
+            isDialogue = true;
             Message message = messageMap.GetValue(phoneNumber);
             textFile = message.dialogueFile;
             personHead = message.headImage;
@@ -331,9 +324,10 @@ namespace Dialogue
         {
             for (int i = 0; i < textList.Count; i++)
             {
-                if (textList[i].StartsWith(selectEndSign, StringComparison.CurrentCultureIgnoreCase))
+                if (textList[i].Equals(selectEndSign))
                 {
                     selectEndIndex = i + 1;
+                    Debug.Log(selectEndIndex);
                 }
             }
         }
@@ -343,16 +337,17 @@ namespace Dialogue
             if (canSelect)
             {
                 canSelect = false;
-                if (text.Equals(selectEndText)){
-                    Debug.Log("结束对话选择");
+                if (button.isEndButton){
                     index = selectEndIndex;
+                    button.canSelect = true;
+                    Debug.Log(index);
                 } else {
+                    button.canSelect = false;
                     index = turnMap.GetValue(text) - 1;
                 }
                 Debug.Log(JsonUtility.ToJson(turnMap));
                 Debug.Log(text);
                 DialogueInput();
-                button.canSelect = false;
             }
         }
 

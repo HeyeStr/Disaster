@@ -1043,7 +1043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112c876e94f54dd8a55d07c052438418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEvent: {fileID: 11400000, guid: 14cb6ace02c04f24d85047915f364106, type: 2}
   phoneController: {fileID: 1587666009}
   callWaitTime: 0.5
 --- !u!1 &654659889
@@ -1234,6 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c409f45988f4029abe7f64bb9593490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndButton: 0
   textMeshPro: {fileID: 391139994}
   interactObj: {fileID: 1587666009}
   canSelect: 0
@@ -1547,6 +1547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c409f45988f4029abe7f64bb9593490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndButton: 0
   textMeshPro: {fileID: 354806245}
   interactObj: {fileID: 1660910315}
   canSelect: 0
@@ -2036,6 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c409f45988f4029abe7f64bb9593490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndButton: 1
   textMeshPro: {fileID: 800752849}
   interactObj: {fileID: 1660910315}
   canSelect: 0
@@ -2183,6 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c409f45988f4029abe7f64bb9593490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndButton: 0
   textMeshPro: {fileID: 1714592348}
   interactObj: {fileID: 1660910315}
   canSelect: 0
@@ -2330,6 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c409f45988f4029abe7f64bb9593490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndButton: 0
   textMeshPro: {fileID: 902356784}
   interactObj: {fileID: 1660910315}
   canSelect: 0
@@ -2524,7 +2528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524491917}
   m_Layer: 5
-  m_Name: DialogueBack
+  m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2564,6 +2568,7 @@ GameObject:
   - component: {fileID: 1587666005}
   - component: {fileID: 1587666008}
   - component: {fileID: 1587666009}
+  - component: {fileID: 1587666010}
   m_Layer: 0
   m_Name: Phone
   m_TagString: Player
@@ -2702,7 +2707,6 @@ MonoBehaviour:
   showPosition: {x: 5.14, y: -0.12, z: 0}
   targetTag: Player
   maxTime: 0.5
-  phoneOpenEvent: {fileID: 11400000, guid: b980fad256eede24bae817f98952a664, type: 2}
   timer: 0
   isSliding: 0
   backButton: {fileID: 1809217509}
@@ -2723,6 +2727,104 @@ MonoBehaviour:
   numberLabel: {fileID: 1850373040}
   durTime: 0.1
   phoneNumber: 
+  dialogueManager: {fileID: 0}
+  audioSource: {fileID: 0}
+--- !u!82 &1587666010
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587666003}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1660910314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,7 +2837,7 @@ GameObject:
   - component: {fileID: 1660910315}
   m_Layer: 0
   m_Name: Dialogue
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2752,11 +2854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f54dfa417d29974fb1271d71361a113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectEndText: "\u7ED3\u675F\u786E\u8BA4"
   turnMap: {fileID: 11400000, guid: dc2c55032b1b248488fff2a06da41773, type: 2}
   messageMap: {fileID: 11400000, guid: 6e99ae8769a147d449e10f1b31d74a60, type: 2}
   playerInput: {fileID: 654659890}
-  dialogueEvent: {fileID: 11400000, guid: 14cb6ace02c04f24d85047915f364106, type: 2}
   toDoList: {fileID: 0}
   dialogueObj: {fileID: 1524491916}
   headImage: {fileID: 0}
@@ -3093,9 +3193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb32206b5534855bf1c903249faf259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhoneController: {fileID: 0}
   slideMove: {fileID: 1587666008}
-  playerInput: {fileID: 654659890}
-  targetTag: Test
 --- !u!61 &1809217512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3251,7 +3350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sdsdsdsa
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3404,6 +3503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c409f45988f4029abe7f64bb9593490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndButton: 0
   textMeshPro: {fileID: 953604660}
   interactObj: {fileID: 1660910315}
   canSelect: 0

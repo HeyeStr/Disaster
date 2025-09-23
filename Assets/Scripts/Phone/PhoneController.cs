@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Common;
+using Dialogue;
 using TMPro;
 using UnityEngine;
 
@@ -14,9 +15,16 @@ namespace Phone
         public float durTime;
         
         public string phoneNumber;
+        
+        public DialogueManager dialogueManager;
+        
+        public AudioSource audioSource;
 
         private void Awake()
         {
+            dialogueManager = GameObject.FindGameObjectWithTag("Dialogue")?.GetComponent<DialogueManager>();
+            audioSource = GetComponent<AudioSource>();
+            numberLabel = GetComponentInChildren<TMP_Text>();
             numberLabel.text = "";
         }
 
@@ -35,7 +43,6 @@ namespace Phone
         public override void AcceptString(SendMessageButton button, string message)
         {
             StartCoroutine(CallPhoneWordByWord(message));
-            button.canSelect = false;
         }
     }
 }

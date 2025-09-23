@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 namespace Common
 {
     [CreateAssetMenu(menuName = "MessageObj")]
     public class Message : ScriptableObject
     {
+        /**
+         * 是对话选择
+         */
+        public bool isDialogueSelect;
+        
+        /**
+        * 电话号码
+         */
+        public int phoneNumber;
+        
         /**
          * 对话内容
          */
@@ -21,5 +30,9 @@ namespace Common
          */
         public string personName;
         
+        /**
+         * 跳转行数
+         */
+        public int turnRaw;
     }
 }
