@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Common;
 using TMPro;
 using UnityEngine;
 
@@ -31,9 +32,10 @@ namespace Phone
             phoneNumber = message;
         }
 
-        public override void AcceptString(string message)
+        public override void AcceptString(SendMessageButton button, string message)
         {
             StartCoroutine(CallPhoneWordByWord(message));
+            button.canSelect = false;
         }
     }
 }

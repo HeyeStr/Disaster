@@ -10,14 +10,19 @@ namespace Common
 
         public AcceptMessage interactObj;
         
+        public bool canSelect;
         private void Awake()
         {
+            canSelect = true;
         }
 
         private void OnMouseDown()
         {
             Debug.Log("选择对话开始");
-            interactObj.AcceptString(textMeshPro.text);
+            if (canSelect)
+            {
+                interactObj.AcceptString(this, textMeshPro.text);
+            }
         }
     }
 }

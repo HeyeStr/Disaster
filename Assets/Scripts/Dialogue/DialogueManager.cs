@@ -15,6 +15,9 @@ namespace Dialogue
 {
     public class DialogueManager : AcceptMessage
     {
+        [Header("结束对话文本内容")]
+        public string selectEndText;
+        
         [Header("信息点击跳转映射")]
         public DialogueTurnMapSo turnMap;
         
@@ -50,15 +53,17 @@ namespace Dialogue
         [SerializeField] int index;
 
         [SerializeField] float textSpeed;
-
+        
         [Header("文本特殊关键词")]
-        [SerializeField] private string branchSign = "[OPTION]";
+        [SerializeField] private string optionSign = "[OPTION]";
 
-        [SerializeField] private string branchEnd = "[/OPTION]";
+        [SerializeField] private string optionEnd = "[/OPTION]";
         
         [SerializeField] private string pauseSign = "[SELECT]";
         
         [SerializeField] private string endSign = "[END]";
+        
+        [SerializeField] public string selectEndSign = "[FINISH]";
 
         [SerializeField] private string playerName;
         
@@ -81,6 +86,10 @@ namespace Dialogue
         [SerializeField] public bool isInBranchSelection;
         
         [SerializeField] public bool canSelect;
+        
+        private int selectEndIndex;
+        
+        SendMessageButton sendButton;
         
         void Awake()
         {
@@ -161,12 +170,7 @@ namespace Dialogue
             textFinished = false;
             // 检查是否需要切换对话
             SwitchDialogue();
-            if (textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase))
-            {
-                if (toDoList)
-                    toDoList.StarttoMove = true;
-                canSelect = true;
-                textFinished = true;
+            if (canSelect || textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase)) {
                 yield break;
             }
 
@@ -199,6 +203,13 @@ namespace Dialogue
             index++;
             cancelTyping = false;
             textFinished = true;
+            
+            if (textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase))
+            {
+                if (toDoList)
+                    toDoList.StarttoMove = true;
+                canSelect = true;
+            }
         }
 
         public void SwitchDialogue()
@@ -215,7 +226,7 @@ namespace Dialogue
                     headImage.sprite = personHead;
                 index ++;
             }
-            if (textList[index].StartsWith(branchSign, StringComparison.OrdinalIgnoreCase))
+            if (textList[index].StartsWith(optionSign, StringComparison.OrdinalIgnoreCase))
             {
                 ParseAndShowBranches();
             }
@@ -232,7 +243,7 @@ namespace Dialogue
             
             int currentIndex = index;
             while (currentIndex < textList.Count &&
-                   !textList[currentIndex].Equals(branchEnd, StringComparison.OrdinalIgnoreCase))
+                   !textList[currentIndex].Equals(optionEnd, StringComparison.OrdinalIgnoreCase))
             {
                 string line = textList[currentIndex];
                 string[] parts = line.Split("|");
@@ -305,30 +316,49 @@ namespace Dialogue
         {
             Debug.Log(JsonUtility.ToJson(messageMap));
             Debug.Log(phoneNumber);
+            
             Message message = messageMap.GetValue(phoneNumber);
             textFile = message.dialogueFile;
             personHead = message.headImage;
             personName = message.personName;
             dialogueObj.SetActive(true);
             InitTextList(textFile);
+            FindSelectEndSign();
             DialogueInput();
         }
 
-        public void SwitchTargetRaw(string text)
+        public void FindSelectEndSign()
+        {
+            for (int i = 0; i < textList.Count; i++)
+            {
+                if (textList[i].StartsWith(selectEndSign, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    selectEndIndex = i + 1;
+                }
+            }
+        }
+
+        public void SwitchTargetRaw(SendMessageButton button, string text)
         {
             if (canSelect)
             {
                 canSelect = false;
-                index = turnMap.GetValue(text) - 1;
+                if (text.Equals(selectEndText)){
+                    Debug.Log("结束对话选择");
+                    index = selectEndIndex;
+                } else {
+                    index = turnMap.GetValue(text) - 1;
+                }
                 Debug.Log(JsonUtility.ToJson(turnMap));
                 Debug.Log(text);
                 DialogueInput();
+                button.canSelect = false;
             }
         }
 
-        public override void AcceptString(string message)
+        public override void AcceptString(SendMessageButton button,string message)
         {
-            SwitchTargetRaw(message);
+            SwitchTargetRaw(button, message);
         }
     }
 }
