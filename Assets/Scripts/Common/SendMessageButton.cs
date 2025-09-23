@@ -16,7 +16,7 @@ namespace Common
 
         private void OnMouseDown()
         {
-            Debug.Log("按下按键");
+            Debug.Log("选择对话开始");
             interactObj.AcceptString(textMeshPro.text);
         }
     }

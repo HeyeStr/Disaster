@@ -24,7 +24,6 @@ namespace Phone
             numberLabel.text = "";
             foreach (var num in message)
             {
-                Debug.Log(num);
                 numberLabel.text += num;
                 yield return new WaitForSeconds(durTime);
             }

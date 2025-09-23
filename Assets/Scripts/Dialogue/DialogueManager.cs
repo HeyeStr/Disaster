@@ -74,13 +74,13 @@ namespace Dialogue
         private List<string> textList = new List<string>();
 
         [Header("对话状态")]
-        public bool textFinished;
+        [SerializeField] public bool textFinished;
 
-        public bool cancelTyping;
+        [SerializeField] public bool cancelTyping;
 
-        public bool isInBranchSelection;
+        [SerializeField] public bool isInBranchSelection;
         
-        public bool canSelect;
+        [SerializeField] public bool canSelect;
         
         void Awake()
         {
@@ -149,10 +149,10 @@ namespace Dialogue
             {
                 StartCoroutine(FillTextWordByWord());
             }
-            else if (!textFinished)
+            else if (!textFinished && !cancelTyping)
             {
                 // 一行文字还没输出完
-                cancelTyping = !cancelTyping;
+                cancelTyping = true;
             }
         }
 
@@ -163,8 +163,10 @@ namespace Dialogue
             SwitchDialogue();
             if (textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase))
             {
-                toDoList.StarttoMove = true;
+                if (toDoList)
+                    toDoList.StarttoMove = true;
                 canSelect = true;
+                textFinished = true;
                 yield break;
             }
 
@@ -194,8 +196,9 @@ namespace Dialogue
             //     yield return new WaitForSeconds(textSpeed);
             // }
             textLabel.text = textList[index];
-            textFinished = true;
             index++;
+            cancelTyping = false;
+            textFinished = true;
         }
 
         public void SwitchDialogue()
@@ -300,14 +303,15 @@ namespace Dialogue
 
         private void InitDialogue(string phoneNumber)
         {
-            Debug.Log("开始对话");
+            Debug.Log(JsonUtility.ToJson(messageMap));
+            Debug.Log(phoneNumber);
             Message message = messageMap.GetValue(phoneNumber);
             textFile = message.dialogueFile;
             personHead = message.headImage;
             personName = message.personName;
             dialogueObj.SetActive(true);
             InitTextList(textFile);
-            StartCoroutine(FillTextWordByWord());
+            DialogueInput();
         }
 
         public void SwitchTargetRaw(string text)
@@ -315,15 +319,16 @@ namespace Dialogue
             if (canSelect)
             {
                 canSelect = false;
-                Debug.Log("测试" + turnMap.GetValue(text));
                 index = turnMap.GetValue(text) - 1;
+                Debug.Log(JsonUtility.ToJson(turnMap));
+                Debug.Log(text);
                 DialogueInput();
             }
         }
 
         public override void AcceptString(string message)
         {
-            DialogueInput();
+            SwitchTargetRaw(message);
         }
     }
 }

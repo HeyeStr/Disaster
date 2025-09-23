@@ -8,7 +8,7 @@ namespace SettingSo
     {
         public string key;
         public int value;
-        
+
         public StringPair(string key, int value)
         {
             this.key = key;
@@ -20,7 +20,7 @@ namespace SettingSo
     public class DialogueTurnMapSo : ScriptableObject
     {
         [SerializeField] private List<StringPair> mappings = new List<StringPair>();
-        
+
         public Dictionary<string, int> Mapping
         {
             get
@@ -33,10 +33,11 @@ namespace SettingSo
                         dict[pair.key] = pair.value;
                     }
                 }
+
                 return dict;
             }
         }
-        
+
         public void AddMapping(string key, int value)
         {
             var existing = mappings.Find(p => p.key == key);
@@ -49,18 +50,23 @@ namespace SettingSo
                 mappings.Add(new StringPair(key, value));
             }
         }
-        
+
         public int GetValue(string key)
         {
             var pair = mappings.Find(p => p.key == key);
-            return pair.value;
+            if (pair != null)
+            {
+                return pair.value;
+            }
+
+            return 0;
         }
-        
+
         public bool ContainsKey(string key)
         {
             return mappings.Exists(p => p.key == key);
         }
-        
+
         public void Clear()
         {
             mappings.Clear();
