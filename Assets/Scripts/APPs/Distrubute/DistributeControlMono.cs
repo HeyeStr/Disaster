@@ -132,6 +132,7 @@ public class DistributeControlMono : MonoBehaviour
         GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
         SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
         sceneControlMono.loadFailScene();
+        sceneControlMono.UnloadDistributeScene();
     }
     private IEnumerator FadeOutSuccess()
     {
@@ -145,6 +146,7 @@ public class DistributeControlMono : MonoBehaviour
         GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
         SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
         sceneControlMono.LoadSuccessScene();
+        sceneControlMono.UnloadDistributeScene();
     }
 
 }
