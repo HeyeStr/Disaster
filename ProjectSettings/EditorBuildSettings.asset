@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Level/StartScene.unity
+    guid: ca1ab52a37e4f06429510bb63b22c932
+  - enabled: 1
+    path: Assets/Scenes/Level/Day 1.unity
+    guid: ab89583177e864c4594734607186d989
+  - enabled: 1
     path: Assets/Scenes/BlogDetailScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -17,15 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DistributeScene.unity
     guid: 368284b2314dd5a4caeda3ce01c9db35
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 37b1261b367fa2e4a9b1fd66c0aec3dd
   - enabled: 1
     path: Assets/Scenes/testDistributeScene 1.unity
     guid: 161085861f413ad488053195aecb8702
-  - enabled: 1
-    path: Assets/Scenes/Level/Day 1.unity
-    guid: ab89583177e864c4594734607186d989
   - enabled: 1
     path: Assets/Scenes/Level/BlogScene_Day1.unity
     guid: cc9447be1a13f47cca9597a4977c5a36
@@ -58,7 +61,7 @@ EditorBuildSettings:
     guid: 10764ae287270aa499cab83a83708699
   - enabled: 1
     path: Assets/Scenes/FadeInScene.unity
-    guid: b956aa9298b1cb44799f6f09171996c3
+    guid: ec111860ad0100e40a04d8b06aabea04
   - enabled: 1
     path: Assets/Scenes/NewDistributeScene.unity
     guid: eab057edf83b346a7affacd18a9228f5

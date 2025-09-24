@@ -19,10 +19,7 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         SceneManager.LoadSceneAsync(DeskScene, LoadSceneMode.Additive);
         test = true;
-        if (SceneManager.GetSceneByName(FailScene.SceneName).isLoaded)
-        {
-            UnloadFailScene();
-        }
+        
     }
 
     // Update is called once per frame
