@@ -33,14 +33,15 @@ public class DistributeControlMono : MonoBehaviour
     public void SubmitAll()
     {
         Debug.Log("SubmitAllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
-        CalculatePoints calculatePoints= gameObject.GetComponent<CalculatePoints>();
+        CalculatePoints calculatePoints = gameObject.GetComponent<CalculatePoints>();
         int TotalScore = 0;
         GameObject todolistobj = GameObject.FindGameObjectWithTag("ToDoList");
         todolistobj.GetComponent<TaskToDoListTextMono>().Missions.Clear();
-            
-         StartCoroutine(Wait(TotalScore, 2f));
+        todolistobj.GetComponent<ToDoList>().UpdatePageContent();
+        StartCoroutine(Wait(TotalScore, 2f));
             
 
+        
         
         
     }
@@ -55,7 +56,7 @@ public class DistributeControlMono : MonoBehaviour
             {
                 timer += Time.deltaTime;
                 float progress = Mathf.Clamp01(timer / DurTime);
-                Score.GetComponent<TextMeshProUGUI>().text = math.lerp(InitialScore, FinalScore, progress).ToString();
+                Score.GetComponent<TextMeshProUGUI>().text = ((int)math.lerp(InitialScore, FinalScore, progress)).ToString();
                 yield return null;
             }
             Score.GetComponent<TextMeshProUGUI>().text = FinalScore.ToString();

@@ -34,7 +34,7 @@ namespace Distribute
         {
             index = 0;
             endPage.SetActive(false);
-            createMessageButton.onClick.AddListener(CreateNewMessage);
+            // createMessageButton.onClick.AddListener(CreateNewMessage);
         }
 
         public void CreateNewMessage()
