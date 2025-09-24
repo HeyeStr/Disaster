@@ -15,6 +15,7 @@ TagManager:
   - TextCanvas
   - GameDayManager
   - FailedSceneManager
+  - CanvasTest
   layers:
   - Default
   - TransparentFX
