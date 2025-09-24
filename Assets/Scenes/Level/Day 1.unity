@@ -555,6 +555,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 275478088}
   canSelect: 0
+  turnIndex: 
 --- !u!212 &182597602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1146,7 +1147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyWordStartPosition: {x: 0, y: 0, z: 0}
   perFontSizeOffset: 20.1
-  turnMap: {fileID: 11400000, guid: dc2c55032b1b248488fff2a06da41773, type: 2}
   messageMap: {fileID: 11400000, guid: 6e99ae8769a147d449e10f1b31d74a60, type: 2}
   playerInput: {fileID: 0}
   toDoList: {fileID: 0}
@@ -1352,6 +1352,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 0}
   canSelect: 0
+  turnIndex: 
 --- !u!212 &438408794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3031,6 +3032,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 0}
   canSelect: 0
+  turnIndex: 
 --- !u!212 &1033897464
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3730,6 +3732,14 @@ MonoBehaviour:
   allBlogContents:
   - {fileID: 11400000, guid: e2b22d95ff890b64da88282a20e775e5, type: 2}
   - {fileID: 11400000, guid: 17e7d5b76201ebb47b6b2c691e43e696, type: 2}
+  - {fileID: 11400000, guid: b02322fe08cc41c44bbd5f886b9c8b59, type: 2}
+  - {fileID: 11400000, guid: ea26c1a8fc85ed74a86ff7ac249baa1d, type: 2}
+  - {fileID: 11400000, guid: a17518c30ef22b7479b44c89885c017f, type: 2}
+  - {fileID: 11400000, guid: 55ec3727a1956b94e8f85c0334c9812b, type: 2}
+  - {fileID: 11400000, guid: 018351bf9ec542941af8bf877b4c86e3, type: 2}
+  - {fileID: 11400000, guid: 2577fdad1167ba04eb466714515422a0, type: 2}
+  - {fileID: 11400000, guid: 2f349ac4e74f7e14287d25f3bb2c2819, type: 2}
+  - {fileID: 11400000, guid: ad9457632ff596340a31044e4651b4da, type: 2}
 --- !u!114 &1274199000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3777,6 +3787,9 @@ MonoBehaviour:
   FailScene:
     _sceneAsset: {fileID: 102900000, guid: 85dd0cb5a12670340865e97e4b29d029, type: 3}
     _sceneName: FailScene
+  FadeInScene:
+    _sceneAsset: {fileID: 0}
+    _sceneName: 
   test: 0
 --- !u!212 &1274199002
 SpriteRenderer:
@@ -4511,6 +4524,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 275478088}
   canSelect: 0
+  turnIndex: 
 --- !u!212 &1398399861
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5235,6 +5249,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 275478088}
   canSelect: 0
+  turnIndex: 
 --- !u!212 &1652103946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5459,6 +5474,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 275478088}
   canSelect: 0
+  turnIndex: 
 --- !u!212 &1733652759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5596,7 +5612,6 @@ MonoBehaviour:
   - BlogScene_Day6
   - BlogScene_Day7
   DayScoreDemand: e8030000e80300000a0000000a0000000a0000000a000000
-  DayRiskIndex: e8030000e80300000a0000000a0000000a0000000a000000
 --- !u!4 &1844459526
 Transform:
   m_ObjectHideFlags: 0
