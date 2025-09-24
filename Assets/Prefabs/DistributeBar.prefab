@@ -738,6 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  PhoneCloseButton: {fileID: 0}
   DistributeBar: {fileID: 4253532251062950214}
   InputMode: 0
   WaittingTime: 0
@@ -1161,6 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  PhoneClose: {fileID: 0}
   DistributeBar: {fileID: 4253532251062950214}
   InputMode: 0
   WaittingTime: 0
@@ -1432,7 +1434,7 @@ MonoBehaviour:
   - actualDemand: 
     baseScore: 0
     deductionBase: 0
-  LowRiskIndex: 1.1
+  LowRiskIndex: 1.6
   MediumRiskIndex: 1.25
   HighRiskIndex: 1.5
   CurrentRiskLevel: 0
