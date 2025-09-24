@@ -259,8 +259,8 @@ namespace Dialogue
                     {
                         string optionText = parts[1].Trim();
                         GameObject option = Instantiate(optionPrefab, optionContainer);
-                        option.GetComponent<TMP_Text>().text = optionText;
-                        Button optionButton = option.GetComponent<Button>();
+                        option.GetComponentInChildren<TMP_Text>().text = optionText;
+                        Button optionButton = option.GetComponentInChildren<Button>();
                         optionButton.onClick.RemoveAllListeners();
                         optionButton.onClick.AddListener(() => OnBranchSelected(jumpToIndex - 1));
                     }
