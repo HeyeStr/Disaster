@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 1441373215}
   - component: {fileID: 1441373217}
   - component: {fileID: 1441373216}
+  - component: {fileID: 1441373218}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -197,6 +198,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441373214}
   m_CullTransparentMesh: 1
+--- !u!114 &1441373218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441373214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34354b36cc0360439c3b6f0b94959fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDurTime: 0
 --- !u!1 &1665972440
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +223,6 @@ GameObject:
   - component: {fileID: 1665972443}
   - component: {fileID: 1665972442}
   - component: {fileID: 1665972441}
-  - component: {fileID: 1665972445}
   m_Layer: 5
   m_Name: FadeInControl
   m_TagString: Untagged
@@ -300,20 +313,6 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1665972445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665972440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34354b36cc0360439c3b6f0b94959fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeDurTime: 0
-  Page: {fileID: 1441373214}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

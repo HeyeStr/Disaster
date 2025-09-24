@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainScene:
-    _sceneAsset: {fileID: 102900000, guid: 37b1261b367fa2e4a9b1fd66c0aec3dd, type: 3}
-    _sceneName: MainScene
+    _sceneAsset: {fileID: 102900000, guid: ab89583177e864c4594734607186d989, type: 3}
+    _sceneName: Day 1
 --- !u!4 &965178075
 Transform:
   m_ObjectHideFlags: 0
