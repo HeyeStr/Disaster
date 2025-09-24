@@ -239,6 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e97bb127ed3e084d98905e822aaf02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartScene:
+    _sceneAsset: {fileID: 102900000, guid: ca1ab52a37e4f06429510bb63b22c932, type: 3}
+    _sceneName: StartScene
   MainScene:
     _sceneAsset: {fileID: 102900000, guid: ab89583177e864c4594734607186d989, type: 3}
     _sceneName: Day 1
