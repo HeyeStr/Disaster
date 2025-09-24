@@ -13,7 +13,9 @@ namespace Common
         public AcceptMessage interactObj;
         
         public bool canSelect = true;
-        public string TurnIndex;
+
+
+        public string turnIndex;
         
         private void Awake()
         {
@@ -26,7 +28,7 @@ namespace Common
             if (canSelect)
             {
                 Debug.Log(JsonUtility.ToJson(interactObj));
-                interactObj.AcceptString(this, textMeshPro.text);
+                interactObj.AcceptString(this, turnIndex);
             }
         }
     }

@@ -13,11 +13,23 @@ MonoBehaviour:
   m_Name: TurnMap
   m_EditorClassIdentifier: 
   mappings:
-  - key: "\u672C\u7AD9\u5171\u63A5\u6536\u5468\u8FB9\u53D7\u707E\u7FA4\u4F1742\u4EBA"
+  - key: "\u5357\u4E34\u5E02\u5B81\u5DDE\u533A\u65B0\u57CE\u8857\u9053\u7B2C\u4E00\u4E2D\u5B66\u4E34\u65F6\u5B89\u7F6E\u70B9"
+    value: 8
+  - key: "\u63A5\u6536\u5468\u8FB9\u53D7\u707E\u7FA4\u4F1742\u4EBA"
     value: 13
-  - key: "\u98DF\u54C1\u7C7B\uFF1A3\u4EFD\u989D"
+  - key: "\u98DF\u54C1\u7C7B3\u4EFD\u989D"
     value: 20
-  - key: "\u751F\u6D3B\u7269\u8D44\uFF1A2\u4EFD\u989D"
+  - key: "\u751F\u6D3B\u7269\u8D442\u4EFD\u989D"
     value: 29
-  - key: "\u5B89\u7F6E\u70B9\u8D1F\u8D23\u4EBA\u5468\u8001\u5E08 139 8765 432"
+  - key: "\u5468\u8001\u5E08 139 8765 432"
     value: 35
+  - key: "\u5357\u4E34\u5E02\u5B81\u5DDE\u533A\u6EE8\u6CB3\u8857\u9053\u6DA6\u56ED\u5929\u5730\u5C0F\u533A"
+    value: 6
+  - key: "\u4E00\u5BB6\u516D\u53E3"
+    value: 13
+  - key: "\u98DF\u7269\u548C\u996E\u7528\u6C34"
+    value: 20
+  - key: "\u4E00\u4F4D\u6709\u9AD8\u8840\u538B"
+    value: 27
+  - key: "\u674E\u4F1F 138 1234 567"
+    value: 41
