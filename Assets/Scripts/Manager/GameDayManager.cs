@@ -30,6 +30,16 @@ public class GameDayManager : MonoBehaviour
 
 
     };
+    [Header("每日资源")]
+    [SerializeField] public int[] FoodResource ={ 4,7,10,5
+    
+    };
+    [SerializeField] public int[] LivingResource= { 3,9,9,5
+    
+    };
+    [SerializeField] public int[] MedicineResource= { 1,3,7,5
+    
+    };
 
 
     [Header("天数事件")]

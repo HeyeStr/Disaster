@@ -11,7 +11,9 @@ public class ResourcesManager : MonoBehaviour
     
     void Start()
     {
-        
+        LivingResource = 3; FoodResource = 4; MedicalResource = 1;
+
+
     }
 
     // Update is called once per frame

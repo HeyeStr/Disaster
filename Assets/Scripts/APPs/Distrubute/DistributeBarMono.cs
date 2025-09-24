@@ -35,6 +35,8 @@ public class DistributeBarMono : MonoBehaviour
         AllMissionsMono allMissionsMono = Monitor.GetComponent<AllMissionsMono>();
         foreach (var mission in missions)
         {
+            Debug.Log("mission.Address" + mission.Address);
+            Debug.Log("Address"+ Address);
             if (mission.Address == Address)
             {
                 if (mission.PhoneNumber == PhoneNumber)
