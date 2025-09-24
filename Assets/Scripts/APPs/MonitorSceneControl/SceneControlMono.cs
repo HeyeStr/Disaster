@@ -13,7 +13,7 @@ public class SceneControlMono : MonoBehaviour                                   
     [SerializeField] private SceneField BlogDetailScene;
     [SerializeField] private SceneField FailScene;
     [SerializeField] private SceneField FadeInScene;
-
+    [SerializeField] private SceneField SuccessScene;
     public bool test;
     void Start()
     {
@@ -168,6 +168,15 @@ public class SceneControlMono : MonoBehaviour                                   
     public void LoadFadeInScene()
     {
         SceneManager.LoadSceneAsync(FadeInScene, LoadSceneMode.Additive);
+    }
+    public void LoadSuccessScene()
+    {
+        SceneManager.LoadSceneAsync(SuccessScene, LoadSceneMode.Additive);
+    }
+    public void UnloadSuccessScene()
+    {
+        Debug.Log("UnloadSuccessScene");
+        SceneManager.UnloadSceneAsync(SuccessScene);
     }
     public void UnloadDistributeScene()
     {

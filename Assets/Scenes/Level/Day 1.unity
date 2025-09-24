@@ -3788,8 +3788,11 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: 85dd0cb5a12670340865e97e4b29d029, type: 3}
     _sceneName: FailScene
   FadeInScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: ec111860ad0100e40a04d8b06aabea04, type: 3}
+    _sceneName: FadeInScene
+  SuccessScene:
+    _sceneAsset: {fileID: 102900000, guid: 10764ae287270aa499cab83a83708699, type: 3}
+    _sceneName: SuccessScene
   test: 0
 --- !u!212 &1274199002
 SpriteRenderer:
@@ -5584,7 +5587,7 @@ GameObject:
   - component: {fileID: 1844459525}
   m_Layer: 0
   m_Name: GameDayManager
-  m_TagString: Untagged
+  m_TagString: GameDayManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5611,7 +5614,7 @@ MonoBehaviour:
   - BlogScene_Day5
   - BlogScene_Day6
   - BlogScene_Day7
-  DayScoreDemand: e8030000e80300000a0000000a0000000a0000000a000000
+  DayScoreDemand: 00000000e80300000a0000000a0000000a0000000a000000
 --- !u!4 &1844459526
 Transform:
   m_ObjectHideFlags: 0

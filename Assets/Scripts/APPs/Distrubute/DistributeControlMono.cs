@@ -73,10 +73,16 @@ public class DistributeControlMono : MonoBehaviour
         gameObject.GetComponent<DistributePageButton>().CommitPlan();
         if (TotalScore >= scoredemand)
         {
-            gameDayManager.NextDay();
+            if (gameDayManager.currentDay != 4)
+            {
+                gameDayManager.NextDay();
+                StartCoroutine(FadeOutPass());
+            }
+            else
+            {
+                StartCoroutine(FadeOutSuccess());
+            }
 
-
-            StartCoroutine(FadeOutPass());
 
         }
         else
@@ -117,6 +123,19 @@ public class DistributeControlMono : MonoBehaviour
         GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
         SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
         sceneControlMono.loadFailScene();
+    }
+    private IEnumerator FadeOutSuccess()
+    {
+        float timer = 0f;
+        while (timer < fadeDurTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
+        SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
+        sceneControlMono.LoadSuccessScene();
     }
 
 }
