@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Day33Message
   m_EditorClassIdentifier: 
   isDialogueSelect: 0
-  phoneNumber: 1363344558
-  dialogueFile: {fileID: 4900000, guid: dcbffde0e9014115b7b9afe73d7fd362, type: 3}
+  phoneNumber: 1358899773
+  dialogueFile: {fileID: 4900000, guid: 076920c716d34ad58da56c32fb8a901b, type: 3}
   headImage: {fileID: 0}
-  personName: "\u9648\u62A4\u58EB"
+  personName: "\u5C0F\u6797"
   turnRaw: 0
