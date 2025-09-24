@@ -199,6 +199,7 @@ public class ToDoList : MonoBehaviour
             NewText_Information.transform.parent = NewTextCanvas.transform;
             NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
             NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i].information;
+            NewText_Information.tag = "InformationInToDoList";
             SendMessageButton sendMessageButton= NewText_Information.AddComponent<SendMessageButton>();
             sendMessageButton.canSelect = true;
             sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
