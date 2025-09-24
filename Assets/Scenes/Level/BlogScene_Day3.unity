@@ -343,7 +343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -333685785, guid: b4c8763075d29784587a23d12cd97e43, type: 3}
+  m_Sprite: {fileID: -616903624, guid: 882556c6995aa984a9e13f1578092663, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b54ac76afdf4f14b082f120d56cad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blogId: Mission_01_01
+  blogId: Mission_06
 --- !u!1 &429260855
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,14 +808,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.28991652, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1317315435, guid: 3f2c4b6fb8c822548b69f6e5230ed5bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -865,7 +865,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -43.666603}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -876,7 +876,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100, y: 100}
+  m_Size: {x: 100, y: 64.03923}
   m_EdgeRadius: 0
 --- !u!114 &879839764
 MonoBehaviour:
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b54ac76afdf4f14b082f120d56cad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blogId: blue_blog
+  blogId: Mission_08
 --- !u!1 &886145244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -585005248, guid: d98189e0611edc24b9b2cd3dd0af6a7c, type: 3}
+  m_Sprite: {fileID: -19445676, guid: a239166362686834b9a6963a26a25c29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b54ac76afdf4f14b082f120d56cad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blogId: Mission_01_02
+  blogId: Mission_07
 --- !u!61 &1675669850
 BoxCollider2D:
   m_ObjectHideFlags: 0

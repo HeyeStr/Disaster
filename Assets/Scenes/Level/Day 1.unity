@@ -1844,7 +1844,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -3908,7 +3908,7 @@ Transform:
   m_GameObject: {fileID: 1651467867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.746, y: 0.427, z: 0}
+  m_LocalPosition: {x: 0.417, y: 0.547, z: 0}
   m_LocalScale: {x: 0.275, y: 0.1375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
