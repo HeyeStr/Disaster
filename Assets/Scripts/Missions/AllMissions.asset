@@ -27,4 +27,60 @@ MonoBehaviour:
     MedicineResource: 0
     LivingResource: 0
     RiskIndex: 1.1
+  - MissionInedx: 2
+    Address: "\u5357\u4E34\u5E02\u5357\u6E7E\u533A\u89E3\u653E\u8DEF\u6EE8\u6C5F\u7B2C\u4E09\u4E2D\u5B66\u4F53\u80B2\u9986"
+    PhoneNumber: 1388888769
+    FoodResource: 3
+    MedicineResource: 2
+    LivingResource: 2
+    RiskIndex: 1.5
+  - MissionInedx: 3
+    Address: "\u946B\u6E90\u673A\u68B0\u5382\u623F"
+    PhoneNumber: 1395645123
+    FoodResource: 0
+    MedicineResource: 2
+    LivingResource: 3
+    RiskIndex: 1.25
+  - MissionInedx: 4
+    Address: "\u5357\u4E34\u5E02\u6CB3\u897F\u533A\u5149\u660E\u8857\u9053\u793E\u533A\u6D3B\u52A8\u4E2D\u5FC3"
+    PhoneNumber: 1381234467
+    FoodResource: 4
+    MedicineResource: 0
+    LivingResource: 4
+    RiskIndex: 1.5
+  - MissionInedx: 5
+    Address: "\u5357\u4E34\u5E02\u6E56\u897F\u533A\u671B\u6E56\u8857\u9053\u671B\u6E56\u793E\u533A\u6D3B\u52A8\u4E2D\u5FC3"
+    PhoneNumber: 1398877665
+    FoodResource: 4
+    MedicineResource: 1
+    LivingResource: 2
+    RiskIndex: 1.25
+  - MissionInedx: 6
+    Address: "\u5357\u4E34\u5E02\u897F\u533A\u661F\u5149\u8DEF8\u53F7\u661F\u5149\u517B\u8001\u9662"
+    PhoneNumber: 1363344558
+    FoodResource: 1
+    MedicineResource: 3
+    LivingResource: 2
+    RiskIndex: 1.25
+  - MissionInedx: 7
+    Address: "\u57CE\u4E1C\u533A\u6587\u5316\u4E2D\u5FC3\u4F53\u80B2\u9986"
+    PhoneNumber: 1358899773
+    FoodResource: 4
+    MedicineResource: 2
+    LivingResource: 2
+    RiskIndex: 1.25
+  - MissionInedx: 8
+    Address: "\u671B\u6D77\u56ED\u5C0F\u533A3\u53F7\u697C\u4E00\u5C42"
+    PhoneNumber: 1368899002
+    FoodResource: 0
+    MedicineResource: 1
+    LivingResource: 1
+    RiskIndex: 1.1
+  - MissionInedx: 9
+    Address: "\u6E05\u98CE\u885712\u53F7\u793E\u533A\u670D\u52A1\u7AD9"
+    PhoneNumber: 1356677881
+    FoodResource: 0
+    MedicineResource: 0
+    LivingResource: 1
+    RiskIndex: 1.1
   missionindex: 0
