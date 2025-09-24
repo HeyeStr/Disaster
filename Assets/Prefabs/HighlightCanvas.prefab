@@ -96,6 +96,7 @@ MonoBehaviour:
   StringInformation: information
   missionIndex: 0
   textId: 
+  TurnIndex: 
 --- !u!61 &2168950446906040386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &1491065401711198151
 MonoBehaviour:

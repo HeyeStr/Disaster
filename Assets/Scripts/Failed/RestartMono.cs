@@ -23,7 +23,7 @@ public class RestartMono : MonoBehaviour
         sceneControlMono.UnloadDistributeScene();
         GameObject failedsenemanager = GameObject.FindGameObjectWithTag("FailedSceneManager");
         FailedScenemanagerMono failedScenemanagerMono=failedsenemanager.GetComponent<FailedScenemanagerMono>();
-        failedScenemanagerMono.ReloadMainScene();
+        failedScenemanagerMono.ReloadStartScene();
 
     }
 }

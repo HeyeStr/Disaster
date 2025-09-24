@@ -13,16 +13,13 @@ public class SceneControlMono : MonoBehaviour                                   
     [SerializeField] private SceneField BlogDetailScene;
     [SerializeField] private SceneField FailScene;
     [SerializeField] private SceneField FadeInScene;
-
+    [SerializeField] private SceneField SuccessScene;
     public bool test;
     void Start()
     {
         SceneManager.LoadSceneAsync(DeskScene, LoadSceneMode.Additive);
         test = true;
-        if (SceneManager.GetSceneByName(FailScene.SceneName).isLoaded)
-        {
-            UnloadFailScene();
-        }
+        
     }
 
     // Update is called once per frame
@@ -168,6 +165,15 @@ public class SceneControlMono : MonoBehaviour                                   
     public void LoadFadeInScene()
     {
         SceneManager.LoadSceneAsync(FadeInScene, LoadSceneMode.Additive);
+    }
+    public void LoadSuccessScene()
+    {
+        SceneManager.LoadSceneAsync(SuccessScene, LoadSceneMode.Additive);
+    }
+    public void UnloadSuccessScene()
+    {
+        Debug.Log("UnloadSuccessScene");
+        SceneManager.UnloadSceneAsync(SuccessScene);
     }
     public void UnloadDistributeScene()
     {

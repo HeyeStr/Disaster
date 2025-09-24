@@ -455,7 +455,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
-  TurnIndex: 0
+  turnIndex: 
 --- !u!212 &172208341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1033,7 +1033,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyWordStartPosition: {x: 0, y: 0, z: 0}
   perFontSizeOffset: 20.1
-  turnMap: {fileID: 11400000, guid: dc2c55032b1b248488fff2a06da41773, type: 2}
   messageMap: {fileID: 11400000, guid: 6e99ae8769a147d449e10f1b31d74a60, type: 2}
   playerInput: {fileID: 656464134}
   toDoList: {fileID: 1166343042}
@@ -1259,7 +1258,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
-  TurnIndex: 0
+  turnIndex: 
 --- !u!212 &526225129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2339,7 +2338,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 1029183943}
   canSelect: 0
-  TurnIndex: 0
+  turnIndex: 
 --- !u!212 &768298953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3048,7 +3047,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
-  TurnIndex: 0
+  turnIndex: 
 --- !u!212 &992449488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3468,7 +3467,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 1029183943}
   canSelect: 0
-  TurnIndex: 0
+  turnIndex: 
 --- !u!212 &1033841408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4122,8 +4121,11 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: 85dd0cb5a12670340865e97e4b29d029, type: 3}
     _sceneName: FailScene
   FadeInScene:
-    _sceneAsset: {fileID: 102900000, guid: b956aa9298b1cb44799f6f09171996c3, type: 3}
+    _sceneAsset: {fileID: 102900000, guid: ec111860ad0100e40a04d8b06aabea04, type: 3}
     _sceneName: FadeInScene
+  SuccessScene:
+    _sceneAsset: {fileID: 102900000, guid: 10764ae287270aa499cab83a83708699, type: 3}
+    _sceneName: SuccessScene
   test: 0
 --- !u!212 &1274199002
 SpriteRenderer:
@@ -4272,7 +4274,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
-  TurnIndex: 0
+  turnIndex: 
 --- !u!212 &1313130103
 SpriteRenderer:
   m_ObjectHideFlags: 0

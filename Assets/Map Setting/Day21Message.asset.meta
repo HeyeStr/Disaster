@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/OptionPrefa.prefab.meta
+guid: 40a5c48a0e3678e468dff84b595c28dc
+PrefabImporter:
+  externalObjects: {}
+========
 guid: 5b89a646007f62243b854a074fabf94e
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
+>>>>>>>> main:Assets/Map Setting/Day21Message.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

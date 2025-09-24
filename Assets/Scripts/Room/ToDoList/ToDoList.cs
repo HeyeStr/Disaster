@@ -193,18 +193,22 @@ public class ToDoList : MonoBehaviour
         
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
         MonitorMonoBehaviour monitorMonoBehaviour = Monitor.GetComponent<MonitorMonoBehaviour>();
-        for(int i =0;i< missions[currentPage].Informations.Count; i++)
+        if (missions.Count > 0)
         {
-            GameObject NewText_Information = GameObject.Instantiate(TextPrefab);
-            NewText_Information.transform.parent = NewTextCanvas.transform;
-            NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
-            NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i].information;
-            NewText_Information.tag = "InformationInToDoList";
-            SendMessageButton sendMessageButton= NewText_Information.AddComponent<SendMessageButton>();
-            sendMessageButton.canSelect = true;
-            sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
-            sendMessageButton.interactObj = missions[currentPage].Informations[i].IsTelephone ? monitorMonoBehaviour.PhoneObject : monitorMonoBehaviour.Dialogue;
-            sendMessageButton.turnIndex = missions[currentPage].Informations[i].TurnIndex;
+
+            for (int i = 0; i < missions[currentPage].Informations.Count; i++)
+            {
+                GameObject NewText_Information = GameObject.Instantiate(TextPrefab);
+                NewText_Information.transform.parent = NewTextCanvas.transform;
+                NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
+                NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i].information;
+                NewText_Information.tag = "InformationInToDoList";
+                SendMessageButton sendMessageButton = NewText_Information.AddComponent<SendMessageButton>();
+                sendMessageButton.canSelect = true;
+                sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
+                sendMessageButton.interactObj = missions[currentPage].Informations[i].IsTelephone ? monitorMonoBehaviour.PhoneObject : monitorMonoBehaviour.Dialogue;
+                sendMessageButton.turnIndex = missions[currentPage].Informations[i].TurnIndex;
+            }
         }
 
         UpdatePageButtonsState();

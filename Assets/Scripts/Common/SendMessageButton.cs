@@ -28,7 +28,13 @@ namespace Common
             if (canSelect)
             {
                 Debug.Log(JsonUtility.ToJson(interactObj));
-                interactObj.AcceptString(this, turnIndex);
+                if (interactObj is PhoneController)
+                {
+                    interactObj.AcceptString(this, textMeshPro.text);
+                }
+                else {
+                    interactObj.AcceptString(this, turnIndex);
+                }
             }
         }
     }
