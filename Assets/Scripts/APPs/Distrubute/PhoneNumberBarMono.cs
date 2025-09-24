@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class PhoneNumberBarMono : MonoBehaviour
 {
-    public Camera mainCamera; // 2DÏà»úÒýÓÃ
+    public Camera mainCamera; // 2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private GameObject TodolistObject;
+    public GameObject PhoneCloseButton;
     private ToDoList todolist;
     public GameObject DistributeBar;
     public bool InputMode;
@@ -66,7 +67,7 @@ public class PhoneNumberBarMono : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("µã»÷µÄ2DÎïÌå²»°üº¬ InformationText ×é¼þ: " + clickedObject.name);
+                            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½2Dï¿½ï¿½ï¿½å²»ï¿½ï¿½ï¿½ï¿½ InformationText ï¿½ï¿½ï¿½: " + clickedObject.name);
                         }
                     }
                 }

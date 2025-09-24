@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1007610443}
     m_Modifications:
+    - target: {fileID: 2820724714718014034, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4573859777300281143, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_Name
       value: FoodText
@@ -164,11 +168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -374,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -833,7 +837,7 @@ RectTransform:
   m_GameObject: {fileID: 454442958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 743554237}
@@ -843,7 +847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.8, y: 1.09}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &504809289
@@ -1745,6 +1749,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1007610443}
     m_Modifications:
+    - target: {fileID: 2820724714718014034, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4573859777300281143, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_Name
       value: LivingText
@@ -1779,11 +1787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -1993,6 +2001,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1007610443}
     m_Modifications:
+    - target: {fileID: 2820724714718014034, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4573859777300281143, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_Name
       value: MedicineText
@@ -2027,11 +2039,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7144007210068681117, guid: 29dd1b9bc7604844caa30b3e058bd3a8, type: 3}
       propertyPath: m_LocalScale.x
@@ -2133,7 +2145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000035896264, y: 0.00003862381}
+  m_AnchoredPosition: {x: -0.000035896264, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1550934219

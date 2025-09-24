@@ -14,20 +14,24 @@ public class TaskToDoListTextMono : MonoBehaviour
     {
         Missions = new List<Mission>();
 
-        AddTask("王朝烈马", 0);
-        Debug.Log(Missions[0].MissionName);
-        AddTask("78游戏", 1);
+        //AddTask(0);
+        //AddTask(1);
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.G))
-        {
-            AddInformation(0, "王朝烈马"+x.ToString());
-            x++;
-        }
+        //if (Input.GetKeyUp(KeyCode.G)&&x==0)
+        //{
+        //    Debug.Log("ggggggggggg");
+        //    AddInformation(0, "1398765432" ,true);
+        //    AddInformation(0, "食品类：3份额",false);
+        //    AddInformation(0, "本站共接收周边受灾群众42人",false);
+        //    AddInformation(0, "食品类：3份额",false);
+        //    AddInformation(0, "安置点负责人周老师 139 8765 432",false);
+        //    x++;
+        //}
     }
-    public void AddInformation(int MissionIndex, string Information)
+    public void AddInformation(int MissionIndex, string Information,bool isTelephone)
     {
         Debug.Log("AddInformation");
 
@@ -37,7 +41,7 @@ public class TaskToDoListTextMono : MonoBehaviour
             {
                 
                 
-                Mission.Informations.Add ( Information);
+                Mission.Informations.Add ( new Information { information= Information ,IsTelephone=isTelephone});
                 gameObject.GetComponent<ToDoList>().DisplayTaskPage(MissionIndex);
                 break;
             }
@@ -48,7 +52,7 @@ public class TaskToDoListTextMono : MonoBehaviour
         
         for(int i=0;i< Missions[page].Informations.Count; i++)
         {
-            if (Missions[page].Informations[i] == Information) {
+            if (Missions[page].Informations[i].information == Information) {
                 Missions[page].Informations.Remove(Missions[page].Informations[i]);
 
                 ToDoList todolist = transform.gameObject.GetComponent<ToDoList>();
@@ -56,7 +60,7 @@ public class TaskToDoListTextMono : MonoBehaviour
             }
         }
     }
-    public void AddTask(string Missionname,int Missionindex)
+    public void AddTask(int Missionindex)
     {
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
         AllMissionsMono allMissionsMono = Monitor.GetComponent<AllMissionsMono>();
@@ -68,9 +72,8 @@ public class TaskToDoListTextMono : MonoBehaviour
         Debug.Log("Missions"+ Missions);
         Missions.Add(new Mission
         {
-            MissionName = Missionname,
             MissionIndex = Missionindex,
-            Informations = new List<string>(),
+            Informations = new List<Information>(),
             Address = allMissionsMono.GetAddress(Missionindex),
             PhoneNumber=allMissionsMono.GetPhoneNumber(Missionindex)
         });

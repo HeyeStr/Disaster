@@ -12,6 +12,7 @@ TagManager:
   - Distribute
   - DistributePage
   - Dialogue
+  - TextCanvas
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using Manager;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using Common;
 
 public class ToDoList : MonoBehaviour
 {
@@ -177,29 +178,32 @@ public class ToDoList : MonoBehaviour
         List<Mission> missions = gameObject.GetComponent<TaskToDoListTextMono>().Missions;
 
         
-        Transform TextCanvastransform= transform.Find("TextCanvas(Clone)");
+        GameObject[] TextCanvas =GameObject.FindGameObjectsWithTag("TextCanvas");
 
-        if (TextCanvastransform != null)
+        for(int i = 0; i < TextCanvas.Length; i++)
         {
-            Debug.Log("destroy");
-            Destroy(TextCanvastransform.gameObject);
+            Destroy(TextCanvas[i]);
         }
         GameObject NewTextCanvas =GameObject.Instantiate(TextCanvasPrefab);
+        NewTextCanvas.tag = "TextCanvas";
         Debug.Log("Instantiate");
         NewTextCanvas.transform.position = new Vector3(transform.position.x, 0, 0);
         NewTextCanvas.transform.parent= transform;
         Transform TaskHeadTexttransform= NewTextCanvas.transform.Find("TaskHeadText");
         
-        if (missions.Count > currentPage)
-        {
-            TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
-        }
+        GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
+        MonitorMonoBehaviour monitorMonoBehaviour = Monitor.GetComponent<MonitorMonoBehaviour>();
         for(int i =0;i< missions[currentPage].Informations.Count; i++)
         {
             GameObject NewText_Information = GameObject.Instantiate(TextPrefab);
             NewText_Information.transform.parent = NewTextCanvas.transform;
             NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
-            NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i];
+            NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i].information;
+            NewText_Information.tag = ("InformationInToDoList");
+            SendMessageButton sendMessageButton= NewText_Information.AddComponent<SendMessageButton>();
+            sendMessageButton.canSelect = true;
+            sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
+            sendMessageButton.interactObj = missions[currentPage].Informations[i].IsTelephone ? monitorMonoBehaviour.PhoneObject : monitorMonoBehaviour.Dialogue;
         }
 
         UpdatePageButtonsState();
