@@ -20,7 +20,7 @@ public class RestartMono : MonoBehaviour
         Debug.Log("restart");
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
         SceneControlMono sceneControlMono = Monitor.GetComponent<SceneControlMono>(); 
-        sceneControlMono.UnloadDistributeScene();
+        //sceneControlMono.UnloadDistributeScene();
         GameObject failedsenemanager = GameObject.FindGameObjectWithTag("FailedSceneManager");
         FailedScenemanagerMono failedScenemanagerMono=failedsenemanager.GetComponent<FailedScenemanagerMono>();
         failedScenemanagerMono.ReloadStartScene();
