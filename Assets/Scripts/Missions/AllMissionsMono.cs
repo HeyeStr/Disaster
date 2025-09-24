@@ -83,5 +83,19 @@ public class AllMissionsMono : MonoBehaviour
         }
         return 0;
     }
+    public float GetRiskIndex(int MissionInedx)
+    {
+        for (int i = 0; i < allMissionsData.AllMisions.Count; i++)
+        {
+            if (allMissionsData.AllMisions[i].MissionInedx == MissionInedx)
+            {
+
+                return allMissionsData.AllMisions[i].RiskIndex;
+
+
+            }
+        }
+        return 0;
+    }
 
 }
