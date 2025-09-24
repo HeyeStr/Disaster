@@ -4,20 +4,26 @@ namespace Phone
 {
     public class CloseButton : MonoBehaviour
     {
-        public PhoneController PhoneController;
+        public PhoneController phoneController;
         
         public SlideMoveComponent slideMove;
 
         private void Awake()
         {
-            PhoneController = GetComponentInParent<PhoneController>();
+            phoneController = GetComponentInParent<PhoneController>();
         }
 
-        private void OnMouseDown()
+        public void OnMouseDown()
+        {
+            ClosePhone();
+        }
+
+        public void ClosePhone()
         {
             if (!slideMove.isSliding)
             {
-                PhoneController.numberLabel.text = "";
+                phoneController.numberLabel.text = "";
+                slideMove.startClose = true;
                 slideMove.SlideHide();
                 gameObject.SetActive(false);
             }

@@ -77,4 +77,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 61437ddabe7f2414c8fa80a452329f4c
+  - enabled: 1
+    path: Assets/Scenes/FailScene.unity
+    guid: 85dd0cb5a12670340865e97e4b29d029
   m_configObjects: {}
