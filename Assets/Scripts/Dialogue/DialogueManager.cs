@@ -356,12 +356,10 @@ namespace Dialogue
                 if (button.isEndButton)
                 {
                     index = selectEndIndex;
-                    button.canSelect = true;
                     Debug.Log(index);
                 }
                 else
                 {
-                    button.canSelect = false;
                     if (int.TryParse(turnIndex, out int parseIndex)) {
                         index = parseIndex - 1;
                     }
