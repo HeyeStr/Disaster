@@ -91,6 +91,7 @@ public class PhoneNumberBarMono : MonoBehaviour
         
         todolist.HandleClick();
         WaittingTime = true;
+        PhoneCloseButton.GetComponent<CloseButton>().ClosePhone();
 
     }
     public void DeleteInformation()

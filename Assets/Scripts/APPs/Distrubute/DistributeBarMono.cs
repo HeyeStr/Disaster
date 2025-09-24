@@ -42,7 +42,7 @@ public class DistributeBarMono : MonoBehaviour
 
                     Debug.Log("calculatehere");
                     textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
-                    Score = (int)calculatePoints.Calculate(LivingResourceQuantity, FoodResourceQuantity, MedicalResourceQuantity, allMissionsMono.GetLivingResource(mission.MissionIndex), allMissionsMono.GetFoodResource(mission.MissionIndex), allMissionsMono.GetMedicineResource(mission.MissionIndex));
+                    Score = (int)calculatePoints.Calculate(LivingResourceQuantity, FoodResourceQuantity, MedicalResourceQuantity, allMissionsMono.GetLivingResource(mission.MissionIndex), allMissionsMono.GetFoodResource(mission.MissionIndex), allMissionsMono.GetMedicineResource(mission.MissionIndex), allMissionsMono.GetRiskIndex(mission.MissionIndex));
                     Debug.Log(Score + "Score");
                     missions.Remove(mission);
                     return Score;

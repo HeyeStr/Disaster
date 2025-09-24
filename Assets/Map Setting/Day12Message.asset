@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fced345775a84105be1d1b8489cc1630, type: 3}
   m_Name: Day12Message
   m_EditorClassIdentifier: 
+  isDialogueSelect: 0
+  phoneNumber: 1381234567
   dialogueFile: {fileID: 4900000, guid: 8af21517def14a2896c77906f3e3b57c, type: 3}
   headImage: {fileID: 0}
   personName: "\u674E\u4F1F"
+  turnRaw: 0
