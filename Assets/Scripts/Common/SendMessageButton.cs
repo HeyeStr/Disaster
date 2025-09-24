@@ -14,6 +14,7 @@ namespace Common
         
         public bool canSelect = true;
 
+
         public string turnIndex;
         
         private void Awake()

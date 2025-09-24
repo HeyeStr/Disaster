@@ -80,7 +80,6 @@ namespace Distribute
                 yield return null;
             }
             image.color = targetColor;
-            CalculateResult();
             DestroyAllContent();
         }
 
@@ -93,9 +92,5 @@ namespace Distribute
             index = 0;
         }
 
-        public void CalculateResult()
-        {
-            
-        }
     }
 }

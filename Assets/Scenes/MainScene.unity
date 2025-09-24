@@ -455,6 +455,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
+  TurnIndex: 0
 --- !u!212 &172208341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1258,6 +1259,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
+  TurnIndex: 0
 --- !u!212 &526225129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2337,6 +2339,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 1029183943}
   canSelect: 0
+  TurnIndex: 0
 --- !u!212 &768298953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3045,6 +3048,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
+  TurnIndex: 0
 --- !u!212 &992449488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3464,6 +3468,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 1029183943}
   canSelect: 0
+  TurnIndex: 0
 --- !u!212 &1033841408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4116,6 +4121,9 @@ MonoBehaviour:
   FailScene:
     _sceneAsset: {fileID: 102900000, guid: 85dd0cb5a12670340865e97e4b29d029, type: 3}
     _sceneName: FailScene
+  FadeInScene:
+    _sceneAsset: {fileID: 102900000, guid: b956aa9298b1cb44799f6f09171996c3, type: 3}
+    _sceneName: FadeInScene
   test: 0
 --- !u!212 &1274199002
 SpriteRenderer:
@@ -4264,6 +4272,7 @@ MonoBehaviour:
   textMeshPro: {fileID: 0}
   interactObj: {fileID: 300845228}
   canSelect: 0
+  TurnIndex: 0
 --- !u!212 &1313130103
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4675,8 +4684,7 @@ MonoBehaviour:
   - BlogScene_Day5
   - BlogScene_Day6
   - BlogScene_Day7
-  DayScoreDemand: e8030000e80300000a0000000a0000000a0000000a000000
-  DayRiskIndex: 010000000100000001000000010000000100000001000000
+  DayScoreDemand: 00000000e80300000a0000000a0000000a0000000a000000
 --- !u!4 &1406468680
 Transform:
   m_ObjectHideFlags: 0

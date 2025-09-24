@@ -30,17 +30,6 @@ public class GameDayManager : MonoBehaviour
 
 
     };
-    [Header("每日风险系数")]
-    [SerializeField]public int[] DayRiskIndex = {
-        1000,
-        1000,
-        10,
-        10,
-        10,
-        10
-
-
-    };
 
 
     [Header("天数事件")]

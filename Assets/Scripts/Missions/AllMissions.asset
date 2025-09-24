@@ -20,4 +20,5 @@ MonoBehaviour:
     FoodResource: 5
     MedicineResource: 5
     LivingResource: 5
+    RiskIndex: 1.2
   missionindex: 0
