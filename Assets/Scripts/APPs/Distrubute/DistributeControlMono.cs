@@ -54,7 +54,7 @@ public class DistributeControlMono : MonoBehaviour
             {
                 timer += Time.deltaTime;
                 float progress = Mathf.Clamp01(timer / DurTime);
-                Score.GetComponent<TextMeshProUGUI>().text = math.lerp(InitialScore, FinalScore, progress).ToString();
+                Score.GetComponent<TextMeshProUGUI>().text = ((int)math.lerp(InitialScore, FinalScore, progress)).ToString();
                 yield return null;
             }
             Score.GetComponent<TextMeshProUGUI>().text = FinalScore.ToString();

@@ -15,6 +15,7 @@ public class TOTALResourceDisplay : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("开始寻找");
         LivingText = transform.Find("LivingText").gameObject;
         FoodText = transform.Find("FoodText").gameObject;
         MedicineText = transform.Find("MedicineText").gameObject;
