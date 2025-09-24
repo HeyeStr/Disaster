@@ -117,6 +117,10 @@ PrefabInstance:
       value: Mission_07_text4
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: TurnIndex
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -130,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u738B\u9662\u957F\uFF08\u517B\u8001\u9662\u8D1F\u8D23\u4EBA\uFF09139-4455-667"
+      value: 1394455667
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -282,6 +286,10 @@ PrefabInstance:
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_07_text3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: TurnIndex
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Enabled
@@ -447,6 +455,10 @@ PrefabInstance:
       value: Mission_07_text5
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: TurnIndex
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -460,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: "\u9648\u62A4\u58EB\uFF08\u8D1F\u8D23\u8001\u4EBA\u5065\u5EB7\u76D1\u6D4B\uFF09136-3344-558"
+      value: 1363344558
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -612,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_07_text2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: TurnIndex
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Enabled
@@ -775,6 +791,10 @@ PrefabInstance:
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_07_text1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: TurnIndex
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Enabled
