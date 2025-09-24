@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  PhoneCloseButton: {fileID: 0}
+  PhoneCloseButton: {fileID: 2922145022528803965, guid: c99003b603d7554479c9a95bd61fbdfe, type: 3}
   DistributeBar: {fileID: 4253532251062950214}
   InputMode: 0
   WaittingTime: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  PhoneClose: {fileID: 0}
+  PhoneClose: {fileID: 2922145022528803965, guid: c99003b603d7554479c9a95bd61fbdfe, type: 3}
   DistributeBar: {fileID: 4253532251062950214}
   InputMode: 0
   WaittingTime: 0

@@ -13,6 +13,7 @@ namespace Common
         public AcceptMessage interactObj;
         
         public bool canSelect = true;
+        public string TurnIndex;
         
         private void Awake()
         {

@@ -16,6 +16,7 @@ public struct Information
 {
     public string information;
     public bool IsTelephone;
+    public string TurnIndex;
 } 
 
 [System.Serializable]

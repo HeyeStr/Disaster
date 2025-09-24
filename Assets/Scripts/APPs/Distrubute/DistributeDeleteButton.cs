@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 public class DistributeDeleteButton : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class DistributeDeleteButton : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 targetScale;
     private bool isHovering = false;
+    private GameObject distributeControlPage;
 
     void Start()
     {
@@ -45,8 +47,18 @@ public class DistributeDeleteButton : MonoBehaviour
     {
         Debug.Log("BlogDeleteButton 按钮被点击！");
         
+        
         if (MonitorGameObject != null)
         {
+            distributeControlPage = GameObject.FindGameObjectWithTag("DistributePage");
+            ResourcesManager resourcesManager = MonitorGameObject.GetComponent<ResourcesManager>();
+            foreach (var bar in distributeControlPage.GetComponent<DistributeControlMono>().DistributeBars)
+            {
+                resourcesManager.LivingResource += bar.GetComponent<DistributeBarMono>().LivingResourceQuantity;
+                resourcesManager.FoodResource += bar.GetComponent<DistributeBarMono>().FoodResourceQuantity;
+                resourcesManager.MedicalResource += bar.GetComponent<DistributeBarMono>().MedicalResourceQuantity;
+            }
+
             SceneControlMono sceneControl = MonitorGameObject.GetComponent<SceneControlMono>();
             if (sceneControl != null)
             {

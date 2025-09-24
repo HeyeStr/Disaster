@@ -204,6 +204,7 @@ public class ToDoList : MonoBehaviour
             sendMessageButton.canSelect = true;
             sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
             sendMessageButton.interactObj = missions[currentPage].Informations[i].IsTelephone ? monitorMonoBehaviour.PhoneObject : monitorMonoBehaviour.Dialogue;
+            sendMessageButton.TurnIndex = missions[currentPage].Informations[i].TurnIndex;
         }
 
         UpdatePageButtonsState();

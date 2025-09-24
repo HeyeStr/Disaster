@@ -96,10 +96,14 @@ public class AddressBarMono : MonoBehaviour
     }
     private void OnMouseDown()
     {
-
+        Debug.Log("22close");
         todolist.HandleClick();
         WaittingTime = true;
-        PhoneClose.GetComponent<CloseButton>().ClosePhone();
+        PhoneClose = GameObject.FindGameObjectWithTag("Test");
+        if (PhoneClose != null)
+        {
+            PhoneClose.GetComponent<CloseButton>().ClosePhone();
+        }
 
     }
     public void DeleteInformation()
