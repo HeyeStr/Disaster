@@ -21,6 +21,8 @@ public class HighlightInformationMono : MonoBehaviour
 
     // 修改为string类型
     public string textId;
+
+    public string TurnIndex;
     
     void Start()
     {
@@ -72,7 +74,7 @@ public class HighlightInformationMono : MonoBehaviour
             {
                 HighLightStringStarttoMove = false;
                 
-                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(missionIndex, StringInformation, IsTelephone);                           //0是待修改的量
+                gameObjectList.GetComponent<TaskToDoListTextMono>(). AddInformation(missionIndex, StringInformation, IsTelephone,TurnIndex);                           //0是待修改的量
                 Destroy(gameObject);
             }
         }

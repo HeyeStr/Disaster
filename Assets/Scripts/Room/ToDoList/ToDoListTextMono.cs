@@ -5,7 +5,6 @@ using UnityEngine;
 
 public struct Mission
 {
-    public string Mission;
     public int MissionIndex;                                    //任务代号
     public List<string> Informations;
 }
@@ -17,12 +16,6 @@ public class ToDoListTextMono : MonoBehaviour
     void Start()
     {
         
-        Missions.Add(new Mission
-        {
-            Mission = "王朝烈马",
-            MissionIndex = 0,
-            Informations = new List<string>()
-        });
     }
 
     // Update is called once per frame

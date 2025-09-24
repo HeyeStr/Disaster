@@ -88,10 +88,14 @@ public class PhoneNumberBarMono : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        
+        Debug.Log("ClosePhone");
         todolist.HandleClick();
         WaittingTime = true;
-        PhoneCloseButton.GetComponent<CloseButton>().ClosePhone();
+        PhoneCloseButton = GameObject.FindGameObjectWithTag("Test");
+        if (PhoneCloseButton != null)
+        {
+            PhoneCloseButton.GetComponent<CloseButton>().ClosePhone();
+        }
 
     }
     public void DeleteInformation()

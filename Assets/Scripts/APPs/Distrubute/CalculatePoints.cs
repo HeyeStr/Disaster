@@ -8,13 +8,6 @@ public class GradeConfig
     public float deductionBase;     // 扣分基数
 }
 
-public enum RiskFactor
-{
-    Low = 0,     
-    Medium = 1,  
-    High = 2     
-}
-
 public enum AllocationRelation
 {
     Equal,      // 分配量 = 实际需求量
@@ -26,15 +19,6 @@ public class CalculatePoints : MonoBehaviour
 {
     [Header("档位配置")]
     [SerializeField] private GradeConfig[] gradeConfigs = new GradeConfig[6];
-
-    [Header("风险系数设置")]
-    public float LowRiskIndex = 1.1f;      // 低风险系数
-    public float MediumRiskIndex = 1.25f;  // 中风险系数
-    public float HighRiskIndex = 1.5f;     // 高风险系数
-
-
-    [Header("当前选择的风险等级")]
-    public RiskFactor CurrentRiskLevel = RiskFactor.Low;
 
     void Start()
     {
@@ -54,13 +38,13 @@ public class CalculatePoints : MonoBehaviour
         Debug.Log($"输入参数 - 实际需求: Living:{actualDemand_living}, Food:{actualDemand_food}, Medicine:{actualDemand_medicine}");
 
         int livingGradeIndex = GetGradeIndexByDemand(actualDemand_living);
-        float livingScore = CalculateTotalScore(livingGradeIndex, allocation_living, actualDemand_living);
+        float livingScore = CalculateTotalScore(livingGradeIndex, allocation_living, actualDemand_living, RiskIndex);
         
         int foodGradeIndex = GetGradeIndexByDemand(actualDemand_food);
-        float foodScore = CalculateTotalScore(foodGradeIndex, allocation_food, actualDemand_food);
+        float foodScore = CalculateTotalScore(foodGradeIndex, allocation_food, actualDemand_food, RiskIndex);
 
         int medicineGradeIndex = GetGradeIndexByDemand(actualDemand_medicine);
-        float medicineScore = CalculateTotalScore(medicineGradeIndex, allocation_medicine, actualDemand_medicine);
+        float medicineScore = CalculateTotalScore(medicineGradeIndex, allocation_medicine, actualDemand_medicine, RiskIndex);
         
         totalScore = livingScore + foodScore + medicineScore;
         Debug.Log(allocation_living+" " + allocation_food + " " + allocation_medicine + " " + actualDemand_living + " " + actualDemand_food + " " + actualDemand_medicine);
@@ -140,20 +124,7 @@ public class CalculatePoints : MonoBehaviour
         }
     }
     
-    private float GetCurrentRiskIndex()
-    {
-        switch (CurrentRiskLevel)
-        {
-            case RiskFactor.Low:
-                return LowRiskIndex;
-            case RiskFactor.Medium:
-                return MediumRiskIndex;
-            case RiskFactor.High:
-                return HighRiskIndex;
-            default:
-                return LowRiskIndex;
-        }
-    }
+
     
     private GradeConfig GetGradeConfig(int gradeIndex)
     {
@@ -178,7 +149,7 @@ public class CalculatePoints : MonoBehaviour
         }
     }
 
-    private float CalculateTotalScore(int gradeIndex, float allocation, float actualDemand)
+    private float CalculateTotalScore(int gradeIndex, float allocation, float actualDemand, float riskIndex)
     {
         // 验证输入参数
         if (gradeIndex < 0 || gradeIndex >= 6)
@@ -201,8 +172,8 @@ public class CalculatePoints : MonoBehaviour
         switch (relation)
         {
             case AllocationRelation.Equal:
-                totalScore = CalculateEqualScore(grade);
-                Debug.Log($"相等分配，计算结果: {totalScore} = {grade.baseScore} * {GetCurrentRiskIndex()}");
+                totalScore = CalculateEqualScore(grade, riskIndex);
+                Debug.Log($"相等分配，计算结果: {totalScore} = {grade.baseScore} * {riskIndex}");
                 break;
                 
             case AllocationRelation.Excess:
@@ -211,7 +182,7 @@ public class CalculatePoints : MonoBehaviour
                 break;
                 
             case AllocationRelation.Shortage:
-                totalScore = CalculateShortageScore(grade, allocation, actualDemand);
+                totalScore = CalculateShortageScore(grade, allocation, actualDemand, riskIndex);
                 Debug.Log($"不足分配，计算结果: {totalScore}");
                 break;
         }
@@ -231,9 +202,9 @@ public class CalculatePoints : MonoBehaviour
             return AllocationRelation.Shortage;
     }
     
-    private float CalculateEqualScore(GradeConfig grade)
+    private float CalculateEqualScore(GradeConfig grade, float riskIndex)
     {
-        return grade.baseScore * GetCurrentRiskIndex();
+        return grade.baseScore * riskIndex;
     }
     
     private float CalculateExcessScore(GradeConfig grade)
@@ -241,10 +212,10 @@ public class CalculatePoints : MonoBehaviour
         return grade.baseScore;
     }
     
-    private float CalculateShortageScore(GradeConfig grade, float allocation, float actualDemand)
+    private float CalculateShortageScore(GradeConfig grade, float allocation, float actualDemand, float riskIndex)
     {
         float shortage = actualDemand - allocation;
-        float deduction = shortage * grade.baseScore/4 * GetCurrentRiskIndex();
+        float deduction = shortage * grade.baseScore/4 * riskIndex;
         return grade.baseScore - deduction;
     }
 }

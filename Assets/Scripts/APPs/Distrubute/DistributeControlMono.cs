@@ -11,7 +11,7 @@ public class DistributeControlMono : MonoBehaviour
     public GameObject Score;
     public GameObject ScoreDemand;
     private int scoredemand;
-
+    public float fadeDurTime;
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class DistributeControlMono : MonoBehaviour
         GameDayManager gameDayManager = GameDayManagerObj.GetComponent<GameDayManager>();
          scoredemand = gameDayManager.DayScoreDemand[gameDayManager.currentDay - 1];
         ScoreDemand.GetComponent<TextMeshProUGUI>().text = scoredemand.ToString();
+        fadeDurTime = 3;
     }
 
     // Update is called once per frame
@@ -46,9 +47,10 @@ public class DistributeControlMono : MonoBehaviour
         if(TotalScore>= scoredemand)
         {
             gameDayManager.NextDay();
-            GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
-            SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
-            //sceneControlMono.UnloadDistributeScene();
+
+
+            StartCoroutine(FadeOut());
+
         }
         else
         {
@@ -60,6 +62,22 @@ public class DistributeControlMono : MonoBehaviour
 
 
             DistributeBars.Clear();
+    }
+    private IEnumerator FadeOut()
+    {
+        float timer = 0f;
+        while (timer < fadeDurTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
+        SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
+        
+        sceneControlMono.LoadFadeInScene();
+        sceneControlMono.loadDeskScene();
+        sceneControlMono.UnloadDistributeScene();
     }
 
 }
