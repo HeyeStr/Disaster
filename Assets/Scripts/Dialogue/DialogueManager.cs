@@ -18,7 +18,7 @@ namespace Dialogue
 
         public float perFontSizeOffset = 20.1f;
 
-        [Header("信息点击跳转映射")] public DialogueTurnMapSo turnMap;
+        // [Header("信息点击跳转映射")] public DialogueTurnMapSo turnMap;
 
         [Header("电话信息映射")] public CustomMessageSo messageMap;
 
@@ -347,7 +347,7 @@ namespace Dialogue
             }
         }
 
-        public void SwitchTargetRaw(SendMessageButton button, string text)
+        public void SwitchTargetRaw(SendMessageButton button, string turnIndex)
         {
             if (canSelect)
             {
@@ -361,11 +361,14 @@ namespace Dialogue
                 else
                 {
                     button.canSelect = false;
-                    index = turnMap.GetValue(text) - 1;
+                    if (int.TryParse(turnIndex, out int parseIndex)) {
+                        index = parseIndex - 1;
+                    }
+                    else
+                    {
+                        Debug.LogError("整数解析错误：" + turnIndex);
+                    }
                 }
-
-                Debug.Log(JsonUtility.ToJson(turnMap));
-                Debug.Log(text);
                 DialogueInput();
             }
         }
