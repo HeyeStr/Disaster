@@ -19,10 +19,13 @@ namespace Phone
         public DialogueManager dialogueManager;
         
         public AudioSource audioSource;
-
+        
+        public SlideMoveComponent slideMove;
+        
         private void Awake()
         {
             dialogueManager = GameObject.FindGameObjectWithTag("Dialogue")?.GetComponent<DialogueManager>();
+            slideMove = GetComponent<SlideMoveComponent>();
             audioSource = GetComponent<AudioSource>();
             numberLabel = GetComponentInChildren<TMP_Text>();
             numberLabel.text = "";
@@ -33,6 +36,8 @@ namespace Phone
             numberLabel.text = "";
             foreach (var num in message)
             {
+                if (slideMove.startClose)
+                    yield break;
                 numberLabel.text += num;
                 yield return new WaitForSeconds(durTime);
             }
@@ -42,8 +47,9 @@ namespace Phone
 
         public override void AcceptString(SendMessageButton button, string message)
         {
-            Debug.Log(message);
-            StartCoroutine(CallPhoneWordByWord(message));
+            Debug.Log("电话号码为" + message);
+            if (!slideMove.buttonClose)
+                StartCoroutine(CallPhoneWordByWord(message));
         }
     }
 }
