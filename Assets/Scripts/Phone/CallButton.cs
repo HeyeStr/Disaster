@@ -16,6 +16,8 @@ namespace Phone
 
         public void OnMouseDown()
         {
+            if (string.IsNullOrEmpty(phoneController.phoneNumber))
+                return;
             // TODO:开始播放拨号音效
             phoneController.audioSource.Play();
             StartCoroutine(StartDialogue());

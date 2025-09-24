@@ -10,8 +10,6 @@ namespace Phone
 
         [SerializeField] private Vector3 showPosition;
 
-        [SerializeField] private string targetTag;
-
         [SerializeField] private float maxTime;
         
         public float timer;
@@ -21,6 +19,8 @@ namespace Phone
         public GameObject backButton;
 
         public bool buttonClose;
+        
+        public bool startClose;
 
         [Header("动画曲线")] [SerializeField] public CustomAnimationCurve slideCurve;
 
@@ -34,6 +34,7 @@ namespace Phone
         
         private void OnMouseDown()
         {
+            Debug.Log("移动电话");
             if (!isSliding && buttonClose)
                 StartCoroutine(SlideMove(buttonClose, hidePosition, showPosition));
         }
@@ -53,6 +54,7 @@ namespace Phone
 
             isSliding = false;
             buttonClose = !buttonClose;
+            startClose = false;
             if (finalState)
             {
                 ActiveButton();

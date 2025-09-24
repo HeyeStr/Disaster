@@ -1434,7 +1434,7 @@ MonoBehaviour:
   - actualDemand: 
     baseScore: 0
     deductionBase: 0
-  LowRiskIndex: 1.1
+  LowRiskIndex: 1.6
   MediumRiskIndex: 1.25
   HighRiskIndex: 1.5
   CurrentRiskLevel: 0
