@@ -276,6 +276,7 @@ namespace Dialogue
 
         private void OnBranchSelected(int targetIndex)
         {
+            Debug.Log("触发选择对话：" + textList[targetIndex]);
             textFinished = true;
             // 隐藏分支面板
             HideBranchPanel();
@@ -367,6 +368,7 @@ namespace Dialogue
                     else
                     {
                         Debug.LogError("整数解析错误：" + turnIndex);
+                        Debug.Log(turnIndex);
                     }
                 }
                 DialogueInput();
