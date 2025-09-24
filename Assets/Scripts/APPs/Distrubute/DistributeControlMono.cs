@@ -1,7 +1,9 @@
+using Distribute;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class DistributeControlMono : MonoBehaviour
@@ -33,37 +35,61 @@ public class DistributeControlMono : MonoBehaviour
         Debug.Log("SubmitAllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
         CalculatePoints calculatePoints= gameObject.GetComponent<CalculatePoints>();
         int TotalScore = 0;
-        foreach (GameObject distributBar in DistributeBars)
-        {
-            TotalScore += distributBar.GetComponent<DistributeBarMono>().Submit();
-            Score.GetComponent<TextMeshProUGUI>().text = TotalScore.ToString();
+        
             
+         StartCoroutine(Wait(TotalScore, 2f));
             
 
+        
+        
+    }
+    private IEnumerator Wait(int TotalScore, float DurTime)
+    {
+        for (int i = 0; i < DistributeBars.Count; i++) {
+            float timer = 0f;
+            int InitialScore = TotalScore;
+            TotalScore += DistributeBars[i].GetComponent<DistributeBarMono>().Submit();
+            int FinalScore = TotalScore;
+            while (timer < DurTime)
+            {
+                timer += Time.deltaTime;
+                float progress = Mathf.Clamp01(timer / DurTime);
+                Score.GetComponent<TextMeshProUGUI>().text = math.lerp(InitialScore, FinalScore, progress).ToString();
+                yield return null;
+            }
+            Score.GetComponent<TextMeshProUGUI>().text = FinalScore.ToString();
+            Destroy(DistributeBars[i]);
+        }
+        float timing = 0f;
+        while (timing < DurTime/2)
+        {
+            timing += Time.deltaTime;
+            yield return null;
         }
         GameObject GameDayManagerObj = GameObject.FindGameObjectWithTag("GameDayManager");
-        GameDayManager gameDayManager= GameDayManagerObj.GetComponent<GameDayManager>();
+        GameDayManager gameDayManager = GameDayManagerObj.GetComponent<GameDayManager>();
         scoredemand = gameDayManager.DayScoreDemand[gameDayManager.currentDay - 1];
-        if(TotalScore>= scoredemand)
+        Debug.Log("hereeeeeeeeeeeeeeee");
+        gameObject.GetComponent<DistributePageButton>().CommitPlan();
+        if (TotalScore >= scoredemand)
         {
             gameDayManager.NextDay();
 
 
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeOutPass());
 
         }
         else
         {
             Debug.Log("failed");
-            GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
-            SceneControlMono sceneControlMono= monitorobj.GetComponent<SceneControlMono>();
-            sceneControlMono.loadFailScene();
+            StartCoroutine(FadeOutFail());
+
         }
 
 
-            DistributeBars.Clear();
+        DistributeBars.Clear();
     }
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOutPass()
     {
         float timer = 0f;
         while (timer < fadeDurTime)
@@ -78,6 +104,19 @@ public class DistributeControlMono : MonoBehaviour
         sceneControlMono.LoadFadeInScene();
         sceneControlMono.loadDeskScene();
         sceneControlMono.UnloadDistributeScene();
+    }
+    private IEnumerator FadeOutFail()
+    {
+        float timer = 0f;
+        while (timer < fadeDurTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
+        SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
+        sceneControlMono.loadFailScene();
     }
 
 }
