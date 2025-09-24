@@ -1,15 +1,15 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeInControlMono : MonoBehaviour
 {
     public float fadeDurTime;
-    public GameObject Page;
     void Start()
     {
-        fadeDurTime = 50;
-        StartCoroutine(FadeIn(Page.GetComponent<Image>()));
+        fadeDurTime = 2;
+        StartCoroutine(FadeIn(gameObject.GetComponent<Image>()));
     }
 
     // Update is called once per frame
@@ -24,9 +24,11 @@ public class FadeInControlMono : MonoBehaviour
             yield break;
         }
 
-        Color originalColor = new Color(0, 0, 0, 255);
-        Color targetColor = new Color(0, 0, 0, 0);
+        //Color originalColor = new Color(255, 255, 255, 255);
+        //Color targetColor = new Color(0, 0, 0, 0);
 
+        Color originalColor = Color.black ;
+        Color targetColor = new Color(0, 0, 0, 0);
         image.color = originalColor;
         float timer = 0f;
         // µ­³ö¹ý³Ì
@@ -34,8 +36,8 @@ public class FadeInControlMono : MonoBehaviour
         {
             timer += Time.deltaTime;
             float progress = Mathf.Clamp01(timer / fadeDurTime);
-            image.color = Color.Lerp(originalColor, targetColor, progress);
-            Debug.Log(image.color.a + "image.color");
+            image.color = Color.Lerp(originalColor, targetColor, progress); //new Color(0, 0, 0, math.lerp(255, 0, progress));   // Color.Lerp(originalColor, targetColor, progress);
+
             yield return null;
         }
         image.color = targetColor;

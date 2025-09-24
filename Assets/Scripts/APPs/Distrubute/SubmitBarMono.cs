@@ -20,7 +20,6 @@ public class SubmitBar : MonoBehaviour
     {
         Debug.Log("SubmitBar");
         DistributeObject = GameObject.FindGameObjectWithTag("DistributePage");
-        DistributeObject.GetComponent<DistributePageButton>().CommitPlan();
         DistributeObject.GetComponent<DistributeControlMono>().SubmitAll();
         
 
