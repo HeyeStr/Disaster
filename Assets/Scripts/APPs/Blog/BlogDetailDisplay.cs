@@ -34,18 +34,25 @@ public class BlogDetailDisplay : MonoBehaviour
         // 更新图片或预制体
         if (data.blogPrefab != null)
         {
-            // 如果有预制体，实例化预制体
+
             if (prefabContainer != null)
             {
-                // 清除之前的预制体
-                foreach (Transform child in prefabContainer)
-                {
-                    Destroy(child.gameObject);
-                }
+                // 获取perfabs的父对象和位置
+                Transform parent = prefabContainer.parent;
+                Vector3 position = prefabContainer.position;
+                Quaternion rotation = prefabContainer.rotation;
+                Vector3 scale = prefabContainer.localScale;
+
+                Destroy(prefabContainer.gameObject);
+
+                GameObject prefabInstance = Instantiate(data.blogPrefab, parent);
+                prefabInstance.transform.position = position;
+                prefabInstance.transform.rotation = rotation;
+                prefabInstance.transform.localScale = scale;
+
+                prefabContainer = prefabInstance.transform;
                 
-                // 实例化新预制体
-                GameObject prefabInstance = Instantiate(data.blogPrefab, prefabContainer);
-                Debug.Log($"已实例化博客预制体: {data.title}");
+                Debug.Log($"已替换perfabs对象为博客预制体: {data.title}");
             }
         }
         else if (blogImage != null && data.blogImage != null)

@@ -119,6 +119,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: IsTelephone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: missionIndex
       value: 1
       objectReference: {fileID: 0}
