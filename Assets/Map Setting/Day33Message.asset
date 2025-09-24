@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fced345775a84105be1d1b8489cc1630, type: 3}
+  m_Name: Day33Message
+  m_EditorClassIdentifier: 
+  isDialogueSelect: 0
+  phoneNumber: 1358899773
+  dialogueFile: {fileID: 4900000, guid: 076920c716d34ad58da56c32fb8a901b, type: 3}
+  headImage: {fileID: 0}
+  personName: "\u5C0F\u6797"
+  turnRaw: 0
