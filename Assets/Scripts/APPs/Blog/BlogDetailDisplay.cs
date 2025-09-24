@@ -48,7 +48,11 @@ public class BlogDetailDisplay : MonoBehaviour
                 GameObject prefabInstance = Instantiate(data.blogPrefab, parent);
                 prefabInstance.transform.position = position;
                 prefabInstance.transform.rotation = rotation;
+                Vector3 originalscale = prefabInstance.transform.localScale;
                 prefabInstance.transform.localScale = scale;
+
+                prefabInstance.transform.localScale =new Vector3(scale.x,
+                    prefabInstance.transform.localScale.x * originalscale.y / originalscale.x, scale.z);
 
                 prefabContainer = prefabInstance.transform;
                 
