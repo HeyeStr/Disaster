@@ -35,7 +35,8 @@ public class DistributeControlMono : MonoBehaviour
         Debug.Log("SubmitAllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
         CalculatePoints calculatePoints= gameObject.GetComponent<CalculatePoints>();
         int TotalScore = 0;
-        
+        GameObject todolistobj = GameObject.FindGameObjectWithTag("ToDoList");
+        todolistobj.GetComponent<TaskToDoListTextMono>().Missions.Clear();
             
          StartCoroutine(Wait(TotalScore, 2f));
             
