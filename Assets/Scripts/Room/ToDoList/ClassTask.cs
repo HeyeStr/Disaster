@@ -27,4 +27,5 @@ public struct MissionInformation
     public int FoodResource;
     public int MedicineResource;
     public int LivingResource;
+    public float RiskIndex;
 }

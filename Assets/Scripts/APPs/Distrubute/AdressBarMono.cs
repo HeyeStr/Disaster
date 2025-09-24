@@ -99,6 +99,7 @@ public class AddressBarMono : MonoBehaviour
 
         todolist.HandleClick();
         WaittingTime = true;
+        PhoneClose.GetComponent<CloseButton>().ClosePhone();
 
     }
     public void DeleteInformation()

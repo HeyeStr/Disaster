@@ -13,7 +13,7 @@ namespace Phone
             phoneController = GetComponentInParent<PhoneController>();
         }
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
             ClosePhone();
         }

@@ -31,19 +31,22 @@ public class CalculatePoints : MonoBehaviour
     public float LowRiskIndex = 1.1f;      // 低风险系数
     public float MediumRiskIndex = 1.25f;  // 中风险系数
     public float HighRiskIndex = 1.5f;     // 高风险系数
-    
+
+
     [Header("当前选择的风险等级")]
     public RiskFactor CurrentRiskLevel = RiskFactor.Low;
 
     void Start()
     {
         InitializeDefaultGrades();
+        
+   
     }
 
 
 
     public float Calculate(int allocation_living, int allocation_food, int allocation_medicine, 
-                          int actualDemand_living, int actualDemand_food, int actualDemand_medicine)
+                          int actualDemand_living, int actualDemand_food, int actualDemand_medicine,float RiskIndex)
     {
         float totalScore = 0f;
 
@@ -123,7 +126,7 @@ public class CalculatePoints : MonoBehaviour
     private void TestZeroDemandCase()
     {
         Debug.Log("=== 测试需求量为0的情况 ===");
-        float score = Calculate(0, 0, 0, 0, 0, 0);
+        float score = Calculate(0, 0, 0, 0, 0, 0,1);
         Debug.Log($"需求量和分配量都为0时的得分: {score}");
         
         // 预期结果应该是0分，因为需求量0对应基础分0

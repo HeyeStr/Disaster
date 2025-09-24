@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb32206b5534855bf1c903249faf259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PhoneController: {fileID: 0}
+  phoneController: {fileID: 0}
   slideMove: {fileID: 1029183945}
 --- !u!61 &204752119
 BoxCollider2D:
@@ -1030,6 +1030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f54dfa417d29974fb1271d71361a113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyWordStartPosition: {x: 0, y: 0, z: 0}
+  perFontSizeOffset: 20.1
   turnMap: {fileID: 11400000, guid: dc2c55032b1b248488fff2a06da41773, type: 2}
   messageMap: {fileID: 11400000, guid: 6e99ae8769a147d449e10f1b31d74a60, type: 2}
   playerInput: {fileID: 656464134}
@@ -1040,6 +1042,7 @@ MonoBehaviour:
   playerHead: {fileID: 0}
   personHead: {fileID: 0}
   textFile: {fileID: 0}
+  messagePrefab: {fileID: 0}
   index: 0
   textSpeed: 0.05
   optionSign: '[OPTION]'
@@ -1049,6 +1052,8 @@ MonoBehaviour:
   selectEndSign: '[FINISH]'
   playerName: "\u6211"
   personName: B
+  extractSign: '[EXTRACT]'
+  extractEndSign: '[/EXTRACT]'
   optionPrefab: {fileID: 1825877577895433532, guid: b4c577f9e719f054daf5ce216b368fcb, type: 3}
   optionContainer: {fileID: 570687128}
   branchPanel: {fileID: 27071796}
@@ -3175,6 +3180,7 @@ MonoBehaviour:
   phoneNumber: 
   dialogueManager: {fileID: 0}
   audioSource: {fileID: 0}
+  slideMove: {fileID: 0}
 --- !u!82 &1029183944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3285,12 +3291,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePosition: {x: 5.14, y: -6.66, z: 0}
   showPosition: {x: 5.14, y: -0.12, z: 0}
-  targetTag: Player
   maxTime: 0.5
   timer: 0
   isSliding: 0
   backButton: {fileID: 204752117}
   buttonClose: 0
+  startClose: 0
   slideCurve: {fileID: 11400000, guid: 012b0dfab38d39848880a3e16f897d93, type: 2}
 --- !u!61 &1029183946
 BoxCollider2D:
@@ -4107,6 +4113,9 @@ MonoBehaviour:
   BlogDetailScene:
     _sceneAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
     _sceneName: BlogDetailScene
+  FailScene:
+    _sceneAsset: {fileID: 102900000, guid: 85dd0cb5a12670340865e97e4b29d029, type: 3}
+    _sceneName: FailScene
   test: 0
 --- !u!212 &1274199002
 SpriteRenderer:
@@ -4188,8 +4197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9364745de15089458a207337afdba85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LivingResource: 2
-  FoodResource: 2
+  LivingResource: 5
+  FoodResource: 5
   MedicalResource: 5
 --- !u!114 &1274199005
 MonoBehaviour:
@@ -4639,7 +4648,7 @@ GameObject:
   - component: {fileID: 1406468679}
   m_Layer: 0
   m_Name: GameDayManager
-  m_TagString: Untagged
+  m_TagString: GameDayManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4666,6 +4675,8 @@ MonoBehaviour:
   - BlogScene_Day5
   - BlogScene_Day6
   - BlogScene_Day7
+  DayScoreDemand: e8030000e80300000a0000000a0000000a0000000a000000
+  DayRiskIndex: 010000000100000001000000010000000100000001000000
 --- !u!4 &1406468680
 Transform:
   m_ObjectHideFlags: 0

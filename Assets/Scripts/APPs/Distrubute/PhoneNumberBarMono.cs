@@ -1,3 +1,4 @@
+using Phone;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -90,6 +91,7 @@ public class PhoneNumberBarMono : MonoBehaviour
         
         todolist.HandleClick();
         WaittingTime = true;
+        PhoneCloseButton.GetComponent<CloseButton>().ClosePhone();
 
     }
     public void DeleteInformation()

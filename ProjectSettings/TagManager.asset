@@ -13,6 +13,8 @@ TagManager:
   - DistributePage
   - Dialogue
   - TextCanvas
+  - GameDayManager
+  - FailedSceneManager
   layers:
   - Default
   - TransparentFX
