@@ -94,6 +94,9 @@ public class HighlightInformationMono : MonoBehaviour
         HighLightStringStarttoMove = true;
         Transform Texttransform= transform.Find("Text1");
         Texttransform.gameObject.GetComponent<TextMeshProUGUI>().text = StringInformation;
+        Color originalcolor = gameObject.GetComponent<Image>().color;
+        gameObject.GetComponent<Image>().color = new Color(originalcolor.r, originalcolor.g, originalcolor.b, 0);
+        transform.parent = GameObject.FindGameObjectWithTag("CanvasTest").transform;
     }
 
 }
