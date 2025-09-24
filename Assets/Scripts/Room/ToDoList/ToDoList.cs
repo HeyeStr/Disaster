@@ -201,7 +201,6 @@ public class ToDoList : MonoBehaviour
             NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i].information;
             NewText_Information.tag = "InformationInToDoList";
             SendMessageButton sendMessageButton= NewText_Information.AddComponent<SendMessageButton>();
-            sendMessageButton.canSelect = true;
             sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
             sendMessageButton.interactObj = missions[currentPage].Informations[i].IsTelephone ? monitorMonoBehaviour.PhoneObject : monitorMonoBehaviour.Dialogue;
             sendMessageButton.turnIndex = missions[currentPage].Informations[i].TurnIndex;
