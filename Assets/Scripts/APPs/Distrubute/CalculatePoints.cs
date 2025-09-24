@@ -31,13 +31,23 @@ public class CalculatePoints : MonoBehaviour
     public float LowRiskIndex = 1.1f;      // 低风险系数
     public float MediumRiskIndex = 1.25f;  // 中风险系数
     public float HighRiskIndex = 1.5f;     // 高风险系数
-    
+
+
+    public float RiskIndex;
     [Header("当前选择的风险等级")]
     public RiskFactor CurrentRiskLevel = RiskFactor.Low;
 
     void Start()
     {
         InitializeDefaultGrades();
+        
+        //设置风险系数
+
+        GameObject DaygameObject = GameObject.FindGameObjectWithTag("GameDayManager");
+        GameDayManager gameDayManager = DaygameObject.GetComponent<GameDayManager>();
+        
+        RiskIndex= gameDayManager.DayRiskIndex[gameDayManager.currentDay];
+        Debug.Log("RiskIndex" + RiskIndex);
     }
 
 

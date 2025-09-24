@@ -13,7 +13,7 @@ namespace Phone
             PhoneController = GetComponentInParent<PhoneController>();
         }
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
             if (!slideMove.isSliding)
             {

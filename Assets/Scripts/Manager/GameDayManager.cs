@@ -6,7 +6,7 @@ public class GameDayManager : MonoBehaviour
     public static GameDayManager Instance;
     
     [Header("游戏天数设置")]
-    [SerializeField] private int currentDay = 1;
+    [SerializeField] public  int currentDay = 1;
     [SerializeField] private int maxDays = 7;
     [Header("博客场景名称")]
     [SerializeField] private string[] blogSceneNames = {
@@ -18,7 +18,31 @@ public class GameDayManager : MonoBehaviour
         "BlogScene_Day6",
         "BlogScene_Day7"
     };
-    
+    [Header("每日分数需求")]
+
+    [SerializeField]public  int[] DayScoreDemand = {
+        1000,
+        1000,
+        10,
+        10,
+        10,
+        10
+
+
+    };
+    [Header("每日风险系数")]
+    [SerializeField]public int[] DayRiskIndex = {
+        1000,
+        1000,
+        10,
+        10,
+        10,
+        10
+
+
+    };
+
+
     [Header("天数事件")]
     public System.Action<int> OnDayChanged;
     

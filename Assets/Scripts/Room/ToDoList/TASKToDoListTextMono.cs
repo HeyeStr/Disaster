@@ -14,22 +14,22 @@ public class TaskToDoListTextMono : MonoBehaviour
     {
         Missions = new List<Mission>();
 
-        //AddTask(0);
+        AddTask(0);
         //AddTask(1);
     }
 
     void Update()
     {
-        //if (Input.GetKeyUp(KeyCode.G)&&x==0)
-        //{
-        //    Debug.Log("ggggggggggg");
-        //    AddInformation(0, "1398765432" ,true);
-        //    AddInformation(0, "食品类：3份额",false);
-        //    AddInformation(0, "本站共接收周边受灾群众42人",false);
-        //    AddInformation(0, "食品类：3份额",false);
-        //    AddInformation(0, "安置点负责人周老师 139 8765 432",false);
-        //    x++;
-        //}
+        if (Input.GetKeyUp(KeyCode.G) && x == 0)
+        {
+            Debug.Log("ggggggggggg");
+            AddInformation(0, "1398765432", true);
+            AddInformation(0, "食品类：3份额", false);
+            AddInformation(0, "本站共接收周边受灾群众42人", false);
+            AddInformation(0, "食品类：3份额", false);
+            AddInformation(0, "安置点负责人周老师 139 8765 432", false);
+            x++;
+        }
     }
     public void AddInformation(int MissionIndex, string Information,bool isTelephone)
     {
