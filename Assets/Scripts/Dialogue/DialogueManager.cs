@@ -14,78 +14,78 @@ namespace Dialogue
 {
     public class DialogueManager : AcceptMessage
     {
-        [Header("信息点击跳转映射")]
-        public DialogueTurnMapSo turnMap;
-        
-        [Header("电话信息映射")]
-        public CustomMessageSo messageMap;
-        
+        public Vector3 keyWordStartPosition;
+
+        public float perFontSizeOffset = 20.1f;
+
+        [Header("信息点击跳转映射")] public DialogueTurnMapSo turnMap;
+
+        [Header("电话信息映射")] public CustomMessageSo messageMap;
+
         static DialogueManager Instance;
-        
+
         public PlayerInputManager playerInput;
-        
-        [Header("笔记本对象")]
-        public ToDoList toDoList;
-        
-        [Header("对话框组件")]
-        [SerializeField] private GameObject dialogueObj;
-        
+
+        [Header("笔记本对象")] public ToDoList toDoList;
+
+        [Header("对话框组件")] [SerializeField] private GameObject dialogueObj;
+
         [SerializeField] Image headImage;
-        
+
         [SerializeField] TMP_Text textLabel;
-        
-        [Header("玩家头像")]
-        [SerializeField] Sprite playerHead;
 
-        [Header("对话人头像")]
-        [SerializeField] Sprite personHead;
+        [Header("玩家头像")] [SerializeField] Sprite playerHead;
 
-        [Header("对话文本")]
-        [SerializeField] TextAsset textFile;
+        [Header("对话人头像")] [SerializeField] Sprite personHead;
+
+        [Header("对话文本")] [SerializeField] TextAsset textFile;
+
+        [Header("信息收集预制体")] [SerializeField] GameObject messagePrefab;
 
         [SerializeField] int index;
 
         [SerializeField] float textSpeed;
-        
-        [Header("文本特殊关键词")]
-        [SerializeField] private string optionSign = "[OPTION]";
+
+        [Header("文本特殊关键词")] [SerializeField] private string optionSign = "[OPTION]";
 
         [SerializeField] private string optionEnd = "[/OPTION]";
-        
+
         [SerializeField] private string pauseSign = "[SELECT]";
-        
+
         [SerializeField] private string endSign = "[END]";
-        
+
         [SerializeField] public string selectEndSign = "[FINISH]";
 
         [SerializeField] private string playerName;
-        
+
         [SerializeField] private string personName;
-        
-        [Header("对话选择对话框")]
-        [SerializeField] private GameObject optionPrefab;
+
+        [SerializeField] private string extractSign = "[EXTRACT]";
+
+        [SerializeField] private string extractEndSign = "[/EXTRACT]";
+
+        [Header("对话选择对话框")] [SerializeField] private GameObject optionPrefab;
 
         [SerializeField] private Transform optionContainer;
-        
+
         [SerializeField] private GameObject branchPanel;
 
         private List<string> textList = new List<string>();
 
-        [Header("对话状态")]
-        [SerializeField] public bool isDialogue;
-        
+        [Header("对话状态")] [SerializeField] public bool isDialogue;
+
         [SerializeField] public bool textFinished;
 
         [SerializeField] public bool cancelTyping;
 
         [SerializeField] public bool isInBranchSelection;
-        
+
         [SerializeField] public bool canSelect;
-        
+
         private int selectEndIndex;
-        
+
         SendMessageButton sendButton;
-        
+
         void Awake()
         {
             if (Instance == null)
@@ -96,6 +96,7 @@ namespace Dialogue
             {
                 Destroy(gameObject);
             }
+
             dialogueObj.SetActive(false);
         }
 
@@ -119,7 +120,7 @@ namespace Dialogue
                 DialogueInput();
             }
         }
-        
+
         // 当对话框禁用时清理
         private void OnDisable()
         {
@@ -162,7 +163,8 @@ namespace Dialogue
             textFinished = false;
             // 检查是否需要切换对话
             SwitchDialogue();
-            if (canSelect || textList[index].Equals(pauseSign)) {
+            if (canSelect || textList[index].Equals(pauseSign))
+            {
                 yield break;
             }
 
@@ -172,12 +174,22 @@ namespace Dialogue
             string currentText = textList[index];
             // 逐个显示一行文字
             int letter = 0;
+
+            // 检查并执行文本截取
+            string keyMessage = FindAndCreateKeyMessage(currentText);
+            if (!string.IsNullOrEmpty(keyMessage))
+            {
+                // 从显示文本中移除截取标记
+                currentText = RemoveExtractTags(currentText);
+            }
+
             while (!cancelTyping && letter < currentText.Length)
             {
                 textLabel.text += currentText[letter];
                 letter++;
                 yield return new WaitForSeconds(textSpeed);
-            } 
+            }
+
             // foreach (var single in currentText)
             // {
             //     // 中断逐个打字
@@ -191,11 +203,11 @@ namespace Dialogue
             //     textLabel.text += single;
             //     yield return new WaitForSeconds(textSpeed);
             // }
-            textLabel.text = textList[index];
+            textLabel.text = currentText;
             index++;
             cancelTyping = false;
             textFinished = true;
-            
+
             if (textList[index].StartsWith(pauseSign, StringComparison.CurrentCultureIgnoreCase))
             {
                 if (toDoList)
@@ -209,15 +221,17 @@ namespace Dialogue
             if (textList[index].StartsWith(playerName))
             {
                 if (playerHead)
-                    headImage.sprite = playerHead; 
-                index ++;
+                    headImage.sprite = playerHead;
+                index++;
             }
+
             if (textList[index].StartsWith(personName))
             {
                 if (personHead)
                     headImage.sprite = personHead;
-                index ++;
+                index++;
             }
+
             if (textList[index].Equals(optionSign, StringComparison.OrdinalIgnoreCase))
             {
                 ParseAndShowBranches();
@@ -232,7 +246,7 @@ namespace Dialogue
             {
                 Destroy(child.gameObject);
             }
-            
+
             int currentIndex = index;
             while (currentIndex < textList.Count &&
                    !textList[currentIndex].Equals(optionEnd, StringComparison.OrdinalIgnoreCase))
@@ -256,6 +270,7 @@ namespace Dialogue
 
                 // 显示分支面板
             }
+
             ShowBranchPanel();
         }
 
@@ -308,7 +323,7 @@ namespace Dialogue
         {
             Debug.Log(JsonUtility.ToJson(messageMap));
             Debug.Log(phoneNumber);
-            
+
             isDialogue = true;
             Message message = messageMap.GetValue(phoneNumber);
             textFile = message.dialogueFile;
@@ -337,23 +352,53 @@ namespace Dialogue
             if (canSelect)
             {
                 canSelect = false;
-                if (button.isEndButton){
+                if (button.isEndButton)
+                {
                     index = selectEndIndex;
                     button.canSelect = true;
                     Debug.Log(index);
-                } else {
+                }
+                else
+                {
                     button.canSelect = false;
                     index = turnMap.GetValue(text) - 1;
                 }
+
                 Debug.Log(JsonUtility.ToJson(turnMap));
                 Debug.Log(text);
                 DialogueInput();
             }
         }
 
-        public override void AcceptString(SendMessageButton button,string message)
+        public override void AcceptString(SendMessageButton button, string message)
         {
             SwitchTargetRaw(button, message);
+        }
+
+
+        private string FindAndCreateKeyMessage(string textLine)
+        {
+            int startIndex = textLine.IndexOf(extractSign, StringComparison.Ordinal);
+            int endIndex = textLine.IndexOf(extractEndSign, StringComparison.Ordinal);
+            if (startIndex == -1 || endIndex == -1) return null;
+            string keyMessage = textLine.Substring(startIndex + extractSign.Length,
+                endIndex - startIndex - extractSign.Length);
+            GameObject obj = Instantiate(messagePrefab, textLabel.transform);
+            obj.GetComponent<TMP_Text>().text = keyMessage;
+            Debug.Log(keyWordStartPosition);
+            Debug.Log(new Vector2(perFontSizeOffset * startIndex +
+                                  extractSign.Length, 0));
+            obj.GetComponent<RectTransform>().anchoredPosition = (Vector2)keyWordStartPosition +
+                                                                 new Vector2(perFontSizeOffset * startIndex, 0);
+            return keyMessage;
+        }
+
+        /**
+         * 从文本中移除截取标记
+         */
+        private string RemoveExtractTags(string text)
+        {
+            return text.Replace(extractSign, "").Replace(extractEndSign, "");
         }
     }
 }

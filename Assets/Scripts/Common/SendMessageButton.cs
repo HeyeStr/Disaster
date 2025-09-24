@@ -12,17 +12,19 @@ namespace Common
 
         public AcceptMessage interactObj;
         
-        public bool canSelect;
-        //private void Awake()
-        //{
-        //    //canSelect = true;
-        //}
+        public bool canSelect = true;
+        
+        private void Awake()
+        {
+            canSelect = true;
+        }
 
         private void OnMouseDown()
         {
             Debug.Log("选择对话开始");
             if (canSelect)
             {
+                Debug.Log(JsonUtility.ToJson(interactObj));
                 interactObj.AcceptString(this, textMeshPro.text);
             }
         }
