@@ -1,3 +1,4 @@
+using Phone;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,8 +6,9 @@ using UnityEngine;
 
 public class AddressBarMono : MonoBehaviour
 {
-    public Camera mainCamera; // 2DÏà»úÒýÓÃ
+    public Camera mainCamera; // 2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private GameObject TodolistObject;
+    public GameObject PhoneClose;
     private ToDoList todolist;
     public GameObject DistributeBar;
     public bool InputMode;
@@ -71,7 +73,7 @@ public class AddressBarMono : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("µã»÷µÄ2DÎïÌå²»°üº¬ InformationText ×é¼þ: " + clickedObject.name);
+                            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½2Dï¿½ï¿½ï¿½å²»ï¿½ï¿½ï¿½ï¿½ InformationText ï¿½ï¿½ï¿½: " + clickedObject.name);
                         }
                     }
                 }

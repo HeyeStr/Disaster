@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllMisions:
   - MissionInedx: 0
-    Address: "\u738B\u671D\u70C8\u9A6C1"
-    PhoneNumber: "\u738B\u671D\u70C8\u9A6C2"
+    Address: "\u672C\u7AD9\u5171\u63A5\u6536\u5468\u8FB9\u53D7\u707E\u7FA4\u4F1742\u4EBA"
+    PhoneNumber: "\u5B89\u7F6E\u70B9\u8D1F\u8D23\u4EBA\u5468\u8001\u5E08 139 8765
+      432"
     FoodResource: 5
     MedicineResource: 5
     LivingResource: 5

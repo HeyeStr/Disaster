@@ -17,7 +17,6 @@ public class HighlightInformationMono : MonoBehaviour
     public float MoveSpeed;
     public bool IsTelephone;
     public string StringInformation;                     //任务相关信息
-    public string missionName;                          //任务相关信息
     public int missionIndex;                            //任务相关信息
 
     // 修改为string类型
@@ -62,7 +61,7 @@ public class HighlightInformationMono : MonoBehaviour
             ToDoList toDoList = gameObjectList.GetComponent<ToDoList>();
             if (!tasktoDoListTextMono.HasTask(missionIndex))
             {
-                tasktoDoListTextMono.AddTask(missionName, missionIndex);
+                tasktoDoListTextMono.AddTask( missionIndex);
             }
             Vector3 Targetposition = tasktoDoListTextMono.GetNewInformationPosition(0);                  //0待定
             

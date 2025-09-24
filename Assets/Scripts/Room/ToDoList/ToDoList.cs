@@ -191,10 +191,6 @@ public class ToDoList : MonoBehaviour
         NewTextCanvas.transform.parent= transform;
         Transform TaskHeadTexttransform= NewTextCanvas.transform.Find("TaskHeadText");
         
-        if (missions.Count > currentPage)
-        {
-            TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
-        }
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
         MonitorMonoBehaviour monitorMonoBehaviour = Monitor.GetComponent<MonitorMonoBehaviour>();
         for(int i =0;i< missions[currentPage].Informations.Count; i++)
@@ -203,6 +199,7 @@ public class ToDoList : MonoBehaviour
             NewText_Information.transform.parent = NewTextCanvas.transform;
             NewText_Information.transform.position = new Vector3(transform.position.x, 2.5f - i * 0.5f, 0);
             NewText_Information.GetComponent<TextMeshProUGUI>().text = missions[currentPage].Informations[i].information;
+            NewText_Information.tag = ("InformationInToDoList");
             SendMessageButton sendMessageButton= NewText_Information.AddComponent<SendMessageButton>();
             sendMessageButton.canSelect = true;
             sendMessageButton.textMeshPro = NewText_Information.GetComponent<TextMeshProUGUI>();
