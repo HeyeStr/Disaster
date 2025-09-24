@@ -36,14 +36,14 @@ public class DistributeControlMono : MonoBehaviour
         CalculatePoints calculatePoints = gameObject.GetComponent<CalculatePoints>();
         int TotalScore = 0;
         GameObject todolistobj = GameObject.FindGameObjectWithTag("ToDoList");
+       
+        StartCoroutine(Wait(TotalScore, 2f));
+
+
         todolistobj.GetComponent<TaskToDoListTextMono>().Missions.Clear();
         todolistobj.GetComponent<ToDoList>().UpdatePageContent();
-        StartCoroutine(Wait(TotalScore, 2f));
-            
 
-        
-        
-        
+
     }
     private IEnumerator Wait(int TotalScore, float DurTime)
     {
@@ -70,6 +70,7 @@ public class DistributeControlMono : MonoBehaviour
         }
         GameObject GameDayManagerObj = GameObject.FindGameObjectWithTag("GameDayManager");
         GameDayManager gameDayManager = GameDayManagerObj.GetComponent<GameDayManager>();
+
         scoredemand = gameDayManager.DayScoreDemand[gameDayManager.currentDay - 1];
         Debug.Log("hereeeeeeeeeeeeeeee");
         gameObject.GetComponent<DistributePageButton>().CommitPlan();
@@ -79,6 +80,12 @@ public class DistributeControlMono : MonoBehaviour
             {
                 gameDayManager.NextDay();
                 StartCoroutine(FadeOutPass());
+                GameObject monitor= GameObject.FindGameObjectWithTag("Monitor");
+                Debug.Log("gameDayManager.currentDay"+(gameDayManager.currentDay - 1));
+                Debug.Log("gameDayManager.LivingResource" + gameDayManager.LivingResource.Length);
+                monitor.GetComponent<ResourcesManager>().LivingResource = gameDayManager.LivingResource[gameDayManager.currentDay - 1];
+                monitor.GetComponent<ResourcesManager>().FoodResource = gameDayManager.FoodResource[gameDayManager.currentDay - 1];
+                monitor.GetComponent<ResourcesManager>().MedicalResource = gameDayManager.MedicineResource[gameDayManager.currentDay - 1];
             }
             else
             {

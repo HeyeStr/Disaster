@@ -22,7 +22,7 @@ public class CalculatePoints : MonoBehaviour
 
     void Start()
     {
-        InitializeDefaultGrades();
+        //InitializeDefaultGrades();
         
    
     }
@@ -78,34 +78,34 @@ public class CalculatePoints : MonoBehaviour
         }
     }
     
-    private void InitializeDefaultGrades()
-    {
+    //private void InitializeDefaultGrades()
+    //{
 
         
-        // 根据GetGradeIndexByDemand的映射关系正确初始化
-        gradeConfigs[0] = new GradeConfig { actualDemand = "5", baseScore = 100f, deductionBase = 20f }; // 需求量5 → 索引0
-        gradeConfigs[1] = new GradeConfig { actualDemand = "4", baseScore = 70f, deductionBase = 14f };  // 需求量4 → 索引1
-        gradeConfigs[2] = new GradeConfig { actualDemand = "3", baseScore = 40f, deductionBase = 8f };   // 需求量3 → 索引2
-        gradeConfigs[3] = new GradeConfig { actualDemand = "2", baseScore = 30f, deductionBase = 6f };   // 需求量2 → 索引3
-        gradeConfigs[4] = new GradeConfig { actualDemand = "1", baseScore = 20f, deductionBase = 4f };   // 需求量1 → 索引4
-        gradeConfigs[5] = new GradeConfig { actualDemand = "0", baseScore = 0f, deductionBase = 0f };    // 需求量0 → 索引5
+    //    // 根据GetGradeIndexByDemand的映射关系正确初始化
+    //    gradeConfigs[0] = new GradeConfig { actualDemand = "5", baseScore = 100f, deductionBase = 20f }; // 需求量5 → 索引0
+    //    gradeConfigs[1] = new GradeConfig { actualDemand = "4", baseScore = 70f, deductionBase = 14f };  // 需求量4 → 索引1
+    //    gradeConfigs[2] = new GradeConfig { actualDemand = "3", baseScore = 40f, deductionBase = 8f };   // 需求量3 → 索引2
+    //    gradeConfigs[3] = new GradeConfig { actualDemand = "2", baseScore = 30f, deductionBase = 6f };   // 需求量2 → 索引3
+    //    gradeConfigs[4] = new GradeConfig { actualDemand = "1", baseScore = 20f, deductionBase = 4f };   // 需求量1 → 索引4
+    //    gradeConfigs[5] = new GradeConfig { actualDemand = "0", baseScore = 0f, deductionBase = 0f };    // 需求量0 → 索引5
         
-        Debug.Log("配置创建完成！");
-        for (int i = 0; i < gradeConfigs.Length; i++)
-        {
-            if (gradeConfigs[i] != null)
-            {
-                Debug.Log($"gradeConfigs[{i}]: 需求量{gradeConfigs[i].actualDemand}, 基础分{gradeConfigs[i].baseScore}, 扣分基数{gradeConfigs[i].deductionBase}");
-            }
-            else
-            {
-                Debug.Log($"gradeConfigs[{i}]: null");
-            }
-        }
+    //    Debug.Log("配置创建完成！");
+    //    for (int i = 0; i < gradeConfigs.Length; i++)
+    //    {
+    //        if (gradeConfigs[i] != null)
+    //        {
+    //            Debug.Log($"gradeConfigs[{i}]: 需求量{gradeConfigs[i].actualDemand}, 基础分{gradeConfigs[i].baseScore}, 扣分基数{gradeConfigs[i].deductionBase}");
+    //        }
+    //        else
+    //        {
+    //            Debug.Log($"gradeConfigs[{i}]: null");
+    //        }
+    //    }
         
-        // 测试需求量为0的情况
-        TestZeroDemandCase();
-    }
+    //    // 测试需求量为0的情况
+    //    TestZeroDemandCase();
+    //}
     
     private void TestZeroDemandCase()
     {
