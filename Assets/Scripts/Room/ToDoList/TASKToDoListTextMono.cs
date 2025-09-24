@@ -14,9 +14,8 @@ public class TaskToDoListTextMono : MonoBehaviour
     {
         Missions = new List<Mission>();
 
-        AddTask("王朝烈马", 0);
-        Debug.Log(Missions[0].MissionName);
-        AddTask("78游戏", 1);
+        AddTask(0);
+        AddTask(1);
     }
 
     void Update()
@@ -61,7 +60,7 @@ public class TaskToDoListTextMono : MonoBehaviour
             }
         }
     }
-    public void AddTask(string Missionname,int Missionindex)
+    public void AddTask(int Missionindex)
     {
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
         AllMissionsMono allMissionsMono = Monitor.GetComponent<AllMissionsMono>();
@@ -73,7 +72,6 @@ public class TaskToDoListTextMono : MonoBehaviour
         Debug.Log("Missions"+ Missions);
         Missions.Add(new Mission
         {
-            MissionName = Missionname,
             MissionIndex = Missionindex,
             Informations = new List<Information>(),
             Address = allMissionsMono.GetAddress(Missionindex),

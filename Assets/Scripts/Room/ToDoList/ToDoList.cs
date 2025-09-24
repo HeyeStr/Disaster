@@ -191,10 +191,6 @@ public class ToDoList : MonoBehaviour
         NewTextCanvas.transform.parent= transform;
         Transform TaskHeadTexttransform= NewTextCanvas.transform.Find("TaskHeadText");
         
-        if (missions.Count > currentPage)
-        {
-            TaskHeadTexttransform.gameObject.GetComponent<TextMeshProUGUI>().text = missions[currentPage].MissionName;
-        }
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
         MonitorMonoBehaviour monitorMonoBehaviour = Monitor.GetComponent<MonitorMonoBehaviour>();
         for(int i =0;i< missions[currentPage].Informations.Count; i++)

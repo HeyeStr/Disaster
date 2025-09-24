@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public struct Mission
 {
-    public string MissionName;
     public int MissionIndex;                                    //ÈÎÎñ´úºÅ
     public string Address;
     public string PhoneNumber;
