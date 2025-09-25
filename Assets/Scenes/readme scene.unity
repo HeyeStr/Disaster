@@ -1057,7 +1057,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2122754637, guid: d3fb25913986d8148a6c145d9b9b59e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4532d6595fbdbca43be07342bc2c9587, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 802534781}
   m_HandleRect: {fileID: 802534780}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

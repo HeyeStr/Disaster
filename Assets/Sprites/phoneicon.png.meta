@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05a37201239d49a498d627e8ee307be4
+guid: 66ac22be7ca571d4a9ef5be08b01e057
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buttom_0
+      name: phoneicon_0
       rect:
         serializedVersion: 2
         x: 68
-        y: 7
+        y: 8
         width: 27
-        height: 26
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f656eb4ab819f741a21c36653649369
-      internalID: 1981430002
+      spriteID: fb0c51a1378320b459eb8cb963df4ece
+      internalID: 385830503
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buttom_0: 1981430002
+      phoneicon_0: 385830503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
