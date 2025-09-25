@@ -85,8 +85,6 @@ namespace Dialogue
         
         private int selectEndIndex;
 
-        SendMessageButton sendButton;
-
         void Awake()
         {
             if (Instance == null)
@@ -144,8 +142,9 @@ namespace Dialogue
             {
                 dialogueObj.SetActive(false);
                 isDialogue = false;
-                if (sendMessageButton && sendMessageButton.isPhoneNumber)
+                 if (sendMessageButton && sendMessageButton.isPhoneNumber)
                 {
+                    Debug.Log("修改互动对象");
                     sendMessageButton.interactObj = GameObject.FindGameObjectWithTag("Phone").GetComponent<PhoneController>();
                 }
 
@@ -381,6 +380,8 @@ namespace Dialogue
 
         public override void AcceptString(SendMessageButton button, string message)
         {
+            if (button.isPhoneNumber)
+                sendMessageButton = button.GetComponent<SendMessageButton>();
             SwitchTargetRaw(button, message);
         }
 
