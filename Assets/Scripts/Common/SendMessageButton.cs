@@ -1,16 +1,19 @@
-﻿using Phone;
+﻿using Dialogue;
+using Phone;
 using TMPro;
 using UnityEngine;
 
 namespace Common
 {
-    public class SendMessageButton : MonoBehaviour
+    public class  SendMessageButton : MonoBehaviour
     {
         public bool isEndButton;
 
         public TextMeshProUGUI textMeshPro;
 
         public AcceptMessage interactObj;
+
+        public bool isPhoneNumber;
 
         public string turnIndex;
 
@@ -21,6 +24,8 @@ namespace Common
             if (interactObj is PhoneController)
             {
                 interactObj.AcceptString(this, textMeshPro.text);
+                interactObj = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<DialogueManager>();
+                isPhoneNumber = true;
             }
             else
             {

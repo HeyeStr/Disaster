@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8026993051564209217, guid: f78e5b17980e49547adf57680dc7e4ef, type: 2}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_01_01_text3
@@ -227,6 +231,14 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8026993051564209217, guid: f78e5b17980e49547adf57680dc7e4ef, type: 2}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_01_01_text5
@@ -245,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: StringInformation
-      value: 1398765432
+      value: "\u5468\u8001\u5E08 139 8765 432"
       objectReference: {fileID: 0}
     - target: {fileID: 4872118755108170470, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: m_Name
@@ -370,6 +382,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8026993051564209217, guid: f78e5b17980e49547adf57680dc7e4ef, type: 2}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_01_01_text2
@@ -505,6 +521,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8026993051564209217, guid: f78e5b17980e49547adf57680dc7e4ef, type: 2}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_01_01_text1
@@ -644,6 +664,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221531351215046279, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8026993051564209217, guid: f78e5b17980e49547adf57680dc7e4ef, type: 2}
     - target: {fileID: 2235310287281346924, guid: d398248068f12af45b3c7525ce78a8df, type: 3}
       propertyPath: textId
       value: Mission_01_01_text4
