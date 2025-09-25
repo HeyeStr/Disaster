@@ -80,12 +80,7 @@ public class DistributeControlMono : MonoBehaviour
             {
                 gameDayManager.NextDay();
                 StartCoroutine(FadeOutPass());
-                GameObject monitor= GameObject.FindGameObjectWithTag("Monitor");
-                Debug.Log("gameDayManager.currentDay"+(gameDayManager.currentDay - 1));
-                Debug.Log("gameDayManager.LivingResource" + gameDayManager.LivingResource.Length);
-                monitor.GetComponent<ResourcesManager>().LivingResource = gameDayManager.LivingResource[gameDayManager.currentDay - 1];
-                monitor.GetComponent<ResourcesManager>().FoodResource = gameDayManager.FoodResource[gameDayManager.currentDay - 1];
-                monitor.GetComponent<ResourcesManager>().MedicalResource = gameDayManager.MedicineResource[gameDayManager.currentDay - 1];
+                
             }
             else
             {
@@ -112,8 +107,13 @@ public class DistributeControlMono : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        
+        GameObject GameDayManagerObj = GameObject.FindGameObjectWithTag("GameDayManager");
+        GameDayManager gameDayManager = GameDayManagerObj.GetComponent<GameDayManager>();
         GameObject monitorobj = GameObject.FindGameObjectWithTag("Monitor");
+        monitorobj.GetComponent<ResourcesManager>().LivingResource = gameDayManager.LivingResource[gameDayManager.currentDay - 1];
+        monitorobj.GetComponent<ResourcesManager>().FoodResource = gameDayManager.FoodResource[gameDayManager.currentDay - 1];
+        monitorobj.GetComponent<ResourcesManager>().MedicalResource = gameDayManager.MedicineResource[gameDayManager.currentDay - 1];
+
         SceneControlMono sceneControlMono = monitorobj.GetComponent<SceneControlMono>();
         
         sceneControlMono.LoadFadeInScene();
