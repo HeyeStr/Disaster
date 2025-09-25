@@ -14,7 +14,7 @@ namespace Common
 
         public string turnIndex;
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
             Debug.Log("选择对话开始");
             Debug.Log(JsonUtility.ToJson(interactObj));
