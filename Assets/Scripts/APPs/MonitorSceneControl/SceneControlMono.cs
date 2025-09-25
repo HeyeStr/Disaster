@@ -14,6 +14,7 @@ public class SceneControlMono : MonoBehaviour                                   
     [SerializeField] private SceneField FailScene;
     [SerializeField] private SceneField FadeInScene;
     [SerializeField] private SceneField SuccessScene;
+    [SerializeField] private SceneField readmeScene;
     public bool test;
     void Start()
     {
@@ -31,7 +32,15 @@ public class SceneControlMono : MonoBehaviour                                   
     {
         LoadBlogSceneForDay(1); 
     }
-    
+    public void LoadreadmeScene()
+    {
+        SceneManager.LoadSceneAsync(readmeScene, LoadSceneMode.Additive);
+    }
+    public void UnloadreadmeScene()
+    {
+        Debug.Log("UnloadreadmeScene");
+        SceneManager.UnloadSceneAsync(readmeScene);
+    }
     // 加载指定天数的博客场景
     public void LoadBlogSceneForDay(int day)
     {
