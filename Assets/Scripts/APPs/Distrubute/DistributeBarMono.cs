@@ -26,17 +26,20 @@ public class DistributeBarMono : MonoBehaviour
     }
     public int Submit()
     {
+        Debug.Log("Submitttttttttttttttttttttttttttttttttttttttttttttttt");
         GameObject TodoList = GameObject.FindGameObjectWithTag("ToDoList");
         List<Mission> missions = TodoList.GetComponent<TaskToDoListTextMono>().Missions;
         Score = 0;
         Transform textransform = gameObject.transform.Find("TextScore");
         CalculatePoints calculatePoints = gameObject.GetComponent<CalculatePoints>();
         GameObject Monitor = GameObject.FindGameObjectWithTag("Monitor");
+
         AllMissionsMono allMissionsMono = Monitor.GetComponent<AllMissionsMono>();
+        Debug.Log("missions.Count" + missions.Count);
         foreach (var mission in missions)
         {
             Debug.Log("mission.Address" + mission.Address);
-            Debug.Log("Address"+ Address);
+            Debug.Log("Address" + Address);
             if (mission.Address == Address)
             {
                 if (mission.PhoneNumber == PhoneNumber)
@@ -52,9 +55,9 @@ public class DistributeBarMono : MonoBehaviour
                 else
                 {
                     Debug.Log("calculatehere2222222222");
-                    Score = 0;                                
+                    Score = 0;
 
-                   
+
                     textransform.gameObject.GetComponent<TextMeshProUGUI>().text = Score.ToString();
                     missions.Remove(mission);
                     return Score;

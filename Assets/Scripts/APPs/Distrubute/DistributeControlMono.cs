@@ -35,13 +35,11 @@ public class DistributeControlMono : MonoBehaviour
         Debug.Log("SubmitAllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
         CalculatePoints calculatePoints = gameObject.GetComponent<CalculatePoints>();
         int TotalScore = 0;
-        GameObject todolistobj = GameObject.FindGameObjectWithTag("ToDoList");
        
         StartCoroutine(Wait(TotalScore, 2f));
 
 
-        todolistobj.GetComponent<TaskToDoListTextMono>().Missions.Clear();
-        todolistobj.GetComponent<ToDoList>().UpdatePageContent();
+
 
 
     }
@@ -51,6 +49,8 @@ public class DistributeControlMono : MonoBehaviour
             float timer = 0f;
             int InitialScore = TotalScore;
             TotalScore += DistributeBars[i].GetComponent<DistributeBarMono>().Submit();
+            Debug.Log("TotalScore: " + TotalScore);
+            Debug.Log("InitialScore: " + InitialScore);
             int FinalScore = TotalScore;
             while (timer < DurTime)
             {
@@ -62,6 +62,8 @@ public class DistributeControlMono : MonoBehaviour
             Score.GetComponent<TextMeshProUGUI>().text = FinalScore.ToString();
             Destroy(DistributeBars[i]);
         }
+
+        // DistributeBars.Clear();
         float timing = 0f;
         while (timing < DurTime/2)
         {
@@ -74,13 +76,18 @@ public class DistributeControlMono : MonoBehaviour
         scoredemand = gameDayManager.DayScoreDemand[gameDayManager.currentDay - 1];
         Debug.Log("hereeeeeeeeeeeeeeee");
         gameObject.GetComponent<DistributePageButton>().CommitPlan();
+        
+        GameObject todolistobj = GameObject.FindGameObjectWithTag("ToDoList");
+        todolistobj.GetComponent<TaskToDoListTextMono>().Missions.Clear();
+        todolistobj.GetComponent<ToDoList>().UpdatePageContent();
         if (TotalScore >= scoredemand)
         {
             if (gameDayManager.currentDay != 4)
             {
+
                 gameDayManager.NextDay();
                 StartCoroutine(FadeOutPass());
-                
+
             }
             else
             {
