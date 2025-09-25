@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Common;
 using Manager;
 using Phone;
-using SettingSo;
 using SettingSo.Setting;
 using TMPro;
 using UnityEngine;
@@ -82,6 +81,8 @@ namespace Dialogue
 
         [SerializeField] public bool canSelect;
 
+        private SendMessageButton sendMessageButton;
+        
         private int selectEndIndex;
 
         SendMessageButton sendButton;
@@ -143,6 +144,11 @@ namespace Dialogue
             {
                 dialogueObj.SetActive(false);
                 isDialogue = false;
+                if (sendMessageButton && sendMessageButton.isPhoneNumber)
+                {
+                    sendMessageButton.interactObj = GameObject.FindGameObjectWithTag("Phone").GetComponent<PhoneController>();
+                }
+
                 index = 0;
                 return;
             }
@@ -362,6 +368,7 @@ namespace Dialogue
                 {
                     if (int.TryParse(turnIndex, out int parseIndex)) {
                         index = parseIndex - 1;
+                        DialogueInput();
                     }
                     else
                     {
@@ -369,7 +376,6 @@ namespace Dialogue
                         Debug.Log(turnIndex);
                     }
                 }
-                DialogueInput();
             }
         }
 
