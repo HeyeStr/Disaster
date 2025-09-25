@@ -3409,6 +3409,9 @@ MonoBehaviour:
   SuccessScene:
     _sceneAsset: {fileID: 102900000, guid: 10764ae287270aa499cab83a83708699, type: 3}
     _sceneName: SuccessScene
+  readmeScene:
+    _sceneAsset: {fileID: 102900000, guid: b6302f857c0e2854fb33d934610e3184, type: 3}
+    _sceneName: readme scene
   test: 0
 --- !u!212 &1274199002
 SpriteRenderer:
