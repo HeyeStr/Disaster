@@ -17,7 +17,7 @@ MonoBehaviour:
   content: 
   BlogType: Blog
   blogImage: {fileID: 0}
-  blogPrefab: {fileID: 0}
+  blogPrefab: {fileID: 4825565526012726145, guid: 927d69cd5770b4ab195350a453ab94ad, type: 3}
   MissionIndex: 0
   RequireFoodQuantity: 0
   RequireLivingQuantity: 0
