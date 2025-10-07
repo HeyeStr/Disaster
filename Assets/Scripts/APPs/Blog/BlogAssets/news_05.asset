@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058ce819359e54bdd95ead672408bef7, type: 3}
-  m_Name: news_04
+  m_Name: news_05
   m_EditorClassIdentifier: 
-  blogId: news_04
+  blogId: news_05
   title: 
-  content: 
+  content: "\u8FD9\u662F\u7B2C\u56DB\u5929\u7B2C\n"
   BlogType: Blog
   blogImage: {fileID: 0}
-  blogPrefab: {fileID: 4825565526012726145, guid: 927d69cd5770b4ab195350a453ab94ad, type: 3}
+  blogPrefab: {fileID: 8254600856613799127, guid: e7e2e576994a347469cae132adb1d176, type: 3}
   MissionIndex: 0
   RequireFoodQuantity: 0
   RequireLivingQuantity: 0

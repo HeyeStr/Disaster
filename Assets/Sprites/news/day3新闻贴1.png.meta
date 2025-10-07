@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05a37201239d49a498d627e8ee307be4
+guid: 75e46e6824013410fba0690b630158eb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -93,17 +93,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buttom_0
+      name: "day3\u65B0\u95FB\u8D341_0"
       rect:
         serializedVersion: 2
-        x: 68
-        y: 7
-        width: 27
-        height: 26
+        x: 201
+        y: 105
+        width: 598
+        height: 1867
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f656eb4ab819f741a21c36653649369
-      internalID: 1981430002
+      spriteID: 41c2a506b5f7f42f7ac655a3ea00a4aa
+      internalID: 206604746
       vertices: []
       indices: 
       edges: []
@@ -128,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buttom_0: 1981430002
+      "day3\u65B0\u95FB\u8D341_0": 206604746
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
