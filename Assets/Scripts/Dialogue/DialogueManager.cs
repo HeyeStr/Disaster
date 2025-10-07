@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Common;
 using Manager;
 using Phone;
-using SettingSo;
 using SettingSo.Setting;
 using TMPro;
 using UnityEngine;
@@ -82,9 +81,9 @@ namespace Dialogue
 
         [SerializeField] public bool canSelect;
 
+        private SendMessageButton sendMessageButton;
+        
         private int selectEndIndex;
-
-        SendMessageButton sendButton;
 
         void Awake()
         {
@@ -143,6 +142,12 @@ namespace Dialogue
             {
                 dialogueObj.SetActive(false);
                 isDialogue = false;
+                 if (sendMessageButton && sendMessageButton.isPhoneNumber)
+                {
+                    Debug.Log("修改互动对象");
+                    sendMessageButton.interactObj = GameObject.FindGameObjectWithTag("Phone").GetComponent<PhoneController>();
+                }
+
                 index = 0;
                 return;
             }
@@ -356,14 +361,13 @@ namespace Dialogue
                 if (button.isEndButton)
                 {
                     index = selectEndIndex;
-                    button.canSelect = true;
                     Debug.Log(index);
                 }
                 else
                 {
-                    button.canSelect = false;
                     if (int.TryParse(turnIndex, out int parseIndex)) {
                         index = parseIndex - 1;
+                        DialogueInput();
                     }
                     else
                     {
@@ -371,12 +375,13 @@ namespace Dialogue
                         Debug.Log(turnIndex);
                     }
                 }
-                DialogueInput();
             }
         }
 
         public override void AcceptString(SendMessageButton button, string message)
         {
+            if (button.isPhoneNumber)
+                sendMessageButton = button.GetComponent<SendMessageButton>();
             SwitchTargetRaw(button, message);
         }
 

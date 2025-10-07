@@ -21,12 +21,7 @@ public class GameDayManager : MonoBehaviour
     [Header("每日分数需求")]
 
     [SerializeField]public  int[] DayScoreDemand = {
-        1000,
-        1000,
-        10,
-        10,
-        10,
-        10
+        90,310,400,60
 
 
     };

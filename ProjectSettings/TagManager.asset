@@ -16,6 +16,7 @@ TagManager:
   - GameDayManager
   - FailedSceneManager
   - CanvasTest
+  - Phone
   layers:
   - Default
   - TransparentFX

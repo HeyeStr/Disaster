@@ -1,40 +1,35 @@
-﻿using Phone;
+﻿using Dialogue;
+using Phone;
 using TMPro;
 using UnityEngine;
 
 namespace Common
 {
-    public class SendMessageButton : MonoBehaviour
+    public class  SendMessageButton : MonoBehaviour
     {
         public bool isEndButton;
-        
+
         public TextMeshProUGUI textMeshPro;
 
         public AcceptMessage interactObj;
-        
-        public bool canSelect = true;
 
+        public bool isPhoneNumber;
 
         public string turnIndex;
-        
-        private void Awake()
-        {
-            canSelect = true;
-        }
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
             Debug.Log("选择对话开始");
-            if (canSelect)
+            Debug.Log(JsonUtility.ToJson(interactObj));
+            if (interactObj is PhoneController)
             {
-                Debug.Log(JsonUtility.ToJson(interactObj));
-                if (interactObj is PhoneController)
-                {
-                    interactObj.AcceptString(this, textMeshPro.text);
-                }
-                else {
-                    interactObj.AcceptString(this, turnIndex);
-                }
+                interactObj.AcceptString(this, textMeshPro.text);
+                interactObj = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<DialogueManager>();
+                isPhoneNumber = true;
+            }
+            else
+            {
+                interactObj.AcceptString(this, turnIndex);
             }
         }
     }
